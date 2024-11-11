@@ -131,5 +131,49 @@ INSERT INTO Pengajuan_Bebas_Tanggungan
 VALUES
     (3, '2340271532', '20241023', 'Diterima');
 
+INSERT INTO Dokumen (NIM, Jenis_Dokumen, File_Dokumen, Tanggal_Upload)
+VALUES
+    ('2340271532', 'Laporan Tugas Akhir yang sudah bertanda tangan', 'laporan_akhir_azka.pdf', '2024-10-01'),
+    ('2340271532', 'Program/Aplikasi Tugas Akhir/Skripsi', 'program_azka.zip', '2024-10-02'),
+    ('2340271532', 'Surat Pernyataan Publikasi Jurnal', 'surat_publikasi_azka.pdf', '2024-10-03'),
+    ('2340271532', 'Tanda Terima Penyerahan Laporan Tugas Akhir', 'tanda_terima_akhir_azka.pdf', '2024-10-04'),
+    ('2340271532', 'Scan hasil TOEIC', 'toeic_azka.pdf', '2024-10-05'),
+    ('2340271532', 'Surat Bebas Kompen', 'bebas_kompen_azka.pdf', '2024-10-06'),
+
+    ('2340271533', 'Laporan Tugas Akhir yang sudah bertanda tangan', 'laporan_akhir_hasbi.pdf', '2024-10-01'),
+    ('2340271533', 'Program/Aplikasi Tugas Akhir/Skripsi', 'program_hasbi.zip', '2024-10-02'),
+    ('2340271533', 'Surat Pernyataan Publikasi Jurnal', 'surat_publikasi_hasbi.pdf', '2024-10-03'),
+    ('2340271533', 'Tanda Terima Penyerahan Laporan Tugas Akhir', 'tanda_terima_akhir_hasbi.pdf', '2024-10-04'),
+    ('2340271533', 'Scan hasil TOEIC', 'toeic_hasbi.pdf', '2024-10-05'),
+    ('2340271533', 'Surat Bebas Kompen', 'bebas_kompen_hasbi.pdf', '2024-10-06'),
+
+    ('2340271534', 'Laporan Tugas Akhir yang sudah bertanda tangan', 'laporan_akhir_fahmi.pdf', '2024-10-01'),
+    ('2340271534', 'Program/Aplikasi Tugas Akhir/Skripsi', 'program_fahmi.zip', '2024-10-02'),
+    ('2340271534', 'Surat Pernyataan Publikasi Jurnal', 'surat_publikasi_fahmi.pdf', '2024-10-03'),
+    ('2340271534', 'Tanda Terima Penyerahan Laporan Tugas Akhir', 'tanda_terima_akhir_fahmi.pdf', '2024-10-04'),
+    ('2340271534', 'Scan hasil TOEIC', 'toeic_fahmi.pdf', '2024-10-05'),
+    ('2340271534', 'Surat Bebas Kompen', 'bebas_kompen_fahmi.pdf', '2024-10-06'),
+
+    ('2341271505', 'Laporan Tugas Akhir yang sudah bertanda tangan', 'laporan_akhir_regita.pdf', '2024-10-01'),
+    ('2341271505', 'Program/Aplikasi Tugas Akhir/Skripsi', 'program_regita.zip', '2024-10-02'),
+    ('2341271505', 'Surat Pernyataan Publikasi Jurnal', 'surat_publikasi_regita.pdf', '2024-10-03'),
+    ('2341271505', 'Tanda Terima Penyerahan Laporan Tugas Akhir', 'tanda_terima_akhir_regita.pdf', '2024-10-04'),
+    ('2341271505', 'Scan hasil TOEIC', 'toeic_regita.pdf', '2024-10-05'),
+    ('2341271505', 'Surat Bebas Kompen', 'bebas_kompen_regita.pdf', '2024-10-06'),
+
+    ('2341271506', 'Laporan Tugas Akhir yang sudah bertanda tangan', 'laporan_akhir_marco.pdf', '2024-10-01'),
+    ('2341271506', 'Program/Aplikasi Tugas Akhir/Skripsi', 'program_marco.zip', '2024-10-02'),
+    ('2341271506', 'Surat Pernyataan Publikasi Jurnal', 'surat_publikasi_marco.pdf', '2024-10-03'),
+    ('2341271506', 'Tanda Terima Penyerahan Laporan Tugas Akhir', 'tanda_terima_akhir_marco.pdf', '2024-10-04'),
+    ('2341271506', 'Scan hasil TOEIC', 'toeic_marco.pdf', '2024-10-05'),
+    ('2341271506', 'Surat Bebas Kompen', 'bebas_kompen_marco.pdf', '2024-10-06'),
+
+    ('2341271507', 'Laporan Tugas Akhir yang sudah bertanda tangan', 'laporan_akhir_sultan.pdf', '2024-10-01'),
+    ('2341271507', 'Program/Aplikasi Tugas Akhir/Skripsi', 'program_sultan.zip', '2024-10-02'),
+    ('2341271507', 'Surat Pernyataan Publikasi Jurnal', 'surat_publikasi_sultan.pdf', '2024-10-03'),
+    ('2341271507', 'Tanda Terima Penyerahan Laporan Tugas Akhir', 'tanda_terima_akhir_sultan.pdf', '2024-10-04'),
+    ('2341271507', 'Scan hasil TOEIC', 'toeic_sultan.pdf', '2024-10-05'),
+    ('2341271507', 'Surat Bebas Kompen', 'bebas_kompen_sultan.pdf', '2024-10-06');
+
 
 
