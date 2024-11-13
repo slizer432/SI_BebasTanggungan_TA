@@ -175,5 +175,35 @@ VALUES
     ('2341271507', 'Scan hasil TOEIC', 'toeic_sultan.pdf', '2024-10-05'),
     ('2341271507', 'Surat Bebas Kompen', 'bebas_kompen_sultan.pdf', '2024-10-06');
 
+    INSERT INTO Log_Aktivitas_Admin (ID_Admin, Aktivitas, Detail, Tanggal_Aktivitas)
+VALUES
+    -- Aktivitas Login
+    (1, 'Login', 'Admin Budi Santoso melakukan login ke sistem.', '20241011'),
+    (1, 'Login', 'Admin Budi Santoso melakukan login ke sistem.', '20241019'),
+    (1, 'Login', 'Admin Budi Santoso melakukan login ke sistem.', '20241020'),
+    (2, 'Login', 'Admin Siti Aminah melakukan login ke sistem.', '20241020'),
+    (2, 'Login', 'Admin Siti Aminah melakukan login ke sistem.', '20241021'),
+    (2, 'Login', 'Admin Siti Aminah melakukan login ke sistem.', '20241027'),
+    (3, 'Login', 'Admin Rudi Hermawan melakukan login ke sistem.', '20241027'),
+
+    -- Aktivitas Logout
+    (1, 'Logout', 'Admin Budi Santoso melakukan logout dari sistem.', '20241011'),
+    (1, 'Logout', 'Admin Budi Santoso melakukan logout dari sistem.', '20241019'),
+    (1, 'Logout', 'Admin Budi Santoso melakukan logout dari sistem.', '20241020'),
+    (2, 'Logout', 'Admin Siti Aminah melakukan logout dari sistem.', '20241020'),
+    (2, 'Logout', 'Admin Siti Aminah melakukan logout dari sistem.', '20241021'),
+    (2, 'Logout', 'Admin Siti Aminah melakukan logout dari sistem.', '20241027'),
+    (3, 'Logout', 'Admin Rudi Hermawan melakukan logout dari sistem.', '20241027'),
+
+    -- Aktivitas Verifikasi Dokumen
+    (1, 'Verifikasi Dokumen', 'Admin Budi Santoso memverifikasi dokumen milik mahasiswa Azka Cahya.', '20241011'),
+    (1, 'Verifikasi Dokumen', 'Admin Budi Santoso memverifikasi sebagian dokumen milik mahasiswa Regita Ayu.', '20241011'),
+	(1, 'Verifikasi Dokumen', 'Admin Budi Santoso memverifikasi sebagian dokumen milik mahasiswa Marco Ivano.', '20241019'),
+	(1, 'Verifikasi Dokumen', 'Admin Budi Santoso memverifikasi sebagian dokumen milik mahasiswa Sultan Rozan.', '20241019'),
+	(1, 'Verifikasi Dokumen', 'Admin Budi Santoso memverifikasi dokumen milik mahasiswa Hasbi Arridwan.', '20241020'),
+    (2, 'Verifikasi Dokumen', 'Admin Siti Aminah memverifikasi dokumen milik mahasiswa Azka Cahya.', '20241021'),
+    (2, 'Verifikasi Dokumen', 'Admin Siti Aminah memverifikasi sebagian dokumen milik mahasiswa Hasbi Arridwan.', '20241027');
+
+
 
 
