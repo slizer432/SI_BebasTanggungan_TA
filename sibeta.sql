@@ -111,7 +111,17 @@ VALUES
     ('2340271534', 'Fahmi Putra', 'D-IV Teknik Informatika', 'fahmi.putra@gmail.com', 'putra128@fm'),
     ('2341271505', 'Regita Ayu', 'D-IV Sistem Informasi Bisnis', 'regita.ayu@gmail.com', 'regitaay15@'),
     ('2341271506', 'Marco Ivano', 'D-IV Sistem Informasi Bisnis', 'akmal.ramadhan@gmail.com', 'rmdhnak12m4l'),
-    ('2341271507', 'Sultan Rozan', 'D-IV Sistem Informasi Bisnis', 'sultan.rozan@gmail.com', 'sltnrzn0134');
+    ('2341271507', 'Sultan Rozan', 'D-IV Sistem Informasi Bisnis', 'sultan.rozan@gmail.com', 'sltnrzn0134'),
+    ('2340271535', 'Nadia Aulia', 'D-IV Teknik Informatika', 'nadia.aulia@gmail.com', 'ndaaulya24@t'),
+    ('2340271536', 'Fikri Rahman', 'D-IV Teknik Informatika', 'fikri.rahman@gmail.com', 'rahmanf1kri56@f'),
+    ('2340271537', 'Rizky Ramadhan', 'D-IV Teknik Informatika', 'rizky.ramadhan@gmail.com', 'ramdhnryzki78@'),
+    ('2341271508', 'Dewi Lestari', 'D-IV Sistem Informasi Bisnis', 'dewi.lestari@gmail.com', 'lst3ridewi@90'),
+    ('2341271509', 'Bayu Pamungkas', 'D-IV Sistem Informasi Bisnis', 'bayu.pamungkas@gmail.com', 'pamngksbayu@99'),
+    ('2341271510', 'Rina Kartika', 'D-IV Sistem Informasi Bisnis', 'rina.kartika@gmail.com', 'kart1karina11@'),
+    ('2340271538', 'Adi Nugroho', 'D-IV Teknik Informatika', 'adi.nugroho@gmail.com', 'ad1nugroho82@'),
+    ('2340271539', 'Maya Sari', 'D-IV Teknik Informatika', 'maya.sari@gmail.com', 'sar1maya87@'),
+    ('2341271511', 'Asep Suhendar', 'D-IV Sistem Informasi Bisnis', 'asep.suhendar@gmail.com', 'suhendaras7p@');
+
 
 INSERT INTO Verifikasi_Admin
     (ID_Admin, NIM, Status_Verifikasi, Tanggal_Verifikasi)
@@ -124,12 +134,36 @@ VALUES
     (2, '2340271532', 'Verified', '20241021'),
     (2, '2340271533', 'Pending', '20241027'),
     (2, '2341271506', 'Unverified', '20241020'),
-    (2, '2341271507', 'Unverified', '20241020');
+    (2, '2341271507', 'Unverified', '20241020'),
+    (1, '2340271534', 'Verified', '20241015'),
+    (1, '2340271535', 'Pending', '20241017'),
+    (1, '2340271536', 'Verified', '20241018'),
+    (1, '2341271508', 'Verified', '20241012'),
+    (1, '2341271509', 'Unverified', '20241022'),
+    (1, '2341271510', 'Verified', '20241025'),
+    (2, '2340271534', 'Pending', '20241028'),
+    (2, '2340271535', 'Verified', '20241030'),
+    (2, '2340271536', 'Unverified', '20241029'),
+    (2, '2341271508', 'Pending', '20241030'),
+    (2, '2341271509', 'Verified', '20241031'),
+    (2, '2341271510', 'Unverified', '20241027');
+
 
 INSERT INTO Pengajuan_Bebas_Tanggungan
     (ID_Admin, NIM, Tanggal_Pengajuan, Status_Pengajuan)
 VALUES
-    (3, '2340271532', '20241023', 'Diterima');
+    (3, '2340271532', '20241023', 'Diterima'),
+    (3, '2340271533', '20241024', 'Ditolak'),
+    (3, '2340271534', '20241025', 'Pending'),
+    (3, '2340271535', '20241026', 'Diterima'),
+    (3, '2340271536', '20241027', 'Pending'),
+    (3, '2341271508', '20241028', 'Diterima'),
+    (3, '2341271509', '20241029', 'Ditolak'),
+    (3, '2341271510', '20241030', 'Pending'),
+    (3, '2340271537', '20241031', 'Diterima'),
+    (3, '2340271538', '20241101', 'Pending'),
+    (3, '2340271539', '20241102', 'Diterima'),
+    (3, '2341271511', '20241103', 'Pending');
 
 INSERT INTO Dokumen (NIM, Jenis_Dokumen, File_Dokumen, Tanggal_Upload)
 VALUES
