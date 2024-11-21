@@ -1,23 +1,16 @@
 <?php
 
-require '../model/account.php';
+require '../model/Mahasiswa.php';
+require '../model/Admin.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+switch ($_POST['role']) {
+    case 'mahasiswa':
+        $mhs = new Mahasiswa($_POST['username']);
+        $mhs->logIn();
+        break;
 
-    // memasukkan hasil input ke variabel
-    $role = $_POST['role'];
-    $nim = $_POST['nim'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // menentukan apakah admin atau mahasiswa yang log in
-    switch ($role) {
-        case 'admin':
-            logInAdmin($email, $password);
-            break;
-
-        case 'mahasiswa':
-            logInMhs($nim, $password);
-            break;
-    }
+    case 'admin':
+        $admin = new Admin($_POST['username']);
+        $admin->logIn();
+        break;
 }

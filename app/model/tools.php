@@ -3,16 +3,17 @@
 require 'config.php';
 function hashPassword($userPassword)
 {
-
-    if ($userPassword && !password_get_info($userPassword)['algo']) {
-        $userPassword = password_hash($userPassword, PASSWORD_DEFAULT);
+    // Check if the password is not empty and needs to be hashed
+    if ($userPassword && password_needs_rehash($userPassword, PASSWORD_DEFAULT)) {
+        return password_hash($userPassword, PASSWORD_DEFAULT);
     }
-    return $userPassword;
+    return null;
 }
 
 function verify($user, $password, $userPassword)
 {
     if (password_verify($password, $userPassword)) {
+        echo 'berhasil';
         $_SESSION['user_id'] = $user;
         header('Location: ../view/dashboard.php');
         exit();
