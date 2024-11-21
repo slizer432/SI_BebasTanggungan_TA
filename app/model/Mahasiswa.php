@@ -46,7 +46,7 @@ class Mahasiswa
             var_dump($userPassword);
 
             // verify NIM dan password
-            verify($this->nim, $this->password, $userPassword);
+            return verify($this->nim, $this->password, $userPassword);
         } catch (PDOException $e) {
             // Handle database errors
             echo "Database error: " . $e->getMessage();
@@ -56,19 +56,8 @@ class Mahasiswa
         }
     }
 
-    function register($nim, $nama, $prodi, $email, $password)
+    function pengajuanVerif()
     {
-        global $conn;
-
-        $query = $conn->prepare("INSERT INTO Mahasiswa (NIM, Nama, Program_Studi, Email, Password) VALUES (:nim, :nama, :prodi, :email, :password)");
-
-        if (cekNim($nim)) {
-            $query->execute(['nim' => $nim, 'nama' => $nama, 'prodi' => $prodi, 'email' => $email, 'password' => $password]);
-            header('Location: ../index.php');
-        } else {
-            echo $error = 'NIM sudah terdaftar';
-        }
-
 
     }
 }

@@ -8,7 +8,9 @@
 </head>
 
 <body>
-    <a href="view/login.php">log in</a><br>
+    <h1>Log in Super Admin berhasil</h1>
+
+    <a href="register.php">Register</a>
 </body>
 
 </html>
