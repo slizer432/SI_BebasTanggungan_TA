@@ -14,9 +14,7 @@ function verify($user, $password, $userPassword)
 {
     if (password_verify($password, $userPassword)) {
         echo 'berhasil';
-        $_SESSION['user_id'] = $user;
-        header('Location: ../view/dashboard.php');
-        exit();
+        return true;
     } else {
         return $error = "Log in gagal";
 
@@ -39,17 +37,17 @@ function cekNim($nim)
     }
 }
 
-function cekNama($nama)
+function cekEmail($email)
 {
     global $conn;
 
-    $query = $conn->prepare('SELECT * FROM Admin WHERE Nama = :nama');
-    $query->execute(['nama' => $nama]);
+    $query = $conn->prepare('SELECT * FROM Admin WHERE Email = :email');
+    $query->execute(['email' => $email]);
     $status = $query->fetch(PDO::FETCH_ASSOC);
 
-    if (!$status) {
-        return true;
-    } else {
+    if ($status) {
         return false;
+    } else {
+        return true;
     }
 }

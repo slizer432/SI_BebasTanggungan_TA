@@ -1,34 +1,30 @@
 <?php
 
 require 'config.php';
+include 'tools.php';
 
-class Admin
+class SuperAdmin
 {
+
     private $id;
     private $nama;
     private $email;
     private $password;
-    private $role;
-    private $idSuper;
 
     public function __construct($email)
     {
-
         $data = $this->getData($email);
 
         $this->nama = $data['Nama'];
         $this->email = $email;
         $this->password = $data['Password'];
-        $this->role = $data['Role'];
-        $this->idSuper = $data['ID_Super_Admin'];
-
     }
 
     function getData($email)
     {
         global $conn;
 
-        $query = $conn->prepare('SELECT * FROM Admin WHERE Email = :email');
+        $query = $conn->prepare('SELECT * FROM Super_Admin WHERE Email = :email');
         $query->execute(['email' => $email]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result;
@@ -58,13 +54,51 @@ class Admin
         }
     }
 
+    function registerAdmin($nama, $email, $password, $role)
+    {
+        global $conn;
 
+        $query = $conn->prepare("INSERT INTO Admin (Nama, Email, Password, Role, ID_Super_Admin) VALUES (:nama, :email, :password, :role, 1)");
+
+        if (cekEmail($email)) {
+            $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'role' => $role]);
+            header('Location: ../index.php');
+        } else {
+            echo $error = 'Nama sudah terdaftar';
+        }
+
+    }
+
+    function registerMhs($nim, $nama, $prodi, $email, $password)
+    {
+        global $conn;
+
+        $query = $conn->prepare("INSERT INTO Mahasiswa (NIM, Nama, Program_Studi, Email, Password) VALUES (:nim, :nama, :prodi, :email, :password)");
+
+        if (cekNim($nim)) {
+            $query->execute(['nim' => $nim, 'nama' => $nama, 'prodi' => $prodi, 'email' => $email, 'password' => $password]);
+            header('Location: ../index.php');
+        } else {
+            echo $error = 'NIM sudah terdaftar';
+        }
+    }
 
     function getMahasiswa()
     {
         global $conn;
 
         $query = $conn->prepare('SELECT * FROM Mahasiswa');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    function getAdmin()
+    {
+        global $conn;
+
+        $query = $conn->prepare('SELECT * FROM Admin');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 

@@ -1,28 +1,29 @@
 <?php
 
-include '../model/account.php';
+include '../model/SuperAdmin.php';
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+$account = $_POST['account'];
 
-    $account = $_POST['account'] ?? null;
-    $namaAdmin = $_POST['namaAdmin'] ?? null;
-    $emailAdmin = $_POST['emailAdmin'] ?? null;
-    $passwordAdmin = $_POST['passwordAdmin'] ?? null;
-    $role = $_POST['role'] ?? null;
-    $nim = $_POST['nim'] ?? null;
-    $namaMhs = $_POST['namaMhs'] ?? null;
-    $prodi = $_POST['prodi'] ?? null;
-    $emailMhs = $_POST['emailMhs'];
-    $passwordMhs = $_POST['passwordMhs'];
+switch ($account) {
+    case 'admin':
+        $admin = $_SESSION['superAdmin'];
+        $namaAdmin = $_POST['namaAdmin'];
+        $emailAdmin = $_POST['emailAdmin'];
+        $passwordAdmin = $_POST['passwordAdmin'];
+        $role = $_POST['role'];
+        $admin->registerAdmin($namaAdmin, $emailAdmin, $passwordAdmin, $role);
+        break;
 
-    switch ($account) {
-        case 'admin':
-            registerAdmin($namaAdmin, $emailAdmin, $passwordAdmin, $role);
-            break;
-
-        case 'mahasiswa':
-            registerMhs($nim, $namaMhs, $prodi, $emailMhs, $passwordMhs);
-            break;
-    }
+    case 'mahasiswa':
+        $mahasiswa = new Mahasiswa($_POST['username']);
+        $nim = $_POST['nim'];
+        $namaMhs = $_POST['namaMhs'];
+        $prodi = $_POST['prodi'];
+        $emailMhs = $_POST['emailMhs'];
+        $passwordMhs = $_POST['passwordMhs'];
+        $admin->registerMhs($nim, $namaMhs, $prodi, $emailMhs, $passwordMhs);
+        break;
 }
+
 

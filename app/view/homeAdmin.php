@@ -8,7 +8,8 @@
 </head>
 
 <body>
-    <a href="view/login.php">log in</a><br>
+    <h1>Log in Admin berhasil</h1>
+
 </body>
 
 </html>
