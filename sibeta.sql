@@ -86,6 +86,17 @@ CREATE TABLE Pengajuan_Bebas_Tanggungan
     FOREIGN KEY (ID_Admin) REFERENCES Admin(ID_Admin)
 );
 
+CREATE TABLE Notifikasi
+(
+    ID_Notifikasi INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    ID_Admin INT NOT NULL,
+    NIM CHAR(10) NOT NULL, 
+    Komentar TEXT NOT NULL, -- Isi notifikasi
+    Status_Notifikasi VARCHAR(20) NOT NULL DEFAULT 'Unread', -- Status: Unread/Read
+    Tanggal_Notifikasi DATETIME NOT NULL DEFAULT GETDATE(), -- Waktu notifikasi dibuat
+    FOREIGN KEY (ID_Admin) REFERENCES Admin(ID_Admin),
+    FOREIGN KEY (NIM) REFERENCES Mahasiswa(NIM)
+);
 
 
 -- Insert data Super Admin
@@ -237,6 +248,35 @@ VALUES
 	(1, 'Verifikasi Dokumen', 'Admin Budi Santoso memverifikasi dokumen milik mahasiswa Hasbi Arridwan.', '20241020'),
     (2, 'Verifikasi Dokumen', 'Admin Siti Aminah memverifikasi dokumen milik mahasiswa Azka Cahya.', '20241021'),
     (2, 'Verifikasi Dokumen', 'Admin Siti Aminah memverifikasi sebagian dokumen milik mahasiswa Hasbi Arridwan.', '20241027');
+
+INSERT INTO Notifikasi (ID_Admin, NIM, Komentar, Status_Notifikasi, Tanggal_Notifikasi)
+VALUES
+    (1, '2340271532', 'Laporan tidak mencakup semua bagian wajib.', 'Unread', GETDATE()),
+    (2, '2340271533', 'Nama file laporan tidak sesuai format.', 'Unread', GETDATE()),
+    (3, '2340271534', 'Ukuran file laporan melebihi 10 MB.', 'Unread', GETDATE()),
+    (1, '2341271505', 'File laporan belum bertanda tangan.', 'Unread', GETDATE()),
+    (2, '2341271506', 'Format file aplikasi harus ZIP atau RAR.', 'Unread', GETDATE()),
+    (3, '2341271507', 'Nama file aplikasi tidak sesuai format.', 'Unread', GETDATE()),
+    (1, '2340271535', 'File publikasi harus dalam format PDF.', 'Unread', GETDATE()),
+    (2, '2340271536', 'Nama file publikasi tidak sesuai format.', 'Unread', GETDATE()),
+    (3, '2340271537', 'File laporan belum mencakup daftar gambar.', 'Unread', GETDATE()),
+    (1, '2341271508', 'File laporan tidak mencakup daftar tabel.', 'Unread', GETDATE()),
+    (2, '2341271509', 'Laporan belum mencakup abstrak Bahasa Inggris.', 'Unread', GETDATE()),
+    (3, '2341271510', 'Pengesahan laporan belum bertanda tangan.', 'Unread', GETDATE()),
+    (1, '2340271538', 'File aplikasi tidak berisi program lengkap.', 'Unread', GETDATE()),
+    (2, '2340271539', 'Format file laporan harus PDF.', 'Unread', GETDATE()),
+    (3, '2341271511', 'Dokumen publikasi belum sesuai format.', 'Unread', GETDATE()),
+    (1, '2340271532', 'Laporan tidak mencakup semua bab wajib.', 'Unread', GETDATE()),
+    (2, '2340271533', 'Nama file laporan tidak sesuai aturan.', 'Unread', GETDATE()),
+    (3, '2340271534', 'Laporan tidak mencakup daftar pustaka.', 'Unread', GETDATE()),
+    (1, '2341271505', 'Ukuran file laporan harus di bawah 10 MB.', 'Unread', GETDATE()),
+    (2, '2341271506', 'File aplikasi belum diunggah.', 'Unread', GETDATE()),
+    (3, '2341271507', 'Dokumen publikasi tidak bertanda tangan.', 'Unread', GETDATE()),
+    (1, '2340271535', 'Laporan belum mencakup kata pengantar.', 'Unread', GETDATE()),
+    (2, '2340271536', 'Nama file publikasi salah format.', 'Unread', GETDATE()),
+    (3, '2340271537', 'File laporan belum mencakup lampiran.', 'Unread', GETDATE()),
+    (1, '2340271538', 'Laporan belum mencakup abstrak Bahasa Indonesia.', 'Unread', GETDATE());
+
 
 
 
