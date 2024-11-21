@@ -89,8 +89,8 @@ CREATE TABLE Pengajuan_Bebas_Tanggungan
 CREATE TABLE Notifikasi
 (
     ID_Notifikasi INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    ID_Admin INT NOT NULL, -- Relasi ke Admin (Admin yang memberikan notifikasi/komentar)
-    NIM CHAR(10) NOT NULL, -- Relasi ke Mahasiswa (Mahasiswa yang menerima notifikasi)
+    ID_Admin INT NOT NULL,
+    NIM CHAR(10) NOT NULL, 
     Komentar TEXT NOT NULL, -- Isi notifikasi
     Status_Notifikasi VARCHAR(20) NOT NULL DEFAULT 'Unread', -- Status: Unread/Read
     Tanggal_Notifikasi DATETIME NOT NULL DEFAULT GETDATE(), -- Waktu notifikasi dibuat
