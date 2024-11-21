@@ -15,14 +15,18 @@
                 <br><br>
                 
                 <form class="login-form" action="../controller/login.php" method="POST">
-                    <div class="">
-                        <input type="radio" name="role" value="admin" id="radioAdmin">
-                        <label for="role">Admin</label>
-                        <input type="radio" name="role" value="mahasiswa" id="radioMhs">
-                        <label for="role">Mahasiswa</label><br><br>
-                    </div>
                     <div class="form-group">
-                        <label for="nim">NIM atau Email</label>
+                        <label for="role">Login sebagai</label>
+                        <select name="role" id="role">
+                            <option value="">---</option>
+                            <option value="mahasiswa">Mahasiswa</option>
+                            <option value="admin">Admin</option>
+                            <option value="superAdmin">Super Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nim">Username</label>
                         <div class="input-container">
                             <input type="text" id="nim" name="nim">
                             <span class="user-icon"></span>
