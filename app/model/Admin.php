@@ -2,7 +2,7 @@
 
 require 'config.php';
 
-class Admin
+class Admin extends Account
 {
     private $id;
     private $nama;
@@ -45,9 +45,9 @@ class Admin
             }
 
             // hash passwor jika belum
-            $userPassword = hashPassword($this->password);
+            $userPassword = $this->hashPassword($this->password);
             // verify Email dan password
-            return verify($this->email, $this->password, $userPassword);
+            return $this->verify($this->email, $this->password, $userPassword);
 
         } catch (PDOException $e) {
             // Handle database errors
