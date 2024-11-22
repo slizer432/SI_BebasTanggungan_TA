@@ -1,8 +1,8 @@
 <?php
 require 'config.php';
-include 'tools.php';
+include_once 'Account.php';
 
-class Mahasiswa
+class Mahasiswa extends Account
 {
 
     private $nim;
@@ -42,11 +42,11 @@ class Mahasiswa
             }
 
             // hash passwor jika belum
-            $userPassword = hashPassword($this->password);
+            $userPassword = $this->hashPassword($this->password);
             var_dump($userPassword);
 
             // verify NIM dan password
-            return verify($this->nim, $this->password, $userPassword);
+            return $this->verify($this->nim, $this->password, $userPassword);
         } catch (PDOException $e) {
             // Handle database errors
             echo "Database error: " . $e->getMessage();

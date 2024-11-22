@@ -16,7 +16,7 @@ switch ($account) {
         break;
 
     case 'mahasiswa':
-        $mahasiswa = new Mahasiswa($_POST['username']);
+        $admin = $_SESSION['superAdmin'];
         $nim = $_POST['nim'];
         $namaMhs = $_POST['namaMhs'];
         $prodi = $_POST['prodi'];

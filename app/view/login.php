@@ -25,9 +25,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nim">Username</label>
+                    <label for="username">Username</label>
                     <div class="input-container">
-                        <input type="text" id="nim" name="nim">
+                        <input type="text" id="username" name="username">
                         <span class="user-icon"></span>
                     </div>
                 </div>

@@ -1,10 +1,11 @@
 <?php
 
-require '../model/Mahasiswa.php';
-require '../model/Admin.php';
-require '../model/SuperAdmin.php';
+require_once '../model/Mahasiswa.php';
+require_once '../model/Admin.php';
+require_once '../model/SuperAdmin.php';
 
 session_start();
+var_dump($_POST);
 
 switch ($_POST['role']) {
     case 'mahasiswa':

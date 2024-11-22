@@ -1,9 +1,9 @@
 <?php
 
 require 'config.php';
-include 'tools.php';
+include_once 'Account.php';
 
-class SuperAdmin
+class SuperAdmin extends Account
 {
 
     private $id;
@@ -41,9 +41,9 @@ class SuperAdmin
             }
 
             // hash passwor jika belum
-            $userPassword = hashPassword($this->password);
+            $userPassword = $this->hashPassword($this->password);
             // verify Email dan password
-            return verify($this->email, $this->password, $userPassword);
+            return $this->verify($this->email, $this->password, $userPassword);
 
         } catch (PDOException $e) {
             // Handle database errors
@@ -60,9 +60,9 @@ class SuperAdmin
 
         $query = $conn->prepare("INSERT INTO Admin (Nama, Email, Password, Role, ID_Super_Admin) VALUES (:nama, :email, :password, :role, 1)");
 
-        if (cekEmail($email)) {
+        if ($this->cekEmail($email)) {
             $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'role' => $role]);
-            header('Location: ../index.php');
+            header('Location: ../view/homeSuperAdmin.php');
         } else {
             echo $error = 'Nama sudah terdaftar';
         }
@@ -75,9 +75,9 @@ class SuperAdmin
 
         $query = $conn->prepare("INSERT INTO Mahasiswa (NIM, Nama, Program_Studi, Email, Password) VALUES (:nim, :nama, :prodi, :email, :password)");
 
-        if (cekNim($nim)) {
+        if ($this->cekNim($nim)) {
             $query->execute(['nim' => $nim, 'nama' => $nama, 'prodi' => $prodi, 'email' => $email, 'password' => $password]);
-            header('Location: ../index.php');
+            header('Location: ../view/homeSuperAdmin.php');
         } else {
             echo $error = 'NIM sudah terdaftar';
         }
