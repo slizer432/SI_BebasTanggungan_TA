@@ -2,7 +2,8 @@
 
 require_once '../model/SuperAdmin.php';
 
+session_start();
 
 $admin = $_SESSION['superAdmin'];
 
-$allMahasiswa = $admin->getMahasiswa();
+$allAdmin = $admin->getAdmin();

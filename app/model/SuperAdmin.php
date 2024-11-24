@@ -104,4 +104,22 @@ class SuperAdmin extends Account
 
         return $result;
     }
+
+    function delete($role, $user)
+    {
+        global $conn;
+
+        switch ($role) {
+            case 'admin':
+                $query = $conn->prepare("DELETE FROM Admin WHERE Email = :user");
+                $query->execute(['user' => $user]);
+                var_dump($user);
+                break;
+
+            case 'mahasiswa':
+                $query = $conn->prepare("DELETE FROM Mahasiswa WHERE NIM = :user");
+                $query->execute(['user' => $user]);
+                break;
+        }
+    }
 }
