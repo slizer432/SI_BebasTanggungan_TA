@@ -46,7 +46,7 @@ CREATE TABLE dokumen
     nim CHAR(10) NOT NULL,
     jenis_dokumen VARCHAR(100) NOT NULL,
     file_dokumen VARCHAR(255) NOT NULL,
-    tanggal_upload DATE NOT NULL,
+    tanggal_upload DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (nim) REFERENCES mahasiswa(nim)
 );
 
