@@ -4,32 +4,33 @@ require 'config.php';
 
 class Admin extends Account
 {
-    private $id;
+    private $nip;
     private $nama;
     private $email;
     private $password;
     private $role;
-    private $idSuper;
+    private $nipSuperAdmin;
 
-    public function __construct($email)
+    public function __construct($nip)
     {
 
-        $data = $this->getData($email);
+        $data = $this->getData($nip);
 
-        $this->nama = $data['Nama'];
-        $this->email = $email;
-        $this->password = $data['Password'];
-        $this->role = $data['Role'];
-        $this->idSuper = $data['ID_Super_Admin'];
+        $this->nip = $nip;
+        $this->nama = $data['nama'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
+        $this->role = $data['role'];
+        $this->nipSuperAdmin = $data['nip_super_admin'];
 
     }
 
-    function getData($email)
+    function getData($nip)
     {
         global $conn;
 
-        $query = $conn->prepare('SELECT * FROM Admin WHERE Email = :email');
-        $query->execute(['email' => $email]);
+        $query = $conn->prepare('SELECT * FROM admin WHERE nip = :nip');
+        $query->execute(['nip' => $nip]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -58,16 +59,21 @@ class Admin extends Account
         }
     }
 
-
-
     function getMahasiswa()
     {
         global $conn;
 
-        $query = $conn->prepare('SELECT * FROM Mahasiswa');
+        $query = $conn->prepare('SELECT * FROM mahasiswa');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
+    }
+
+    function terimaVerif()
+    {
+        global $conn;
+
+        $query = $conn->prepare('UPDATE verifikasi_admin SET status_verifikasi = :status , nip_admin = :nip_admin WHERE nim = :nim');
     }
 }

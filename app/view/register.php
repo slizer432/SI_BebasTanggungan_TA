@@ -18,9 +18,11 @@
         <input type="radio" name="account" value="mahasiswa" id="radioMhs">
         <label for="radioMhs">Mahasiswa</label><br>
 
+
         <!-- register untuk admin -->
         <div id="adminForm" style="display: none;">
             <p>Admin</p>
+            <input type="text" name="nip" placeholder="NIP">
             <input type="text" name="namaAdmin" placeholder="Nama">
             <input type="text" name="emailAdmin" placeholder="E-mail">
             <input type="password" name="passwordAdmin" placeholder="Password"><br>
