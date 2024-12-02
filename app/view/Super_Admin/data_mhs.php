@@ -18,13 +18,13 @@ include '../controller/getMhs.php';
             <nav>
                 <div class="profile">
                     <span class="role">Super Admin</span>
-                    <img src="../image/pp.png" alt="Foto Profil" class="pp">
+                    <img src="/../SI_BebasTanggungan_TA/image/pp.png" alt="Foto Profil" class="pp">
                 </div>
             </nav>
             
             <div class="menu-container">
                 <div class="logo">
-                    <img src="../image/logo.png" alt="SIBETA">
+                    <img src="/../SI_BebasTanggungan_TA/image/logo.png" alt="SIBETA">
                     <span>SIBETA</span>
                 </div>
                 
@@ -46,7 +46,7 @@ include '../controller/getMhs.php';
                     <div class="top2">
                         <div class="search-container">
                             <form action="#" method="GET">
-                                <button type="submit"><img src="../image/search.png" alt=""></button>
+                                <button type="submit"><img src="/../SI_BebasTanggungan_TA/image/search.png" alt=""></button>
                                 <input type="text" placeholder="search here...">
                             </form>
                         </div>
