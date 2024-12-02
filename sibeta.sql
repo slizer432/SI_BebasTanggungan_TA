@@ -302,3 +302,9 @@ VALUES
 
 ALTER TABLE verifikasi_admin
 ALTER COLUMN nip_admin CHAR(18) NULL;
+
+ALTER TABLE notifikasi
+DROP COLUMN komentar;
+
+ALTER TABLE dokumen
+ADD komentar TEXT NULL;
