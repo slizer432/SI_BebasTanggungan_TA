@@ -25,14 +25,14 @@ include '../controller/getMhs.php';
     </tr>
     <?php foreach ($allMahasiswa as $mhs) { ?>
         <tr>
-            <td><?= $mhs['NIM'] ?></td>
-            <td><?= $mhs['Nama'] ?></td>
-            <td><?= $mhs['Program_Studi'] ?></td>
-            <td><?= $mhs['Email'] ?></td>
-            <td><?= $mhs['Password'] ?></td>
+            <td><?= $mhs['nim'] ?></td>
+            <td><?= $mhs['nama'] ?></td>
+            <td><?= $mhs['program_studi'] ?></td>
+            <td><?= $mhs['email'] ?></td>
+            <td><?= $mhs['password'] ?></td>
             <td>
-                <a href="edit.php?nim=<?= $mhs['NIM'] ?>&role=mahasiswa">Edit</a>
-                <a href="../controller/deleteAccount.php?username=<?= $mhs['NIM'] ?>&role=mahasiswa">Delete</a>
+                <a href="editMhs.php?data=<?= $mhs['nim'] ?>&role=mahasiswa">Edit</a>
+                <a href="../controller/deleteAccount.php?username=<?= $mhs['nim'] ?>&role=mahasiswa">Delete</a>
             </td>
         </tr>
     <?php } ?>
@@ -42,6 +42,7 @@ include '../controller/getMhs.php';
 <h1>Data Admin</h1>
 <table>
     <tr>
+        <th>NIP</th>
         <th>Nama</th>
         <th>Email</th>
         <th>Password</th>
@@ -51,14 +52,15 @@ include '../controller/getMhs.php';
     </tr>
     <?php foreach ($allAdmin as $admin) { ?>
         <tr>
-            <td><?= $admin['Nama'] ?></td>
-            <td><?= $admin['Email'] ?></td>
-            <td><?= $admin['Password'] ?></td>
-            <td><?= $admin['Role'] ?></td>
-            <td><?= $admin['ID_Super_Admin'] ?></td>
+            <td><?= $admin['nip'] ?></td>
+            <td><?= $admin['nama'] ?></td>
+            <td><?= $admin['email'] ?></td>
+            <td><?= $admin['password'] ?></td>
+            <td><?= $admin['role'] ?></td>
+            <td><?= $admin['nip_super_admin'] ?></td>
             <td>
-                <a href="edit.php?username=<?= $admin['Email'] ?>&role=admin">Edit</a>
-                <a href="../controller/deleteAccount.php?username=<?= $admin['Email'] ?>&role=admin">Delete</a>
+                <a href="editAdmin.php?nama=<?= $admin['nama'] ?>&email=<?= $admin['email'] ?>">Edit</a>
+                <a href="../controller/deleteAccount.php?username=<?= $admin['nip'] ?>&role=admin">Delete</a>
             </td>
         </tr>
     <?php } ?>

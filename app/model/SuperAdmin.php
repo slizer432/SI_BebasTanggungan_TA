@@ -6,26 +6,27 @@ include_once 'Account.php';
 class SuperAdmin extends Account
 {
 
-    private $id;
+    private $nip;
     private $nama;
     private $email;
     private $password;
 
-    public function __construct($email)
+    public function __construct($nip)
     {
-        $data = $this->getData($email);
+        $data = $this->getData($nip);
 
-        $this->nama = $data['Nama'];
-        $this->email = $email;
-        $this->password = $data['Password'];
+        $this->nip = $nip;
+        $this->nama = $data['nama'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
     }
 
-    function getData($email)
+    function getData($nip)
     {
         global $conn;
 
-        $query = $conn->prepare('SELECT * FROM Super_Admin WHERE Email = :email');
-        $query->execute(['email' => $email]);
+        $query = $conn->prepare('SELECT * FROM super_admin WHERE nip = :nip');
+        $query->execute(['nip' => $nip]);
         $result = $query->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -54,14 +55,14 @@ class SuperAdmin extends Account
         }
     }
 
-    function registerAdmin($nama, $email, $password, $role)
+    function registerAdmin($nip, $nama, $email, $password, $role)
     {
         global $conn;
 
-        $query = $conn->prepare("INSERT INTO Admin (Nama, Email, Password, Role, ID_Super_Admin) VALUES (:nama, :email, :password, :role, 1)");
+        $query = $conn->prepare("INSERT INTO admin (nip, nama, email, password, role, nip_super_admin) VALUES (:nip, :nama, :email, :password, :role, 123456789012345678)");
 
         if ($this->cekEmail($email)) {
-            $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'role' => $role]);
+            $query->execute(['nip' => $nip, 'nama' => $nama, 'email' => $email, 'password' => $password, 'role' => $role]);
             header('Location: ../view/homeSuperAdmin.php');
         } else {
             echo $error = 'Nama sudah terdaftar';
@@ -73,7 +74,7 @@ class SuperAdmin extends Account
     {
         global $conn;
 
-        $query = $conn->prepare("INSERT INTO Mahasiswa (NIM, Nama, Program_Studi, Email, Password) VALUES (:nim, :nama, :prodi, :email, :password)");
+        $query = $conn->prepare("INSERT INTO mahasiswa (nim, nama, program_studi, email, password) VALUES (:nim, :nama, :prodi, :email, :password)");
 
         if ($this->cekNim($nim)) {
             $query->execute(['nim' => $nim, 'nama' => $nama, 'prodi' => $prodi, 'email' => $email, 'password' => $password]);
@@ -87,7 +88,7 @@ class SuperAdmin extends Account
     {
         global $conn;
 
-        $query = $conn->prepare('SELECT * FROM Mahasiswa');
+        $query = $conn->prepare('SELECT * FROM mahasiswa');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -98,7 +99,7 @@ class SuperAdmin extends Account
     {
         global $conn;
 
-        $query = $conn->prepare('SELECT * FROM Admin');
+        $query = $conn->prepare('SELECT * FROM admin');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -111,13 +112,13 @@ class SuperAdmin extends Account
 
         switch ($role) {
             case 'admin':
-                $query = $conn->prepare("DELETE FROM Admin WHERE Email = :user");
-                $query->execute(['user' => $user]);
+                $query = $conn->prepare("DELETE FROM admin WHERE nip = :nip");
+                $query->execute(['nip' => $user]);
                 var_dump($user);
                 break;
 
             case 'mahasiswa':
-                $query = $conn->prepare("DELETE FROM Mahasiswa WHERE NIM = :user");
+                $query = $conn->prepare("DELETE FROM mahasiswa WHERE nim = :user");
                 $query->execute(['user' => $user]);
                 break;
         }
