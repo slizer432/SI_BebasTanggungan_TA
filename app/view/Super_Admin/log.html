@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Log Activity</title>
+        <link rel="stylesheet" href="log.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <nav>
+                <div class="profile">
+                    <span class="role">Super Admin</span>
+                    <img src="../image/pp.png" alt="Foto Profil" class="pp">
+                </div>
+            </nav>
+            
+            <div class="menu-container">
+                <div class="logo">
+                    <img src="../image/logo.png" alt="SIBETA">
+                    <span>SIBETA</span>
+                </div>
+                
+                <div class="menu">
+                    <a href="add_mhs.html">Add User Account</a>
+                    <a href="data_mhs.html">Data List</a>
+                    <div class="pilih">
+                        <a href="log.html" class="aktif">Admin Log Activity</a>
+                    </div>
+                    <a href="verifikasi_all.html">Verification Activity</a>
+                    <a href="module.html">Module</a>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="top">
+                    <h2>Admin Log Activity</h2>
+
+                    <div class="top2">
+                        <div class="search-container">
+                            <form action="#" method="GET">
+                                <button type="submit"><img src="../image/search.png" alt=""></button>
+                                <input type="text" placeholder="search here...">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Role</th>
+                                    <th>Name</th>
+                                    <th>Activity</th>
+                                    <th>Date & Time</th>
+                                </tr>
+                            </thead>
+        
+                            <tbody>
+                                <tr>
+                                    <td class="peran">Technician</td>
+                                    <td class="nama">Budi Santoso</td>
+                                    <td class="activity">Login to system</td>
+                                    <td class="date">2024 - 11 - 19  08:55</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="peran">Major Admin</td>
+                                    <td class="nama">Siti Aminah</td>
+                                    <td class="activity">Logout from system</td>
+                                    <td class="date">2024 - 11 - 19  08:42</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+        
+                    <div class="halaman">
+                        <button type="button" class="prev">< Previous</button>
+                        <button type="button" class="page-number">01 02 03 04 ... 11</button>
+                        <button type="button" class="next">Next ></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
