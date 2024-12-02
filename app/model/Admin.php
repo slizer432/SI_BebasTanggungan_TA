@@ -70,10 +70,55 @@ class Admin extends Account
         return $result;
     }
 
-    function terimaVerif()
+    function terimaVerif($nim)
     {
         global $conn;
 
-        $query = $conn->prepare('UPDATE verifikasi_admin SET status_verifikasi = :status , nip_admin = :nip_admin WHERE nim = :nim');
+        switch ($this->role) {
+            case 'Admin':
+                $query = $conn->prepare('UPDATE verifikasi_admin SET status_verifikasi = :status , nip_admin = :nip_admin WHERE nim = :nim AND tahap_verifikasi = Admin');
+                $query->execute(['status' => 'Verified', 'nim' => $nim, 'nip_admin' => $this->nip]);
+
+                $query = $conn->prepare('UPDATE dokumen WHERE nim = :nim SET komentar = NULL AND jenis_dokumen IN :jenis_dokumen');
+                $query->execute(['nim' => $nim, 'jenis_dokumen' => ['ttTugasAkhir', 'ttMagang', 'kompen', 'toeic']]);
+
+                break;
+
+            case 'Teknisi':
+                $query = $conn->prepare('UPDATE verifikasi_admin SET status_verifikasi = :status , nip_admin = :nip_admin WHERE nim = :nim AND tahap_verifikasi = Teknisi');
+                $query->execute(['status' => 'Verified', 'nim' => $nim, 'nip_admin' => $this->nip]);
+
+                $query = $conn->prepare('UPDATE dokumen WHERE nim = :nim SET komentar = NULL AND jenis_dokumen IN :jenis_dokumen');
+                $query->execute(['nim' => $nim, 'jenis_dokumen' => ['laporanTugasAkhir', 'tugasAkhir', 'publikasi', 'laporanMagang']]);
+                break;
+        }
+
+    }
+
+    function tolakVerif($nim, $komen)
+    {
+        global $conn;
+
+        switch ($this->role) {
+            case 'Admin':
+                $query = $conn->prepare('UPDATE verifikasi_admin SET status_verifikasi = :status , nip_admin = :nip_admin WHERE nim = :nim AND tahap_verifikasi = Admin');
+                $query->execute(['status' => 'Unverified', 'nim' => $nim, 'nip_admin' => $this->nip]);
+
+                foreach ($komen as $jenis_dokumen => $komentar) {
+                    $query = $conn->prepare('UPDATE dokumen SET komentar = :komentar WHERE nim = :nim AND jenis_dokumen = :jenis_dokumen');
+                    $query->execute(['nim' => $nim, 'komentar' => $komentar, 'jenis_dokumen' => $jenis_dokumen]);
+                }
+                break;
+
+            case 'Teknisi':
+                $query = $conn->prepare('UPDATE verifikasi_admin SET status_verifikasi = :status , nip_admin = :nip_admin WHERE nim = :nim AND tahap_verifikasi = Teknisi');
+                $query->execute(['status' => 'Unverified', 'nim' => $nim, 'nip_admin' => $this->nip]);
+
+                foreach ($komen as $jenis_dokumen => $komentar) {
+                    $query = $conn->prepare('UPDATE dokumen SET komentar = :komentar WHERE nim = :nim AND jenis_dokumen = :jenis_dokumen');
+                    $query->execute(['nim' => $nim, 'komentar' => $komentar, 'jenis_dokumen' => $jenis_dokumen]);
+                }
+                break;
+        }
     }
 }
