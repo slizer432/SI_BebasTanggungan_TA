@@ -8,11 +8,12 @@ $account = $_POST['account'];
 switch ($account) {
     case 'admin':
         $admin = $_SESSION['superAdmin'];
+        $nip = $_POST['nip'];
         $namaAdmin = $_POST['namaAdmin'];
         $emailAdmin = $_POST['emailAdmin'];
         $passwordAdmin = $_POST['passwordAdmin'];
         $role = $_POST['role'];
-        $admin->registerAdmin($namaAdmin, $emailAdmin, $passwordAdmin, $role);
+        $admin->registerAdmin($nip, $namaAdmin, $emailAdmin, $passwordAdmin, $role);
         break;
 
     case 'mahasiswa':
