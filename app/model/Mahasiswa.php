@@ -164,4 +164,11 @@ class Mahasiswa extends Account
         $query->execute(['nim' => $this->nim, 'tahap_verifikasi' => 'Teknisi', 'status_verifikasi' => 'Pending']);
     }
 
+    public function bebasTanggungan()
+    {
+        global $conn;
+
+        $query = $conn->prepare('INSERT INTO pengajuan_bebas_tanggungan (nim, status) VALUES (:nim, :status)');
+        $query->execute(['nim' => $this->nim, 'status' => 'Pending']);
+    }
 }

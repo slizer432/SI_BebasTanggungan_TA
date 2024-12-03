@@ -121,4 +121,20 @@ class Admin extends Account
                 break;
         }
     }
+
+    function terimaBebasTanggungan($nim)
+    {
+        global $conn;
+
+        $query = $conn->prepare('UPDATE pengajuan_bebas_tanggungan SET status = :status WHERE nim = :nim nip_admin = :nip_admin');
+        $query->execute(['status' => 'Verified', 'nim' => $nim, 'nip_admin' => $this->nip]);
+    }
+
+    function tolakBebasTanggungan($nim)
+    {
+        global $conn;
+
+        $query = $conn->prepare('UPDATE pengajuan_bebas_tanggungan SET status = :status WHERE nim = :nim nip_admin = :nip_admin');
+        $query->execute(['status' => 'Rejected', 'nim' => $nim, 'nip_admin' => $this->nip]);
+    }
 }
