@@ -308,3 +308,6 @@ DROP COLUMN komentar;
 
 ALTER TABLE dokumen
 ADD komentar TEXT NULL;
+
+ALTER TABLE pengajuan_bebas_tanggungan
+ALTER COLUMN nip_admin CHAR(18) NULL;
