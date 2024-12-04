@@ -137,4 +137,56 @@ class Admin extends Account
         $query = $conn->prepare('UPDATE pengajuan_bebas_tanggungan SET status = :status WHERE nim = :nim nip_admin = :nip_admin');
         $query->execute(['status' => 'Rejected', 'nim' => $nim, 'nip_admin' => $this->nip]);
     }
+
+    public function edit($nama, $email, $password, $nip, $file)
+    {
+        global $conn;
+
+        // Update the Admin details
+        $query = $conn->prepare('UPDATE admin SET nama = :nama, email = :email, password = :password WHERE nip = :nip');
+        $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'nip' => $nip]);
+
+        // Handle the photo upload
+        $allowedExtensions = ['jpg', 'jpeg', 'png'];
+        $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $fileNameNew = "{$nip}_profile.{$fileExt}";
+
+        if (in_array($fileExt, $allowedExtensions)) {
+            $this->handlePhotoUpload($file, $allowedExtensions, $fileNameNew);
+        } else {
+            echo "Invalid file type for profile photo!";
+        }
+    }
+
+    public function handlePhotoUpload($file, $allowedExtensions, $fileNameNew)
+    {
+        global $conn;
+
+        $fileTmpName = $file['tmp_name'];
+        $fileSize = $file['size'];
+        $fileError = $file['error'];
+
+        if (in_array($file['extension'], $allowedExtensions)) {
+            if ($fileError === 0) {
+                if ($fileSize > 1000000) {
+                    return "Your file is too big!";
+                } else {
+                    $fileDestination = "C:\\laragon\\www\\SI_BebasTanggungan_TA\\uploads\\{$fileNameNew}";
+
+                    if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                        $query = $conn->prepare("UPDATE admin SET foto_profil = :foto WHERE nip = :nip");
+                        $query->execute(['foto' => $fileNameNew, 'nip' => $this->nip]);
+                    }
+                }
+            }
+        }
+    }
+
+    public function log($aktivitas, $detail)
+    {
+        global $conn;
+
+        $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
+        $query->execute(['aktivitas' => $aktivitas, 'detail' => $detail, 'nip_admin' => $this->nip]);
+    }
 }

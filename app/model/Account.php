@@ -55,4 +55,17 @@ abstract class Account
             return true;
         }
     }
+
+    public function isLoggedIn()
+    {
+        if (!isset($_SESSION['mahasiswa']) || !isset($_SESSION['admin']) || !isset($_SESSION['superAdmin'])) {
+            header('Location: ../../index.php');
+        }
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        header('Location: ../../index.php');
+    }
 }
