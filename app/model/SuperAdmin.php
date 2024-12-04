@@ -123,4 +123,24 @@ class SuperAdmin extends Account
                 break;
         }
     }
+
+    function getLogActivity()
+    {
+        global $conn;
+
+        $query = $conn->prepare('SELECT * FROM log_aktivitas_admin WHERE aktivitas IN ("Login", "Logout")');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    function getVerifActivity()
+    {
+        global $conn;
+
+        $query = $conn->prepare('SELECT * FROM log_aktivitas_admin WHERE aktivitas = "Verifikasi"');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

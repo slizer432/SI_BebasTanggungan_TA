@@ -164,4 +164,57 @@ class Mahasiswa extends Account
         $query->execute(['nim' => $this->nim, 'tahap_verifikasi' => 'Teknisi', 'status_verifikasi' => 'Pending']);
     }
 
+    public function bebasTanggungan()
+    {
+        global $conn;
+
+        $query = $conn->prepare('INSERT INTO pengajuan_bebas_tanggungan (nim, status) VALUES (:nim, :status)');
+        $query->execute(['nim' => $this->nim, 'status' => 'Pending']);
+    }
+
+    public function edit($nama, $email, $password, $nim, $file)
+    {
+        global $conn;
+
+        // Update the Mahasiswa details
+        $query = $conn->prepare('UPDATE Mahasiswa SET Nama = :nama, Email = :email, Password = :password WHERE NIM = :nim');
+        $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'nim' => $nim]);
+
+        // Handle the photo upload
+        $allowedExtensions = ['jpg', 'jpeg', 'png'];
+        $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $fileNameNew = "{$nim}_profile.{$fileExt}";
+
+        if (in_array($fileExt, $allowedExtensions)) {
+            $this->handlePhotoUpload($file, $allowedExtensions, $fileNameNew);
+        } else {
+            echo "Invalid file type for profile photo!";
+        }
+    }
+
+    public function handlePhotoUpload($file, $allowedExtensions, $fileNameNew)
+    {
+        global $conn;
+
+        $fileTmpName = $file['tmp_name'];
+        $fileSize = $file['size'];
+        $fileError = $file['error'];
+
+        if (in_array($file['extension'], $allowedExtensions)) {
+            if ($fileError === 0) {
+                if ($fileSize > 1000000) {
+                    return "Your file is too big!";
+                } else {
+                    $fileDestination = "C:\\laragon\\www\\SI_BebasTanggungan_TA\\uploads\\{$fileNameNew}";
+
+                    if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                        $query = $conn->prepare("UPDATE mahasiswa SET foto_profil = :foto WHERE nim = :nim");
+                        $query->execute(['foto' => $fileNameNew, 'nim' => $this->nim]);
+                    }
+                }
+            }
+        }
+    }
+
+
 }
