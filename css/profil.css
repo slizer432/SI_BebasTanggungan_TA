@@ -59,6 +59,13 @@ nav {
     padding-left: 825px;
 }
 
+.home-h a{
+    color: #334EAC;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-left: 955px;
+}
+
 .notif {
     justify-content: center;
     padding-top: 5px;

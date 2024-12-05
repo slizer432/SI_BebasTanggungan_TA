@@ -136,10 +136,69 @@ nav {
 }
 
 .content {
+    display: flex;
     flex-direction: column;
-    flex: 1;
+    gap: 80px;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
+    width: 80%;
     font-family: 'inter';
-    padding-top: 130px;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.top h2 {
+    font-size: 50px;
+    font-weight: 700;
+    color: #334EAC;
+}
+
+.sp {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+}
+
+.sp span {
+    font-size: 15px;
+    font-weight: 200;
+    color: #000000;
+}
+
+.call {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-size: 12px;
+    color: #5A5A5A;
+}
+
+.box img {
+    width: 65px;
+    height: 65px;
+}
+
+.box .a {
+    font-weight: 800;
+}
+
+.box .b {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-weight: 300;
 }

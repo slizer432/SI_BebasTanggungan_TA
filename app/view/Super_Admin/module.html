@@ -4,7 +4,7 @@
         <meta charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Module</title>
-        <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/Super_Admin/log.css">
+        <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/Super_Admin/module.css">
     </head>
 
     <body>
@@ -38,7 +38,57 @@
                     <h2>Module</h2>
                 </div>
 
-                <div></div>
+                <div class="isi-container" id="isi">
+                    <form action="" class="add">
+                        <div class="top-container">
+                            <div class="type">
+                                <label for="type">Type :</label>
+                                <input type="text" id="type" name="type">
+                            </div>
+
+                            <div class="title">
+                                <label for="title">Title :</label>
+                                <input type="text" id="title" name="title">
+                            </div>
+                        </div>
+
+                        <div class="isi">
+                            <label for="content">Content :</label>
+                            <textarea type="text" id="content" name="content"></textarea>
+                        </div>
+
+                        <div class="btn">
+                            <button type="submit"><img src="../image/edit.png" alt="">Edit</button>
+                            <button type="submit"><img src="../image/delete.png" alt="">Delete</button>
+                        </div>
+                    </form>  
+                </div>
+
+                <div class="isi-container" id="new">
+                    <form action="" class="add">
+                        <div class="top-container">
+                            <div class="type">
+                                <label for="type">Type :</label>
+                                <input type="text" id="type" name="type">
+                            </div>
+
+                            <div class="title">
+                                <label for="title">Title :</label>
+                                <input type="text" id="title" name="title">
+                            </div>
+                        </div>
+
+                        <div class="isi">
+                            <label for="content">Content :</label>
+                            <textarea type="text" id="content" name="content"></textarea>
+                        </div>
+
+                        <div class="btn">
+                            <button type="submit">Save</button>
+                            <button type="reset">Cancel</button>
+                        </div>
+                    </form>  
+                </div>
             </div>
         </div>
     </body>
