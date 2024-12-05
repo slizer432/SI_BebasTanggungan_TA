@@ -32,7 +32,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 20px 30px 300px;
+    padding: 30px 20px 30px;
     overflow: hidden;
 }
 
@@ -50,6 +50,25 @@ nav {
 .logo img {
     width: 56px;
     height: 56px;
+}
+
+.home a{
+    color: #334EAC;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-left: 965px;
+}
+
+.notif {
+    justify-content: center;
+    padding-top: 5px;
+    padding-left: 20px;
+
+}
+
+.notif img {
+    width: 31px;
+    height: 31px;
 }
 
 .profile {
@@ -87,3 +106,4 @@ nav {
     font-family: 'inter';
     padding-top: 130px;
 }
+
