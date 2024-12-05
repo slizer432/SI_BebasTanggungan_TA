@@ -82,6 +82,7 @@ class Admin extends Account
                 $query = $conn->prepare('UPDATE dokumen WHERE nim = :nim SET komentar = NULL AND jenis_dokumen IN :jenis_dokumen');
                 $query->execute(['nim' => $nim, 'jenis_dokumen' => ['ttTugasAkhir', 'ttMagang', 'kompen', 'toeic']]);
 
+
                 break;
 
             case 'Teknisi':
@@ -92,6 +93,7 @@ class Admin extends Account
                 $query->execute(['nim' => $nim, 'jenis_dokumen' => ['laporanTugasAkhir', 'tugasAkhir', 'publikasi', 'laporanMagang']]);
                 break;
         }
+        $this->log('verifikasi', $nim);
 
     }
 
@@ -120,6 +122,7 @@ class Admin extends Account
                 }
                 break;
         }
+        $this->log('tolak', $nim);
     }
 
     function terimaBebasTanggungan($nim)
@@ -182,11 +185,37 @@ class Admin extends Account
         }
     }
 
-    public function log($aktivitas, $detail)
+    public function log($aktivitas, $nim = '')
     {
         global $conn;
 
-        $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
-        $query->execute(['aktivitas' => $aktivitas, 'detail' => $detail, 'nip_admin' => $this->nip]);
+        switch ($aktivitas) {
+            case 'login':
+                $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
+                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan login ke sistem.", 'nip_admin' => $this->nip]);
+                break;
+
+            case 'logout':
+                $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
+                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan logout dari sistem.", 'nip_admin' => $this->nip]);
+                break;
+
+            case 'verifikasi':
+                $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
+                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan verifikasi data mahasiswa." . $nim, 'nip_admin' => $this->nip]);
+                break;
+
+            case 'tolak':
+                $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
+                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan tolak data mahasiswa." . $nim, 'nip_admin' => $this->nip]);
+                break;
+        }
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        $this->log('logout');
+        header('Location: ../../index.php');
     }
 }

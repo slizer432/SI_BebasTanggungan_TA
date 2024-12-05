@@ -23,6 +23,7 @@ switch ($_POST['role']) {
         if ($admin->logIn()) {
             echo 'berhasil';
             $_SESSION['admin'] = $admin;
+            $admin->log('login');
             header('Location: ../view/homeAdmin.php');
             exit();
         }
