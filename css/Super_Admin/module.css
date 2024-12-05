@@ -174,3 +174,72 @@ nav {
     justify-items: center;
     padding-top: 130px;
 }
+
+.isi-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 3px #929292;
+    width: 92%;
+    height: 516.5px;
+    margin-top: 40px;
+    padding: 20px;
+    gap: 10px;
+}
+
+.add {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.type, .title, .isi {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-weight: 700;
+}
+
+.type input {
+    width: 300px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.title input {
+    width: 500px;
+    height: 32px;
+    background-color: transparent;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.isi textarea {
+    width: 1080px;
+    height: 345px;
+    background-color: transparent;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 10px 10px 0 10px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-items: self-end;
+    gap: 10px;
+}

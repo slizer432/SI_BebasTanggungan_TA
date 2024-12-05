@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at center, 
+      #FFF8EC 0%, 
+      #F0F7F9 50%,
+      #EAF6FF 72%, 
+      #d1e3ff 100%
+    );
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px 30px 300px;
+    overflow: hidden;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-self: self-start;
+    flex-direction: row;
+    font-size: 25px;
+    font-family: "Averia Serif Libre";
+    font-weight: bold;
+    color: #334EAC;
+}
+
+.logo img {
+    width: 56px;
+    height: 56px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'inter';
+    border: 1.5px solid #000000;
+    border-radius: 42px;
+    width: 200px;
+    height: 54px;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.role {
+    color: #334EAC;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 25px 10px 25px 14px;
+}
+
+.pp {
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    padding: 10px 10px 10px 10px;
+}
+
+.content {
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-items: center;
+    font-family: 'inter';
+    padding-top: 130px;
+}

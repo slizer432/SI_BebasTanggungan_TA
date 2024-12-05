@@ -6,12 +6,12 @@ const adprod = new Chart(ctx2, {
             label: '# of Votes',
             data: [25, 75],
             backgroundColor: [
-                'rgba(200, 200, 200, 0.1)',
-                'rgba(54, 162, 235, 0.2)'
+                '#EAF2F8',
+                '#5DADE2'
             ],
             borderColor: [
-                'rgba(200, 200, 200, 0.1)',
-                'rgba(54, 162, 235, 1)'
+                '#EAF2F8',
+                '#5DADE2'
             ],
             borderWidth: 1
         }]

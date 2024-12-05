@@ -19,7 +19,7 @@ body {
 .container {
     display: flex;
     flex-direction: row;
-    min-height: 100vh;
+    min-width: 800vh;
     position: relative;
     overflow: hidden;
 }
