@@ -14,6 +14,7 @@ body {
       #EAF6FF 72%, 
       #d1e3ff 100%
     );
+    overflow: auto;
 }
 
 .container {
