@@ -33,8 +33,33 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 20px 30px 300px;
+    padding: 30px 20px 30px 50px;
     overflow: hidden;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-size: 25px;
+    font-family: "Averia Serif Libre";
+    font-weight: bold;
+    color: #334EAC;
+}
+
+.logo img {
+    width: 56px;
+    height: 56px;
+}
+
+.attach {
+    width: 200px;
+    height: 30px;
+    color: #FFFFFF;
+    background-color: #334EAC;
+    border-radius: 21.5px;
+    padding: 5px;
+    margin-left: 800px;
 }
 
 .profile {
@@ -61,34 +86,6 @@ nav {
     width: 64px;
     height: 64px;
     padding: 10px 10px 10px 10px;
-}
-
-.menu-container {
-    position: sticky;
-    align-self: center;
-    background-color: #FFFFFF;
-    color: #6D6C6C;
-    height: 683px;
-    width: 250px;
-    box-shadow: 2px 2px 5px #929292;
-    border-top-right-radius: 57px;
-    border-bottom-right-radius: 57px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    font-size: 25px;
-    font-family: "Averia Serif Libre";
-    font-weight: bold;
-    color: #334EAC;
-    padding: 30px 30px;
-}
-
-.logo img {
-    width: 56px;
-    height: 56px;
 }
 
 .menu {
@@ -126,29 +123,15 @@ nav {
     align-items: center;
     justify-items: center;
     font-family: 'inter';
-    padding-top: 130px;
+    padding-top: 100px;
 }
 
 .top {
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-    width: 95%;
-    padding-right: 20px;
-}
-
-.top h2 {
-    color: #334EAC;
-    border-bottom: 2px solid #6D6C6C;
-}
-
-.top2 {
     display: flex;
     flex-direction: row;
     padding-top: 22px;
     width: 100%;
-    gap: 450px;
+    gap: 760px;
 }
 
 .search-container {
@@ -158,7 +141,7 @@ nav {
     border-radius: 7px;
     width: 293.5px;
     background-color: #FFFFFF;
-    margin-left: 40px;
+    margin-left: 90px;
 }
 
 .search-container input {

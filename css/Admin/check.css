@@ -29,17 +29,17 @@ nav {
     align-items: center;
     position: fixed;
     background-color: transparent;
+    font-family: 'inter';
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 20px 30px 300px;
+    padding: 30px 20px 30px 50px;
     overflow: hidden;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    justify-self: self-start;
     flex-direction: row;
     font-size: 25px;
     font-family: "Averia Serif Libre";
@@ -52,36 +52,18 @@ nav {
     height: 56px;
 }
 
-.profile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'inter';
-    border: 1.5px solid #000000;
-    border-radius: 42px;
+.attach {
     width: 200px;
-    height: 54px;
-    margin-left: auto;
-    margin-right: 20px;
-}
-
-.role {
-    color: #334EAC;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 25px 10px 25px 14px;
-}
-
-.pp {
-    border-radius: 50%;
-    width: 64px;
-    height: 64px;
-    padding: 10px 10px 10px 10px;
+    height: 30px;
+    color: #FFFFFF;
+    background-color: #334EAC;
+    border-radius: 21.5px;
+    padding: 5px;
+    margin-left: 800px;
 }
 
 .content {
     flex-direction: column;
-    flex: 1;
     align-items: center;
     justify-items: center;
     font-family: 'inter';
@@ -100,12 +82,4 @@ nav {
 .top h2 {
     color: #334EAC;
     border-bottom: 2px solid #6D6C6C;
-}
-
-.top2 {
-    display: flex;
-    flex-direction: row;
-    padding-top: 22px;
-    width: 100%;
-    gap: 450px;
 }
