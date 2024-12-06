@@ -7,7 +7,7 @@ GO
 -- Tabel mahasiswa
 CREATE TABLE mahasiswa
 (
-    nim CHAR(10) PRIMARY KEY NOT NULL,
+    nim CHAR(18) PRIMARY KEY NOT NULL,
     nama VARCHAR(100) NOT NULL,
     program_studi VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE admin
 CREATE TABLE dokumen
 (
     id_dokumen INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nim CHAR(10) NOT NULL,
+    nim CHAR(18) NOT NULL,
     jenis_dokumen VARCHAR(100) NOT NULL,
     file_dokumen VARCHAR(255) NOT NULL,
     tanggal_upload DATETIME NOT NULL DEFAULT GETDATE(),
@@ -55,7 +55,7 @@ CREATE TABLE verifikasi_admin
 (
     id_verifikasi_admin INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     nip_admin CHAR(18) NOT NULL,
-    nim CHAR(10) NOT NULL,
+    nim CHAR(18) NOT NULL,
     tahap_verifikasi VARCHAR(50) NOT NULL,
     status_verifikasi VARCHAR(20) NOT NULL,
     tanggal_verifikasi DATETIME NOT NULL DEFAULT GETDATE(),
@@ -82,7 +82,7 @@ CREATE TABLE pengajuan_bebas_tanggungan
 (
     id_pengajuan INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     nip_admin CHAR(18) NOT NULL,
-    nim CHAR(10) NOT NULL,
+    nim CHAR(18) NOT NULL,
     tanggal_pengajuan DATE NOT NULL,
     status_pengajuan VARCHAR(20) NOT NULL,
     FOREIGN KEY (nim) REFERENCES mahasiswa(nim),
@@ -90,13 +90,12 @@ CREATE TABLE pengajuan_bebas_tanggungan
     CONSTRAINT ck__status_pengajuan CHECK (status_pengajuan IN ('Rejected', 'Pending', 'Accepted'))
 );
 
-
 -- Tabel notifikasi
 CREATE TABLE notifikasi
 (
     id_notifikasi INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
     nip_admin CHAR(18) NOT NULL,
-    nim CHAR(10) NOT NULL,
+    nim CHAR(18) NOT NULL,
     tipe_pengirim VARCHAR(20) NOT NULL,
     pesan TEXT NOT NULL,
     komentar TEXT NULL,
@@ -314,3 +313,51 @@ ALTER COLUMN nip_admin CHAR(18) NULL;
 
 AlTER TABLE admin
 ADD foto_profil VARCHAR(100) NULL;
+
+AlTER TABLE super_admin
+ADD foto_profil VARCHAR(100) NULL;
+
+CREATE TABLE users (
+    username CHAR(18) PRIMARY KEY,
+    password NVARCHAR(255) NOT NULL,
+    role NVARCHAR(20) NOT NULL,
+    CONSTRAINT FK_User_Mahasiswa FOREIGN KEY (username) REFERENCES mahasiswa(nim),
+    CONSTRAINT FK_User_Admin FOREIGN KEY (username) REFERENCES admin(nip),
+    CONSTRAINT FK_User_SuperAdmin FOREIGN KEY (username) REFERENCES super_admin(nip)
+);
+
+
+-- Nonaktifkan Constraint
+ALTER TABLE users NOCHECK CONSTRAINT FK_User_Mahasiswa;
+ALTER TABLE users NOCHECK CONSTRAINT FK_User_Admin;
+ALTER TABLE users NOCHECK CONSTRAINT FK_User_SuperAdmin;
+
+-- Masukkan Data
+-- Mahasiswa
+INSERT INTO users (username, password, role)
+SELECT nim AS username, password, 'Mahasiswa' AS role
+FROM mahasiswa;
+
+-- Admin
+INSERT INTO users (username, password, role)
+SELECT nip AS username, password, role
+FROM admin;
+
+-- Super Admin
+INSERT INTO users (username, password, role)
+SELECT nip AS username, password, 'Super Admin' AS role
+FROM super_admin;
+
+-- Aktifkan Constraint
+ALTER TABLE users CHECK CONSTRAINT FK_User_Mahasiswa;
+ALTER TABLE users CHECK CONSTRAINT FK_User_Admin;
+ALTER TABLE users CHECK CONSTRAINT FK_User_SuperAdmin;
+
+ALTER TABLE mahasiswa
+DROP COLUMN password;
+
+ALTER TABLE admin
+DROP COLUMN password;
+
+ALTER TABLE super_admin
+DROP COLUMN password;
