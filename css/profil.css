@@ -56,7 +56,14 @@ nav {
     color: #334EAC;
     text-decoration: none;
     padding-top: 12px;
-    padding-left: 965px;
+    padding-left: 825px;
+}
+
+.home-h a{
+    color: #334EAC;
+    text-decoration: none;
+    padding-top: 12px;
+    padding-left: 955px;
 }
 
 .notif {
@@ -81,7 +88,15 @@ nav {
     width: 200px;
     height: 54px;
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: 20px; 
+    
+    &.aktif {
+        background-color: #334EAC;
+    }
+}
+
+.profile a {
+    text-decoration: none;
 }
 
 .role {
@@ -89,6 +104,10 @@ nav {
     font-size: 15px;
     font-weight: 600;
     padding: 25px 10px 25px 14px;
+
+    &.aktif {
+        color: #FFFFFF;
+    }
 }
 
 .pp {
@@ -102,8 +121,154 @@ nav {
     flex-direction: column;
     flex: 1;
     align-items: center;
-    justify-items: center;
     font-family: 'inter';
-    padding-top: 130px;
+    padding: 130px 0 0 110px;
 }
 
+.top {
+    color: #334EAC;
+    font-size: 35px;
+    padding-bottom: 30px;
+}
+
+.data-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+}
+
+.photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo img{
+    width: 310px;
+    height: 310px;
+}
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    width: 700px;
+    height: 400px;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+
+.isi .p{
+    display: flex;
+    flex-direction: column;
+}
+
+.p label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #334EAC;
+}
+
+.p p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.isi .e{
+    display: flex;
+    flex-direction: row;
+}
+
+.e label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #334EAC;
+}
+
+.e input[name="role"] {
+    font-size: 14px;
+    font-weight: 500;
+    width: 230px;
+    height: 30px;
+    color: #000000;
+    border: 2px solid #334EAC;
+    border-radius: 5px;
+    padding: 6px;
+    margin-left: 45px;
+}
+
+.e input[name="nama"] {
+    font-size: 14px;
+    font-weight: 500;
+    width: 230px;
+    height: 30px;
+    color: #000000;
+    border: 2px solid #334EAC;
+    border-radius: 5px;
+    padding: 6px;
+    margin-left: 32px;
+}
+
+.e input[name="email"] {
+    font-size: 14px;
+    font-weight: 500;
+    width: 230px;
+    height: 30px;
+    color: #000000;
+    border: 2px solid #334EAC;
+    border-radius: 5px;
+    padding: 6px;
+    margin-left: 37px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.btn button {
+    width: 120px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #334EAC;
+    border-radius: 11px;
+}
+
+.btn button:hover {
+    background-color: #334EAC;
+    color: #FFFFFF;
+}
+
+.b {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.btn a {
+    font-weight: 500;
+    text-decoration: none;
+    color: #334EAC;
+}
+
+.btn a:hover {
+    color: #FFFFFF;
+}
