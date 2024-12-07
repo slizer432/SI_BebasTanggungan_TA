@@ -353,11 +353,39 @@ ALTER TABLE users CHECK CONSTRAINT FK_User_Mahasiswa;
 ALTER TABLE users CHECK CONSTRAINT FK_User_Admin;
 ALTER TABLE users CHECK CONSTRAINT FK_User_SuperAdmin;
 
-ALTER TABLE mahasiswa
-DROP COLUMN password;
+GO
+-- Trigger for mahasiswa
+CREATE TRIGGER trg_InsertMahasiswa
+ON mahasiswa
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO users (username, password, role)
+    SELECT nim AS username, password, 'Mahasiswa' AS role
+    FROM inserted;
+END;
+GO
 
-ALTER TABLE admin
-DROP COLUMN password;
+-- Trigger for admin
+CREATE TRIGGER trg_InsertAdmin
+ON admin
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO users (username, password, role)
+    SELECT nip AS username, password, role
+    FROM inserted;
+END;
+GO
 
-ALTER TABLE super_admin
-DROP COLUMN password;
+-- Trigger for super_admin
+CREATE TRIGGER trg_InsertSuperAdmin
+ON super_admin
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO users (username, password, role)
+    SELECT nip AS username, password, 'Super Admin' AS role
+    FROM inserted;
+END;
+GO
