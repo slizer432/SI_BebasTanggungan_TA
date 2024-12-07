@@ -7,7 +7,7 @@ GO
 -- Tabel mahasiswa
 CREATE TABLE mahasiswa
 (
-    nim CHAR(18) PRIMARY KEY NOT NULL,
+    nim VARCHAR(20) PRIMARY KEY NOT NULL,
     nama VARCHAR(100) NOT NULL,
     program_studi VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE mahasiswa
 -- Tabel super_admin
 CREATE TABLE super_admin
 (
-    nip CHAR(18) PRIMARY KEY NOT NULL,
+    nip VARCHAR(20) PRIMARY KEY NOT NULL,
     nama VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL
@@ -28,12 +28,12 @@ CREATE TABLE super_admin
 -- Tabel admin
 CREATE TABLE admin
 (
-    nip CHAR(18) PRIMARY KEY NOT NULL,
+    nip VARCHAR(20) PRIMARY KEY NOT NULL,
     nama VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(20) NOT NULL,
-    nip_super_admin CHAR(18) NOT NULL,
+    nip_super_admin VARCHAR(20) NOT NULL,
     FOREIGN KEY (nip_super_admin) REFERENCES super_admin(nip),
     CONSTRAINT ck_admin_role CHECK (role IN ('Teknisi', 'Admin Prodi', 'Admin Jurusan'))
 );
@@ -43,7 +43,7 @@ CREATE TABLE admin
 CREATE TABLE dokumen
 (
     id_dokumen INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nim CHAR(18) NOT NULL,
+    nim VARCHAR(20) NOT NULL,
     jenis_dokumen VARCHAR(100) NOT NULL,
     file_dokumen VARCHAR(255) NOT NULL,
     tanggal_upload DATETIME NOT NULL DEFAULT GETDATE(),
@@ -54,8 +54,8 @@ CREATE TABLE dokumen
 CREATE TABLE verifikasi_admin
 (
     id_verifikasi_admin INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nip_admin CHAR(18) NOT NULL,
-    nim CHAR(18) NOT NULL,
+    nip_admin VARCHAR(20) NOT NULL,
+    nim VARCHAR(20) NOT NULL,
     tahap_verifikasi VARCHAR(50) NOT NULL,
     status_verifikasi VARCHAR(20) NOT NULL,
     tanggal_verifikasi DATETIME NOT NULL DEFAULT GETDATE(),
@@ -69,7 +69,7 @@ CREATE TABLE verifikasi_admin
 CREATE TABLE log_aktivitas_admin
 (
     id_log INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nip_admin CHAR(18) NOT NULL,
+    nip_admin VARCHAR(20) NOT NULL,
     aktivitas VARCHAR(100) NOT NULL,
     detail TEXT NULL,
     tanggal_aktivitas DATETIME NOT NULL DEFAULT GETDATE(),
@@ -81,8 +81,8 @@ CREATE TABLE log_aktivitas_admin
 CREATE TABLE pengajuan_bebas_tanggungan
 (
     id_pengajuan INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nip_admin CHAR(18) NOT NULL,
-    nim CHAR(18) NOT NULL,
+    nip_admin VARCHAR(20) NOT NULL,
+    nim VARCHAR(20) NOT NULL,
     tanggal_pengajuan DATE NOT NULL,
     status_pengajuan VARCHAR(20) NOT NULL,
     FOREIGN KEY (nim) REFERENCES mahasiswa(nim),
@@ -94,8 +94,8 @@ CREATE TABLE pengajuan_bebas_tanggungan
 CREATE TABLE notifikasi
 (
     id_notifikasi INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nip_admin CHAR(18) NOT NULL,
-    nim CHAR(18) NOT NULL,
+    nip_admin VARCHAR(20) NOT NULL,
+    nim VARCHAR(20) NOT NULL,
     tipe_pengirim VARCHAR(20) NOT NULL,
     pesan TEXT NOT NULL,
     komentar TEXT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE notifikasi
 CREATE TABLE pemberitahuan
 (
     id_pemberitahuan INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nip_super_admin CHAR(18) NOT NULL,
+    nip_super_admin VARCHAR(20) NOT NULL,
     tipe VARCHAR(100) NOT NULL,
     judul TEXT NOT NULL,
     isi TEXT NOT NULL,
@@ -300,7 +300,7 @@ VALUES
 
 
 ALTER TABLE verifikasi_admin
-ALTER COLUMN nip_admin CHAR(18) NULL;
+ALTER COLUMN nip_admin VARCHAR(20) NULL;
 
 ALTER TABLE notifikasi
 DROP COLUMN komentar;
@@ -309,7 +309,7 @@ ALTER TABLE dokumen
 ADD komentar TEXT NULL;
 
 ALTER TABLE pengajuan_bebas_tanggungan
-ALTER COLUMN nip_admin CHAR(18) NULL;
+ALTER COLUMN nip_admin VARCHAR(20) NULL;
 
 AlTER TABLE admin
 ADD foto_profil VARCHAR(100) NULL;
@@ -318,7 +318,7 @@ AlTER TABLE super_admin
 ADD foto_profil VARCHAR(100) NULL;
 
 CREATE TABLE users (
-    username CHAR(18) PRIMARY KEY,
+    username VARCHAR(20) PRIMARY KEY,
     password NVARCHAR(255) NOT NULL,
     role NVARCHAR(20) NOT NULL,
     CONSTRAINT FK_User_Mahasiswa FOREIGN KEY (username) REFERENCES mahasiswa(nim),
