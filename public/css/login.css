@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url(../img/LOGIN.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin-right: 300px;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.blue-text {
+    color: #3454D1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-container {
+    position: relative;
+}
+
+select#role {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #2842b8;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #929292;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #2842b8;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #929292;
+    font-size: 14px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.remember-me label {
+    margin: 0;
+}
+
+.remember {
+    padding-top: 10px;
+}
+
+.forgot-password {
+    color: #3454D1;
+    text-decoration: none;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3454D1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #929292;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #2842b8;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3454D1;
+}
