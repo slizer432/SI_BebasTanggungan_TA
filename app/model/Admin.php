@@ -82,6 +82,9 @@ class Admin extends Account
                 $query = $conn->prepare('UPDATE dokumen WHERE nim = :nim SET komentar = NULL AND jenis_dokumen IN :jenis_dokumen');
                 $query->execute(['nim' => $nim, 'jenis_dokumen' => ['ttTugasAkhir', 'ttMagang', 'kompen', 'toeic']]);
 
+                $query = $conn->prepare('INSERT INTO notifikasi (nip_admin, nim, tipe_pengirim, pesan) VALUES (:nip_admin, :nim, :tipe_pengirim, :pesan)');
+                $query->execute(['nip_admin' => $this->nip, 'nim' => $nim, 'tipe_pengirim' => 'admin jurusan', 'pesan' => 'Verifikasi dokumen Telah Disetujui']);
+
 
                 break;
 
@@ -91,6 +94,9 @@ class Admin extends Account
 
                 $query = $conn->prepare('UPDATE dokumen WHERE nim = :nim SET komentar = NULL AND jenis_dokumen IN :jenis_dokumen');
                 $query->execute(['nim' => $nim, 'jenis_dokumen' => ['laporanTugasAkhir', 'tugasAkhir', 'publikasi', 'laporanMagang']]);
+
+                $query = $conn->prepare('INSERT INTO notifikasi (nip_admin, nim, tipe_pengirim, pesan) VALUES (:nip_admin, :nim, :tipe_pengirim, :pesan)');
+                $query->execute(['nip_admin' => $this->nip, 'nim' => $nim, 'tipe_pengirim' => 'teknisi', 'pesan' => 'Verifikasi dokumen Telah Disetujui']);
                 break;
         }
         $this->log('verifikasi', $nim);
@@ -110,6 +116,9 @@ class Admin extends Account
                     $query = $conn->prepare('UPDATE dokumen SET komentar = :komentar WHERE nim = :nim AND jenis_dokumen = :jenis_dokumen');
                     $query->execute(['nim' => $nim, 'komentar' => $komentar, 'jenis_dokumen' => $jenis_dokumen]);
                 }
+
+                $query = $conn->prepare('INSERT INTO notifikasi (nip_admin, nim, tipe_pengirim, pesan) VALUES (:nip_admin, :nim, :tipe_pengirim, :pesan)');
+                $query->execute(['nip_admin' => $this->nip, 'nim' => $nim, 'tipe_pengirim' => 'admin jurusan', 'pesan' => 'Verifikasi dokumen Telah Ditolak']);
                 break;
 
             case 'Teknisi':
@@ -120,6 +129,9 @@ class Admin extends Account
                     $query = $conn->prepare('UPDATE dokumen SET komentar = :komentar WHERE nim = :nim AND jenis_dokumen = :jenis_dokumen');
                     $query->execute(['nim' => $nim, 'komentar' => $komentar, 'jenis_dokumen' => $jenis_dokumen]);
                 }
+
+                $query = $conn->prepare('INSERT INTO notifikasi (nip_admin, nim, tipe_pengirim, pesan) VALUES (:nip_admin, :nim, :tipe_pengirim, :pesan)');
+                $query->execute(['nip_admin' => $this->nip, 'nim' => $nim, 'tipe_pengirim' => 'teknisi', 'pesan' => 'Verifikasi dokumen Telah Ditolak']);
                 break;
         }
         $this->log('tolak', $nim);
@@ -131,6 +143,11 @@ class Admin extends Account
 
         $query = $conn->prepare('UPDATE pengajuan_bebas_tanggungan SET status = :status WHERE nim = :nim nip_admin = :nip_admin');
         $query->execute(['status' => 'Verified', 'nim' => $nim, 'nip_admin' => $this->nip]);
+
+        $query = $conn->prepare('INSERT INTO notifikasi (nip_admin, nim, tipe_pengirim, pesan) VALUES (:nip_admin, :nim, :tipe_pengirim, :pesan)');
+        $query->execute(['nip_admin' => $this->nip, 'nim' => $nim, 'tipe_pengirim' => 'teknisi', 'pesan' => 'Bebas Tanggungan Telah Disetujui']);
+
+        $this->log('verifikasi', $nim);
     }
 
     function tolakBebasTanggungan($nim)
@@ -139,20 +156,25 @@ class Admin extends Account
 
         $query = $conn->prepare('UPDATE pengajuan_bebas_tanggungan SET status = :status WHERE nim = :nim nip_admin = :nip_admin');
         $query->execute(['status' => 'Rejected', 'nim' => $nim, 'nip_admin' => $this->nip]);
+
+        $query = $conn->prepare('INSERT INTO notifikasi (nip_admin, nim, tipe_pengirim, pesan) VALUES (:nip_admin, :nim, :tipe_pengirim, :pesan)');
+        $query->execute(['nip_admin' => $this->nip, 'nim' => $nim, 'tipe_pengirim' => 'teknisi', 'pesan' => 'Bebas Tanggungan Telah Ditolak']);
+
+        $this->log('tolak', $nim);
     }
 
-    public function edit($nama, $email, $password, $nip, $file)
+    public function edit($nama, $email, $password, $file)
     {
         global $conn;
 
         // Update the Admin details
         $query = $conn->prepare('UPDATE admin SET nama = :nama, email = :email, password = :password WHERE nip = :nip');
-        $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'nip' => $nip]);
+        $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'nip' => $this->nip]);
 
         // Handle the photo upload
         $allowedExtensions = ['jpg', 'jpeg', 'png'];
         $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $fileNameNew = "{$nip}_profile.{$fileExt}";
+        $fileNameNew = $this->nip . "_profile.{$fileExt}";
 
         if (in_array($fileExt, $allowedExtensions)) {
             $this->handlePhotoUpload($file, $allowedExtensions, $fileNameNew);
@@ -202,12 +224,12 @@ class Admin extends Account
 
             case 'verifikasi':
                 $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
-                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan verifikasi data mahasiswa." . $nim, 'nip_admin' => $this->nip]);
+                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan verifikasi dokumen mahasiswa." . $nim, 'nip_admin' => $this->nip]);
                 break;
 
             case 'tolak':
                 $query = $conn->prepare('INSERT INTO log_aktivitas_admin (aktivitas, detail, nip_admin) VALUES (:aktivitas, :detail, :nip_admin)');
-                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan tolak data mahasiswa." . $nim, 'nip_admin' => $this->nip]);
+                $query->execute(['aktivitas' => $aktivitas, 'detail' => "Admin " . $this->nama . " melakukan tolak dokumen mahasiswa." . $nim, 'nip_admin' => $this->nip]);
                 break;
         }
     }
@@ -217,5 +239,22 @@ class Admin extends Account
         session_destroy();
         $this->log('logout');
         header('Location: ../../index.php');
+    }
+
+    public function getDokumen($nim)
+    {
+        global $conn;
+
+        $query = $conn->prepare('SELECT * FROM dokumen WHERE nim = :nim');
+        $query->execute(['nim' => $nim]);
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function isLoggedIn()
+    {
+        if (!isset($_SESSION['admin'])) {
+            header('Location: ../../index.php');
+        }
     }
 }

@@ -172,18 +172,18 @@ class Mahasiswa extends Account
         $query->execute(['nim' => $this->nim, 'status' => 'Pending']);
     }
 
-    public function edit($nama, $email, $password, $nim, $file)
+    public function edit($nama, $email, $password, $file)
     {
         global $conn;
 
         // Update the Mahasiswa details
         $query = $conn->prepare('UPDATE Mahasiswa SET Nama = :nama, Email = :email, Password = :password WHERE NIM = :nim');
-        $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'nim' => $nim]);
+        $query->execute(['nama' => $nama, 'email' => $email, 'password' => $password, 'nim' => $this->nim]);
 
         // Handle the photo upload
         $allowedExtensions = ['jpg', 'jpeg', 'png'];
         $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        $fileNameNew = "{$nim}_profile.{$fileExt}";
+        $fileNameNew = "{$this->nim}_profile.{$fileExt}";
 
         if (in_array($fileExt, $allowedExtensions)) {
             $this->handlePhotoUpload($file, $allowedExtensions, $fileNameNew);
@@ -216,5 +216,32 @@ class Mahasiswa extends Account
         }
     }
 
+    public function getNotifikasi()
+    {
+        global $conn;
 
+        $query = $conn->prepare('SELECT * FROM verifikasi_admin WHERE nim = :nim');
+        $query->execute(['nim' => $this->nim]);
+        $notifikasi = $query->fetch(PDO::FETCH_ASSOC);
+
+        return $notifikasi;
+    }
+
+    public function getDokumen()
+    {
+        global $conn;
+
+        $query = $conn->prepare('SELECT * FROM dokumen WHERE nim = :nim');
+        $query->execute(['nim' => $this->nim]);
+        $dokumen = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dokumen;
+    }
+
+    public function isLoggedIn()
+    {
+        if (!isset($_SESSION['mahasiswa'])) {
+            header('Location: ../../index.php');
+        }
+    }
 }

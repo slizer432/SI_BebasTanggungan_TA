@@ -21,7 +21,7 @@ class SuperAdmin extends Account
         $this->password = $data['password'];
     }
 
-    function getData($nip)
+    public function getData($nip)
     {
         global $conn;
 
@@ -31,7 +31,7 @@ class SuperAdmin extends Account
         return $result;
     }
 
-    function logIn()
+    public function logIn()
     {
         global $conn;
 
@@ -55,7 +55,7 @@ class SuperAdmin extends Account
         }
     }
 
-    function registerAdmin($nip, $nama, $email, $password, $role)
+    public function registerAdmin($nip, $nama, $email, $password, $role)
     {
         global $conn;
 
@@ -70,7 +70,7 @@ class SuperAdmin extends Account
 
     }
 
-    function registerMhs($nim, $nama, $prodi, $email, $password)
+    public function registerMhs($nim, $nama, $prodi, $email, $password)
     {
         global $conn;
 
@@ -84,7 +84,7 @@ class SuperAdmin extends Account
         }
     }
 
-    function getMahasiswa()
+    public function getMahasiswa()
     {
         global $conn;
 
@@ -95,7 +95,7 @@ class SuperAdmin extends Account
         return $result;
     }
 
-    function getAdmin()
+    public function getAdmin()
     {
         global $conn;
 
@@ -106,7 +106,7 @@ class SuperAdmin extends Account
         return $result;
     }
 
-    function delete($role, $user)
+    public function delete($role, $user)
     {
         global $conn;
 
@@ -124,7 +124,7 @@ class SuperAdmin extends Account
         }
     }
 
-    function getLogActivity()
+    public function getLogActivity()
     {
         global $conn;
 
@@ -135,12 +135,35 @@ class SuperAdmin extends Account
         return $result;
     }
 
-    function getVerifActivity()
+    public function getVerifActivity()
     {
         global $conn;
 
         $query = $conn->prepare('SELECT * FROM log_aktivitas_admin WHERE aktivitas = "Verifikasi"');
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function editMhs($nim, $nama, $prodi, $email, $password)
+    {
+        global $conn;
+
+        $query = $conn->prepare('UPDATE mahasiswa SET nim = :nim, nama = :nama, program_studi = :prodi, email = :email, password = :password WHERE nim = :nim');
+        $query->execute(['nim' => $nim, 'nama' => $nama, 'prodi' => $prodi, 'email' => $email, 'password' => $password]);
+    }
+
+    public function editAdmin($nip, $nama, $email, $password, $role)
+    {
+        global $conn;
+
+        $query = $conn->prepare('UPDATE admin SET nip = :nip, nama = :nama, email = :email, password = :password, role = :role WHERE nip = :nip');
+        $query->execute(['nip' => $nip, 'nama' => $nama, 'email' => $email, 'password' => $password, 'role' => $role]);
+    }
+
+    public function isLoggedIn()
+    {
+        if (!isset($_SESSION['superAdmin'])) {
+            header('Location: ../../index.php');
+        }
     }
 }
