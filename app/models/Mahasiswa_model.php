@@ -1,6 +1,6 @@
 <?php
 
-class Mahasiswa_model extends Controller
+class Mahasiswa_model
 {
 
     private $db;

@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/../SI_BebasTanggungan_TA/image/icon.png">
+    <link rel="icon" href="<?= BASEURL; ?>/image/icon.png">
     <title>Submission</title>
-    <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/Mahasiswa/upload.css">
+    <link rel="stylesheet" href="<?= CSS; ?>Mahasiswa/upload.css">
 </head>
 
 <body>
@@ -17,18 +17,18 @@
             </div>
 
             <div class="notif">
-                <img src="/../SI_BebasTanggungan_TA/image/notification.png" alt="">
+                <img src="<?= BASEURL; ?>/image/notification.png" alt="">
             </div>
 
             <div class="profile">
                 <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role"><?= $data['nim']; ?></span></a>
-                <img src="/../SI_BebasTanggungan_TA/image/pp.png" alt="Foto Profil" class="pp">
+                <img src="<?= BASEURL; ?>/image/pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
         <div class="menu-container">
             <div class="logo">
-                <img src="/../SI_BebasTanggungan_TA/image/logo.png" alt="SIBETA">
+                <img src="<?= BASEURL; ?>/image/logo.png" alt="SIBETA">
                 <span>SIBETA</span>
             </div>
 
@@ -73,7 +73,7 @@
                     </p>
 
                     <div class="alert">
-                        <img src="/../SI_BebasTanggungan_TA/image/alert.png" alt="">
+                        <img src="<?= BASEURL; ?>/image/alert.png" alt="">
                         <span>Please ensure that the uploaded files comply with the requirements above!</span>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 <div class="sub-cont">
                     <span>Final Project Report/Thesis</span>
                     <div class="sub-con">
-                        <img src="/../SI_BebasTanggungan_TA/image/file.png" alt="">
+                        <img src="<?= BASEURL; ?>/image/file.png" alt="">
                         <span>PDF with max 10MB</span>
                         <button>Browse File</button>
                     </div>
@@ -94,7 +94,7 @@
                 <div class="sub-cont">
                     <span>Thesis Program/Application</span>
                     <div class="sub-con">
-                        <img src="/../SI_BebasTanggungan_TA/image/file.png" alt="">
+                        <img src="<?= BASEURL; ?>/image/file.png" alt="">
                         <span>ZIP/RAR with max 1MB</span>
                         <button>Browse File</button>
                     </div>
@@ -105,7 +105,7 @@
                 <div class="sub-cont">
                     <span>Publication Statement Letter</span>
                     <div class="sub-con">
-                        <img src="/../SI_BebasTanggungan_TA/image/file.png" alt="">
+                        <img src="<?= BASEURL; ?>/image/file.png" alt="">
                         <span>PDF with max 10MB</span>
                         <button>Browse File</button>
                     </div>

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/../SI_BebasTanggungan_TA/image/icon.png">
-    <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/Mahasiswa/panduan.css">
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
+    <link rel="stylesheet" href="<?= CSS; ?>Mahasiswa/panduan.css">
     <title>Guideline</title>
 </head>
 
@@ -13,39 +13,39 @@
     <div class="container">
         <nav>
             <div class="notif">
-                <img src="/../SI_BebasTanggungan_TA/image/notification.png" alt="">
+                <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
             <div class="profile">
                 <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role"><?= $data['nim']; ?></span></a>
-                <img src="/../SI_BebasTanggungan_TA/image/pp.png" alt="Foto Profil" class="pp">
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
         <div class="menu-container">
             <div class="logo">
-                <img src="/../SI_BebasTanggungan_TA/image/logo.png" alt="SIBETA">
+                <img src="<?= IMAGE; ?>logo.png" alt="SIBETA">
                 <span>SIBETA</span>
             </div>
 
             <div class="menu">
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/home.png" alt="">
+                    <img src="<?= IMAGE; ?>home.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/home">Home</a>
                 </div>
 
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/folder.png" alt="">
+                    <img src="<?= IMAGE; ?>folder.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/pengajuan">File Submission</a>
                 </div>
 
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/book.png" alt="">
+                    <img src="<?= IMAGE; ?>book.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/panduan" class="aktif">Guideline</a>
                 </div>
 
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/call.png" alt="">
+                    <img src="<?= IMAGE; ?>call.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/kontak">Contact</a>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                     <p><b>2. Thesis Program/Application : </b>Upload in ZIP or RAR format containing the program or
                         application developed in the Final Project
                         Thesis, with the file name format: [Name]_[NIM]_Thesis Application.pdf.</p>
-                    <p><b>3. Publication : </b>Publication Statement Letter , upload in PDF format, with the file name
+                    <p><b>3. Publication : </b>Publication Statement Letter, upload in PDF format, with the file name
                         format: [Name]_[NIM]_Publication.pdf.</p>
                 </div>
             </div>

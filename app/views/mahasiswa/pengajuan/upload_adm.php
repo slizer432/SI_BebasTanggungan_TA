@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/../SI_BebasTanggungan_TA/image/icon.png">
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <title>Submission</title>
-    <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/Mahasiswa/upload.css">
+    <link rel="stylesheet" href="<?= CSS; ?>Mahasiswa/upload.css">
 </head>
 
 <body>
@@ -17,18 +17,18 @@
             </div>
 
             <div class="notif">
-                <img src="/../SI_BebasTanggungan_TA/image/notification.png" alt="">
+                <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
             <div class="profile">
                 <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role"><?= $data['nim']; ?></span></a>
-                <img src="/../SI_BebasTanggungan_TA/image/pp.png" alt="Foto Profil" class="pp">
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
         <div class="menu-container">
             <div class="logo">
-                <img src="/../SI_BebasTanggungan_TA/image/logo.png" alt="SIBETA">
+                <img src="<?= IMAGE; ?>logo.png" alt="SIBETA">
                 <span>SIBETA</span>
             </div>
 
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="mi">
-                    <a href="<?= BASEURL; ?>/Mahasiswa/upload_teknisi">Submit to Tecnician</a>
+                    <a href="<?= BASEURL; ?>/Mahasiswa/upload_teknisi">Submit to Technician</a>
                 </div>
 
                 <div class="m">
@@ -55,11 +55,11 @@
             </div>
 
             <div class="terms">
-                <span>Terms & Condotion</span>
+                <span>Terms & Condition</span>
                 <div class="tc">
                     <p></p>
                     <div class="alert">
-                        <img src="/../SI_BebasTanggungan_TA/image/alert.png" alt="">
+                        <img src="<?= IMAGE; ?>alert.png" alt="">
                         <span>Please ensure that the uploaded files comply with the requirements above!</span>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     <div class="sub-cont">
                         <span>Thesis/Final Report Book Distribution Proof</span>
                         <div class="sub-con">
-                            <img src="/../SI_BebasTanggungan_TA/image/file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="">
                             <span>PDF with max 1MB</span>
                             <input type="file">
                         </div>
@@ -79,9 +79,9 @@
 
                 <div class="sub">
                     <div class="sub-cont">
-                        <span>Intership Report Distribution Proof</span>
+                        <span>Internship Report Distribution Proof</span>
                         <div class="sub-con">
-                            <img src="/../SI_BebasTanggungan_TA/image/file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="">
                             <span>PDF with max 1MB</span>
                             <button>Browse File</button>
                         </div>
@@ -92,16 +92,16 @@
                     <div class="sub-cont">
                         <span>Bebas Kompen Proof</span>
                         <div class="sub-con">
-                            <img src="/../SI_BebasTanggungan_TA/image/file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="">
                             <span>PDF with max 1MB</span>
                             <button>Browse File</button>
                         </div>
                     </div>
 
                     <div class="sub-cont">
-                        <span>TOEIC Sertificate Scan</span>
+                        <span>TOEIC Certificate Scan</span>
                         <div class="sub-con">
-                            <img src="/../SI_BebasTanggungan_TA/image/file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="">
                             <span>PDF with max 1MB</span>
                             <button>Browse File</button>
                         </div>

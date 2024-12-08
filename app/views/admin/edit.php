@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?= IMAGE; ?>icon.png">
-    <link rel="stylesheet" href="<?= CSS; ?>profil.css">
     <title>Profile</title>
+    <link rel="stylesheet" href="<?= CSS; ?>profil.css">
 </head>
 
 <body>
@@ -17,16 +17,12 @@
                 <span>SIBETA</span>
             </div>
 
-            <div class="home-h">
-                <a href="<?= BASEURL; ?>/Mahasiswa/home">HOME</a>
-            </div>
-
-            <div class="notif">
-                <img src="<?= IMAGE; ?>notification.png" alt="">
+            <div class="home">
+                <a href="<?= BASEURL; ?>/Admin/lampiran.html">STUDENT ATTACHMENT</a>
             </div>
 
             <div class="profile aktif">
-                <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role aktif"><?= $data['nim']; ?></span></a>
+                <a href="<?= BASEURL; ?>/Admin/profil.html"><span class="role aktif">Admin</span></a>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
@@ -43,28 +39,25 @@
 
                 <div class="cont">
                     <div class="data">
-                        <div class="isi p">
-                            <label for="role">NIM :</label>
-                            <p><?= $data['nim']; ?></p>
+                        <div class="isi e">
+                            <label for="role">Role :</label>
+                            <input type="text" name="role">
                         </div>
 
-                        <div class="isi p">
+                        <div class="isi e">
                             <label for="nama">Name :</label>
-                            <p><?= $data['nama']; ?></p>
+                            <input type="text" name="nama">
                         </div>
 
-                        <div class="isi p">
+                        <div class="isi e">
                             <label for="email">Email :</label>
-                            <p><?= $data['email']; ?></p>
+                            <input type="text" name="email">
                         </div>
                     </div>
 
                     <div class="btn">
-                        <button class="b">
-                            <img src="<?= IMAGE; ?>edit.png" alt="">
-                            <a href="<?= BASEURL; ?>/Mahasiswa/edit">Edit Profile</a>
-                        </button>
-                        <button onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/logout'">Log Out</button>
+                        <button>Save</button>
+                        <button><a href="<?= BASEURL; ?>/Admin/profil">Cancel</a></button>
                     </div>
                 </div>
             </div>

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/../SI_BebasTanggungan_TA/image/icon.png">
-    <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/Mahasiswa/home.css">
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
+    <link rel="stylesheet" href="<?= CSS; ?>Mahasiswa/home.css">
     <title>Home</title>
 </head>
 
@@ -13,38 +13,38 @@
     <div class="container">
         <nav>
             <div class="notif">
-                <img src="/../SI_BebasTanggungan_TA/image/notification.png" alt="">
+                <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
             <div class="profile">
                 <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role"><?= $data['nim']; ?></span></a>
-                <img src="/../SI_BebasTanggungan_TA/image/pp.png" alt="Foto Profil" class="pp">
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
         <div class="menu-container">
             <div class="logo">
-                <img src="/../SI_BebasTanggungan_TA/image/logo.png" alt="SIBETA">
+                <img src="<?= IMAGE; ?>logo.png" alt="SIBETA">
                 <span>SIBETA</span>
             </div>
 
             <div class="menu">
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/home.png" alt="">
+                    <img src="<?= IMAGE; ?>home.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/home" class="aktif">Home</a>
                 </div>
 
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/folder.png" alt="">
+                    <img src="<?= IMAGE; ?>folder.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/pengajuan">File Submission</a>
                 </div>
 
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/book.png" alt="">
+                    <img src="<?= IMAGE; ?>book.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/panduan">Guideline</a>
                 </div>
                 <div class="m">
-                    <img src="/../SI_BebasTanggungan_TA/image/call.png" alt="">
+                    <img src="<?= IMAGE; ?>call.png" alt="">
                     <a href="<?= BASEURL; ?>/Mahasiswa/kontak">Contact</a>
                 </div>
             </div>
@@ -62,16 +62,16 @@
 
             <div class="bottom">
                 <div class="chart">
-                    <p>How far you submission are going?</p>
+                    <p>How far your submission is going?</p>
                     <div class="box">
                         <div class="diagram">
                             <canvas id="teknisi"></canvas>
                         </div>
 
                         <div class="cb">
-                            <span>Techinician</span>
-                            <p>Your 3 files has been<br>
-                                verified by techinician</p>
+                            <span>Technician</span>
+                            <p>Your 3 files have been<br>
+                                verified by technician</p>
                         </div>
                     </div>
 
@@ -82,8 +82,8 @@
 
                         <div class="cb">
                             <span>Admin</span>
-                            <p>Your 4 files has been<br>
-                                verified by techinician</p>
+                            <p>Your 4 files have been<br>
+                                verified by technician</p>
                         </div>
                     </div>
                 </div>
@@ -96,13 +96,13 @@
                                 <li class="active">
                                     <div class="lists">
                                         <div class="progress">
-                                            <img src="/../SI_BebasTanggungan_TA/image/track.png" alt="">
+                                            <img src="<?= IMAGE; ?>track.png" alt="">
                                         </div>
 
                                         <div class="ls">
                                             <div class="tns">
-                                                <img src="/../SI_BebasTanggungan_TA/image/teknisi.png" alt="">
-                                                <span>Techinician</span>
+                                                <img src="<?= IMAGE; ?>teknisi.png" alt="">
+                                                <span>Technician</span>
                                             </div>
 
                                             <div class="stt">
@@ -122,18 +122,18 @@
                                 <li class="active">
                                     <div class="lists">
                                         <div class="progress">
-                                            <img src="/../SI_BebasTanggungan_TA/image/track.png" alt="">
+                                            <img src="<?= IMAGE; ?>track.png" alt="">
                                         </div>
 
                                         <div class="ls">
                                             <div class="adm">
-                                                <img src="/../SI_BebasTanggungan_TA/image/admin.png" alt="">
+                                                <img src="<?= IMAGE; ?>admin.png" alt="">
                                                 <span>Admin</span>
                                             </div>
 
                                             <div class="stt">
                                                 <p>Verification for Skripsi, Application<br>
-                                                    and Publikasi requirements.</p>
+                                                    and Publication requirements.</p>
                                                 <div class="status">
                                                     <p>Status</p>
                                                     <div class="adm-stt">
@@ -148,7 +148,7 @@
                                 <li class="">
                                     <div class="lists">
                                         <div class="progress">
-                                            <img src="/../SI_BebasTanggungan_TA/image/track.png" alt="">
+                                            <img src="<?= IMAGE; ?>track.png" alt="">
                                         </div>
 
                                         <div class="ls">
@@ -177,8 +177,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
-    <script src="/../SI_BebasTanggungan_TA/js/teknisi.js"></script>
-    <script src="/../SI_BebasTanggungan_TA/js/adprod.js"></script>
+    <script src="<?= JS; ?>teknisi.js"></script>
+    <script src="<?= JS; ?>adprod.js"></script>
 </body>
 
 </html>

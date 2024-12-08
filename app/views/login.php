@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login SIBETA!</title>
-    <link rel="stylesheet" type="text/css" href="../public/css/login.css">
+    <link rel="stylesheet" type="text/css" href="<?= BASEURL; ?>/css/login.css">
 </head>
 
 <body>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <script src="../public/js/login.js"></script>
+    <script src="<?= BASEURL; ?>/js/login.js"></script>
 </body>
 
 </html>
