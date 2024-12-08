@@ -3,6 +3,12 @@
 class Mahasiswa extends Controller
 {
     private $data;
+
+    public function index()
+    {
+        $this->view('not_found');
+    }
+
     public function home()
     {
         $this->model('Mahasiswa_model')->isLoggedIn();

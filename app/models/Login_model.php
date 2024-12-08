@@ -60,5 +60,7 @@ class login_model
             header('Location: ' . BASEURL . '/');
             exit;
         }
+        header('Location: ' . BASEURL . '/');
+        exit;
     }
 }
