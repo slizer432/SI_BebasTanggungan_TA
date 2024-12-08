@@ -33,9 +33,24 @@ class SuperAdmin_model
 
     public function getAllMahasiswa()
     {
-        $this->db->query('SELECT * FROM mahasiswa;');
+        $this->db->query('
+            SELECT 
+                mahasiswa.nim, 
+                mahasiswa.nama, 
+                mahasiswa.program_studi, 
+                mahasiswa.email, 
+                mahasiswa.foto_profil, 
+                users.password 
+            FROM 
+                mahasiswa 
+            INNER JOIN 
+                users 
+            ON 
+                mahasiswa.nim = users.username;
+        ');
         return $this->db->resultSet();
     }
+    
 
     public function getLog()
     {
@@ -56,16 +71,15 @@ class SuperAdmin_model
             $this->db->query('INSERT INTO users (username, password, role) VALUES (:username, :password, :role);');
             $this->db->bind(':username', $nim);
             $this->db->bind(':password', $password);
-            $this->db->bind(':role', 'mahasiswa');
+            $this->db->bind(':role', 'Mahasiswa');
 
             $this->db->execute();
 
-            $this->db->query('INSERT INTO mahasiswa (nim, nama, program_studi, email, password) VALUES (:nim, :nama, :major, :email, :password);');
+            $this->db->query('INSERT INTO mahasiswa (nim, nama, program_studi, email, password) VALUES (:nim, :nama, :major, :email);');
             $this->db->bind(':nim', $nim);
             $this->db->bind(':nama', $nama);
             $this->db->bind(':major', $major);
             $this->db->bind(':email', $email);
-            $this->db->bind(':password', $password);
 
             $this->db->execute();
 
@@ -92,11 +106,10 @@ class SuperAdmin_model
 
             $this->db->execute();
 
-            $this->db->query('INSERT INTO admin (nip, nama, email, password, role, nip_super_admin) VALUES (:nip, :nama, :email, :password, :role, :sa);');
+            $this->db->query('INSERT INTO admin (nip, nama, email, password, role, nip_super_admin) VALUES (:nip, :nama, :email, :role, :sa);');
             $this->db->bind(':nip', $nip);
             $this->db->bind(':nama', $nama);
             $this->db->bind(':email', $email);
-            $this->db->bind(':password', $password);
             $this->db->bind(':role', $role);
             $this->db->bind(':sa', $nipSa);
 
