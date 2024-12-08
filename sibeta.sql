@@ -4,6 +4,12 @@ GO
 USE sibeta;
 GO
 
+CREATE TABLE users (
+    username VARCHAR(20) PRIMARY KEY NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL,
+);
+
 -- Tabel mahasiswa
 CREATE TABLE mahasiswa
 (
@@ -11,8 +17,8 @@ CREATE TABLE mahasiswa
     nama VARCHAR(100) NOT NULL,
     program_studi VARCHAR(50) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
     foto_profil VARCHAR(100) NULL,
+	CONSTRAINT FK_User_Mahasiswa FOREIGN KEY (nim) REFERENCES users(username),
     CONSTRAINT ck_mahasiswa_program_studi CHECK (program_studi IN ('D-IV Teknik Informatika', 'D-IV Sistem Informasi Bisnis'))
 );
 
@@ -22,7 +28,8 @@ CREATE TABLE super_admin
     nip VARCHAR(20) PRIMARY KEY NOT NULL,
     nama VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL
+	foto_profil VARCHAR(100) NULL,
+	CONSTRAINT FK_User_SuperAdmin FOREIGN KEY (nip) REFERENCES users(username)
 );
 
 -- Tabel admin
@@ -31,9 +38,10 @@ CREATE TABLE admin
     nip VARCHAR(20) PRIMARY KEY NOT NULL,
     nama VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
     role VARCHAR(20) NOT NULL,
     nip_super_admin VARCHAR(20) NOT NULL,
+	foto_profil VARCHAR(100) NULL,
+	CONSTRAINT FK_User_Admin FOREIGN KEY (nip) REFERENCES users(username),
     FOREIGN KEY (nip_super_admin) REFERENCES super_admin(nip),
     CONSTRAINT ck_admin_role CHECK (role IN ('Teknisi', 'Admin Prodi', 'Admin Jurusan'))
 );
@@ -54,7 +62,7 @@ CREATE TABLE dokumen
 CREATE TABLE verifikasi_admin
 (
     id_verifikasi_admin INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nip_admin VARCHAR(20) NOT NULL,
+    nip_admin VARCHAR(20) NULL,
     nim VARCHAR(20) NOT NULL,
     tahap_verifikasi VARCHAR(50) NOT NULL,
     status_verifikasi VARCHAR(20) NOT NULL,
@@ -81,7 +89,7 @@ CREATE TABLE log_aktivitas_admin
 CREATE TABLE pengajuan_bebas_tanggungan
 (
     id_pengajuan INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-    nip_admin VARCHAR(20) NOT NULL,
+    nip_admin VARCHAR(20) NULL,
     nim VARCHAR(20) NOT NULL,
     tanggal_pengajuan DATE NOT NULL,
     status_pengajuan VARCHAR(20) NOT NULL,
@@ -119,39 +127,69 @@ CREATE TABLE pemberitahuan
     FOREIGN KEY (nip_super_admin) REFERENCES super_admin(nip)
 );
 
-
-
-INSERT INTO super_admin
-    (nip, nama, email, password)
+-- Super Admin
+INSERT INTO users (username, password, role)
 VALUES
-    ('123456789012345678', 'Dr. Ahmad Supriadi', 'aSupriadi@polinema.ac.id', 'supr1@d1');
+    ('123456789012345678', 'supr1@d1', 'Super Admin');
 
-INSERT INTO admin
-    (nip, nama, email, password, role, nip_super_admin)
+-- Admins
+INSERT INTO users (username, password, role)
 VALUES
-    ('987654321012345678', 'Budi Santoso', 'budiSantoso23@polinema.ac.id', 'BudiS1023', 'Teknisi', '123456789012345678'),
-    ('876543210123456789', 'Siti Aminah', 'sitiAminah@polinema.ac.id', 'Amin@h79', 'Admin Prodi', '123456789012345678'),
-    ('765432101234567890', 'Rudi Hermawan', 'hermawanRudi@polinema.ac.id', 'h3rMawaN', 'Admin Jurusan', '123456789012345678');
+    ('987654321012345678', 'BudiS1023', 'Teknisi'),
+    ('876543210123456789', 'Amin@h79', 'Admin Prodi'),
+    ('765432101234567890', 'h3rMawaN', 'Admin Jurusan');
 
-
-INSERT INTO mahasiswa
-    (nim, nama, program_studi, email, password)
+-- Mahasiswa
+INSERT INTO users (username, password, role)
 VALUES
-    ('2340271532', 'Azka Cahya', 'D-IV Teknik Informatika', 'azka.cahyam@gmail.com', 'azkacahya@94'),
-    ('2340271533', 'Hasbi Arridwan', 'D-IV Teknik Informatika', 'hasbi.arridwan@gmail.com', 'arrdwnhasbi4@8'),
-    ('2340271534', 'Fahmi Putra', 'D-IV Teknik Informatika', 'fahmi.putra@gmail.com', 'putra128@fm'),
-    ('2341271505', 'Regita Ayu', 'D-IV Sistem Informasi Bisnis', 'regita.ayu@gmail.com', 'regitaay15@'),
-    ('2341271506', 'Marco Ivano', 'D-IV Sistem Informasi Bisnis', 'marco.ivano@gmail.com', 'rmdhnak12m4l'),
-    ('2341271507', 'Sultan Rozan', 'D-IV Sistem Informasi Bisnis', 'sultan.rozan@gmail.com', 'sltnrzn0134'),
-    ('2340271535', 'Nadia Aulia', 'D-IV Teknik Informatika', 'nadia.aulia@gmail.com', 'ndaaulya24@t'),
-    ('2340271536', 'Fikri Rahman', 'D-IV Teknik Informatika', 'fikri.rahman@gmail.com', 'rahmanf1kri56@f'),
-    ('2340271537', 'Rizky Ramadhan', 'D-IV Teknik Informatika', 'rizky.ramadhan@gmail.com', 'ramdhnryzki78@'),
-    ('2341271508', 'Dewi Lestari', 'D-IV Sistem Informasi Bisnis', 'dewi.lestari@gmail.com', 'lst3ridewi@90'),
-    ('2341271509', 'Bayu Pamungkas', 'D-IV Sistem Informasi Bisnis', 'bayu.pamungkas@gmail.com', 'pamngksbayu@99'),
-    ('2341271510', 'Rina Kartika', 'D-IV Sistem Informasi Bisnis', 'rina.kartika@gmail.com', 'kart1karina11@'),
-    ('2340271538', 'Adi Nugroho', 'D-IV Teknik Informatika', 'adi.nugroho@gmail.com', 'ad1nugroho82@'),
-    ('2340271539', 'Maya Sari', 'D-IV Teknik Informatika', 'maya.sari@gmail.com', 'sar1maya87@'),
-    ('2341271511', 'Asep Suhendar', 'D-IV Sistem Informasi Bisnis', 'asep.suhendar@gmail.com', 'suhendaras7p@');
+    ('2340271532', 'azkacahya@94', 'Mahasiswa'),
+    ('2340271533', 'arrdwnhasbi4@8', 'Mahasiswa'),
+    ('2340271534', 'putra128@fm', 'Mahasiswa'),
+    ('2341271505', 'regitaay15@', 'Mahasiswa'),
+    ('2341271506', 'rmdhnak12m4l', 'Mahasiswa'),
+    ('2341271507', 'sltnrzn0134', 'Mahasiswa'),
+    ('2340271535', 'ndaaulya24@t', 'Mahasiswa'),
+    ('2340271536', 'rahmanf1kri56@f', 'Mahasiswa'),
+    ('2340271537', 'ramdhnryzki78@', 'Mahasiswa'),
+    ('2341271508', 'lst3ridewi@90', 'Mahasiswa'),
+    ('2341271509', 'pamngksbayu@99', 'Mahasiswa'),
+    ('2341271510', 'kart1karina11@', 'Mahasiswa'),
+    ('2340271538', 'ad1nugroho82@', 'Mahasiswa'),
+    ('2340271539', 'sar1maya87@', 'Mahasiswa'),
+    ('2341271511', 'suhendaras7p@', 'Mahasiswa');
+
+
+INSERT INTO super_admin (nip, nama, email, foto_profil)
+VALUES
+    ('123456789012345678', 'Dr. Ahmad Supriadi', 'aSupriadi@polinema.ac.id', NULL);
+
+
+INSERT INTO admin (nip, nama, email, role, nip_super_admin, foto_profil)
+VALUES
+    ('987654321012345678', 'Budi Santoso', 'budiSantoso23@polinema.ac.id', 'Teknisi', '123456789012345678', NULL),
+    ('876543210123456789', 'Siti Aminah', 'sitiAminah@polinema.ac.id', 'Admin Prodi', '123456789012345678', NULL),
+    ('765432101234567890', 'Rudi Hermawan', 'hermawanRudi@polinema.ac.id', 'Admin Jurusan', '123456789012345678', NULL);
+
+
+
+INSERT INTO mahasiswa (nim, nama, program_studi, email, foto_profil)
+VALUES
+    ('2340271532', 'Azka Cahya', 'D-IV Teknik Informatika', 'azka.cahyam@gmail.com', NULL),
+    ('2340271533', 'Hasbi Arridwan', 'D-IV Teknik Informatika', 'hasbi.arridwan@gmail.com', NULL),
+    ('2340271534', 'Fahmi Putra', 'D-IV Teknik Informatika', 'fahmi.putra@gmail.com', NULL),
+    ('2341271505', 'Regita Ayu', 'D-IV Sistem Informasi Bisnis', 'regita.ayu@gmail.com', NULL),
+    ('2341271506', 'Marco Ivano', 'D-IV Sistem Informasi Bisnis', 'marco.ivano@gmail.com', NULL),
+    ('2341271507', 'Sultan Rozan', 'D-IV Sistem Informasi Bisnis', 'sultan.rozan@gmail.com', NULL),
+    ('2340271535', 'Nadia Aulia', 'D-IV Teknik Informatika', 'nadia.aulia@gmail.com', NULL),
+    ('2340271536', 'Fikri Rahman', 'D-IV Teknik Informatika', 'fikri.rahman@gmail.com', NULL),
+    ('2340271537', 'Rizky Ramadhan', 'D-IV Teknik Informatika', 'rizky.ramadhan@gmail.com', NULL),
+    ('2341271508', 'Dewi Lestari', 'D-IV Sistem Informasi Bisnis', 'dewi.lestari@gmail.com', NULL),
+    ('2341271509', 'Bayu Pamungkas', 'D-IV Sistem Informasi Bisnis', 'bayu.pamungkas@gmail.com', NULL),
+    ('2341271510', 'Rina Kartika', 'D-IV Sistem Informasi Bisnis', 'rina.kartika@gmail.com', NULL),
+    ('2340271538', 'Adi Nugroho', 'D-IV Teknik Informatika', 'adi.nugroho@gmail.com', NULL),
+    ('2340271539', 'Maya Sari', 'D-IV Teknik Informatika', 'maya.sari@gmail.com', NULL),
+    ('2341271511', 'Asep Suhendar', 'D-IV Sistem Informasi Bisnis', 'asep.suhendar@gmail.com', NULL);
+
 
 INSERT INTO verifikasi_admin
     (nip_admin, nim, tahap_verifikasi, status_verifikasi, tanggal_verifikasi)
@@ -298,94 +336,8 @@ VALUES
     ('123456789012345678', 'Ajukan Verifikasi Teknisi', 'Syarat dan Ketentuan', 'Students are requested to read the following terms and conditions carefully. Ensure that all documents meet the specified format, size, and file type requirements.<br /> <br />  1. Thesis Report : The report must include the Cover, Table of Contents, List of Figures, List of Tables, Preface, Abstract (in both Indonesian and English), Approval (with full signature), Chapter 1 to Conclusion, References, and Appendices (if applicable). Upload in PDF format, signed, with the file name format: “[Name]_[NIM]_Thesis Report.pdf”.<br />  2. Thesis Program/Application : Upload in ZIP or RAR format containing the program or application developed in the Final Project/Thesis, with the file name format: “[Name]_[NIM]_Thesis Application.pdf”.<br />  3. Publication : Publication Statement Letter , upload in PDF format, with the file name format: “[Name]_[NIM]_Publication.pdf”.'),
     ('123456789012345678', 'Ajukan Verifikasi Admin Prodi', 'Syarat dan Ketentuan', 'Mahasiswa diminta untuk membaca syarat dan ketentuan berikut dengan seksama. Pastikan semua dokumen memenuhi persyaratan format, ukuran, dan jenis file yang ditentukan.<br /> <br />  1. Bukti Pengumpulan Laporan Tugas Akhir/Skripsi: Upload dalam format PDF, dengan format nama file: “[Nama]_[NIM]_Bukti Pengumpulan Tugas Akhir.pdf”.<br />  2. Bukti Pengumpulan Laporan PKL/Praktek Kerja Lapangan: Upload dalam format PDF, dengan format nama file: “[Nama]_[NIM]_Bukti Pengumpulan Laporan PKL.pdf”.<br />  3. Bukti Bebas Kompen: Upload dalam format PDF, dengan format nama file: “[Nama]_[NIM]_Bukti Bebas Kompen.pdf”.<br />  4. Scan Sertifikat TOEIC: Upload dalam format PDF, dengan format nama file: “[Nama]_[NIM]_Scan Sertifikat TOEIC.pdf”.');
 
-
-ALTER TABLE verifikasi_admin
-ALTER COLUMN nip_admin VARCHAR(20) NULL;
-
 ALTER TABLE notifikasi
 DROP COLUMN komentar;
 
 ALTER TABLE dokumen
 ADD komentar TEXT NULL;
-
-ALTER TABLE pengajuan_bebas_tanggungan
-ALTER COLUMN nip_admin VARCHAR(20) NULL;
-
-AlTER TABLE admin
-ADD foto_profil VARCHAR(100) NULL;
-
-AlTER TABLE super_admin
-ADD foto_profil VARCHAR(100) NULL;
-
-CREATE TABLE users (
-    username VARCHAR(20) PRIMARY KEY,
-    password NVARCHAR(255) NOT NULL,
-    role NVARCHAR(20) NOT NULL,
-    CONSTRAINT FK_User_Mahasiswa FOREIGN KEY (username) REFERENCES mahasiswa(nim),
-    CONSTRAINT FK_User_Admin FOREIGN KEY (username) REFERENCES admin(nip),
-    CONSTRAINT FK_User_SuperAdmin FOREIGN KEY (username) REFERENCES super_admin(nip)
-);
-
-
--- Nonaktifkan Constraint
-ALTER TABLE users NOCHECK CONSTRAINT FK_User_Mahasiswa;
-ALTER TABLE users NOCHECK CONSTRAINT FK_User_Admin;
-ALTER TABLE users NOCHECK CONSTRAINT FK_User_SuperAdmin;
-
--- Masukkan Data
--- Mahasiswa
-INSERT INTO users (username, password, role)
-SELECT nim AS username, password, 'Mahasiswa' AS role
-FROM mahasiswa;
-
--- Admin
-INSERT INTO users (username, password, role)
-SELECT nip AS username, password, role
-FROM admin;
-
--- Super Admin
-INSERT INTO users (username, password, role)
-SELECT nip AS username, password, 'Super Admin' AS role
-FROM super_admin;
-
--- Aktifkan Constraint
-ALTER TABLE users CHECK CONSTRAINT FK_User_Mahasiswa;
-ALTER TABLE users CHECK CONSTRAINT FK_User_Admin;
-ALTER TABLE users CHECK CONSTRAINT FK_User_SuperAdmin;
-
-GO
--- Trigger for mahasiswa
-CREATE TRIGGER trg_InsertMahasiswa
-ON mahasiswa
-AFTER INSERT
-AS
-BEGIN
-    INSERT INTO users (username, password, role)
-    SELECT nim AS username, password, 'Mahasiswa' AS role
-    FROM inserted;
-END;
-GO
-
--- Trigger for admin
-CREATE TRIGGER trg_InsertAdmin
-ON admin
-AFTER INSERT
-AS
-BEGIN
-    INSERT INTO users (username, password, role)
-    SELECT nip AS username, password, role
-    FROM inserted;
-END;
-GO
-
--- Trigger for super_admin
-CREATE TRIGGER trg_InsertSuperAdmin
-ON super_admin
-AFTER INSERT
-AS
-BEGIN
-    INSERT INTO users (username, password, role)
-    SELECT nip AS username, password, 'Super Admin' AS role
-    FROM inserted;
-END;
-GO
