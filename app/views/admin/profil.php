@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="/../SI_BebasTanggungan_TA/image/icon.png">
+        <link rel="icon" href="<?= IMAGE; ?>icon.png">
         <title>Profile</title>
-        <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/profil.css">
+        <link rel="stylesheet" href="<?=  CSS; ?>profil.css">
     </head>
 
     <body>
@@ -59,7 +59,7 @@
                                 <img src="/../SI_BebasTanggungan_TA/image/edit.png" alt="">
                                 <a href="../Admin/edit_profile.html">Edit Profile</a>
                             </button>
-                            <button><a href="/../SI_BebasTanggungan_TA/app/view/login.php">Log Out</a></button>
+                            <button onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/logout'">Log Out</button>
                         </div>
                     </div>
                 </div>

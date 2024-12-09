@@ -3,9 +3,9 @@
     <head>
         <meta charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="/../SI_BebasTanggungan_TA/image/icon.png">
+        <link rel="icon" href="<?= IMAGE; ?>icon.png">
         <title>Attachment</title>
-        <link rel="stylesheet" href="/../SI_BebasTanggungan_TA/css/Admin/lampiran.css">
+        <link rel="stylesheet" href="<?=  CSS; ?>Admin/lampiran.css">
     </head>
 
     <body>

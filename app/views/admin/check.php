@@ -56,9 +56,11 @@
                     </div>
                 </div>
 
-                <div class="comment">
-                    <textarea name="comment" id="comment" placeholder="type any comments..."></textarea>
-                </div>
+                <form action="">
+                    <div class="comment">
+                        <textarea name="comment" id="comment" placeholder="type any comments..."></textarea>
+                    </div>
+                </form>
             </div>
         </div>
 

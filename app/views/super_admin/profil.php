@@ -64,7 +64,7 @@
                             <img src="<?= IMAGE; ?>/edit.png" alt="">
                             <a href="<?= BASEURL; ?>/SuperAdmin/edit">Edit Profile</a>
                         </button>
-                        <button><a href="<?= BASEURL; ?>/SuperAdmin/logout">Log Out</a></button>
+                        <button onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/logout'">Log Out</button>
                     </div>
                 </div>
             </div>

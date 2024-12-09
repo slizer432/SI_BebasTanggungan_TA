@@ -57,6 +57,11 @@
                             <label for="email">Email :</label>
                             <p><?= $data['email']; ?></p>
                         </div>
+
+                        <div class="isi p">
+                            <label for="major">Major :</label>
+                            <p><?= $data['program_studi']; ?></p>
+                        </div>
                     </div>
 
                     <div class="btn">
