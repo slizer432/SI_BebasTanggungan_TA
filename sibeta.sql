@@ -341,3 +341,58 @@ DROP COLUMN komentar;
 
 ALTER TABLE dokumen
 ADD komentar TEXT NULL;
+
+--nambah kolom keterangan
+ALTER TABLE verifikasi_admin
+ADD keterangan VARCHAR(255) NULL;
+
+--buat trigger untuk set keterangan otomatis
+CREATE TRIGGER tr_SetVerificationMessage
+ON verifikasi_admin
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    UPDATE va
+    SET keterangan = 
+        CASE 
+            WHEN va.tahap_verifikasi = 'Teknisi' THEN
+                CASE va.status_verifikasi
+                    WHEN 'Verified' THEN 'Your 3 files has been verified by Technician.'
+                    WHEN 'Pending' THEN 'Your 3 files are being checked by the Technician.'
+                    WHEN 'Unverified' THEN 'Your 3 files have not been checked by Technician.'
+                END
+            WHEN va.tahap_verifikasi = 'Admin Prodi' THEN
+                CASE va.status_verifikasi
+                    WHEN 'Verified' THEN 'Your 4 files has been verified by Admin.'
+                    WHEN 'Pending' THEN 'Your 4 files are being checked by the Admin.'
+                    WHEN 'Unverified' THEN 'Your 4 files have not been checked by Admin.'
+                END
+        END
+    FROM verifikasi_admin va
+    INNER JOIN inserted i ON va.id_verifikasi_admin = i.id_verifikasi_admin;
+END;
+
+-- Example UPDATE (keterangan will be updated automatically)
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 3 files have been verified by Technician.'
+WHERE status_verifikasi = 'Verified' and tahap_verifikasi = 'Teknisi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 3 files are being checked by the Technician.'
+WHERE status_verifikasi = 'Pending' and tahap_verifikasi = 'Teknisi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 3 files have not been checked by Technician.'
+WHERE status_verifikasi = 'Unverified' and tahap_verifikasi = 'Teknisi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 4 files have been verified by Admin.'
+WHERE status_verifikasi = 'Verified' and tahap_verifikasi = 'Admin Prodi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 4 files are being checked by the Admin.'
+WHERE status_verifikasi = 'Pending' and tahap_verifikasi = 'Admin Prodi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 4 files have not been checked by Admin.'
+WHERE status_verifikasi = 'Unverified' and tahap_verifikasi = 'Admin Prodi';

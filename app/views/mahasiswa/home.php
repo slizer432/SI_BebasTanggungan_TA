@@ -64,27 +64,28 @@
                 <div class="chart">
                     <p>How far your submission is going?</p>
                     <div class="box">
-                    <div class="diagram">
-        <canvas id="adprod" 
-            data-status="<?php
-                if (!empty($data['verifikasi'])) {
-                    $found = false;
-                    foreach ($data['verifikasi'] as $verifikasi) {
-                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
-                            echo $verifikasi['keterangan'];
-                            $found = true;
-                            break;
-                        }
-                    }
-                    if (!$found) {
-                        echo 'empty';
-                    }
-                } else {
-                    echo 'empty';
-                }
-            ?>">
-        </canvas>
-    </div>
+                        <div class="diagram">
+                            <div class="percentage-text" id="teknisi-percentage"></div>
+                            <canvas id="adprod_teknisi"
+                                data-status="<?php
+                                                if (!empty($data['verifikasi'])) {
+                                                    $found = false;
+                                                    foreach ($data['verifikasi'] as $verifikasi) {
+                                                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
+                                                            echo $verifikasi['status_verifikasi'];
+                                                            $found = true;
+                                                            break;
+                                                        }
+                                                    }
+                                                    if (!$found) {
+                                                        echo 'empty';
+                                                    }
+                                                } else {
+                                                    echo 'empty';
+                                                }
+                                                ?>">
+                            </canvas>
+                        </div>
 
                         <div class="cb">
                             <span>Technician</span>
@@ -110,13 +111,14 @@
 
                     <div class="box">
                         <div class="diagram">
-                            <canvas id="adprod"
+                            <div class="percentage-text" id="admin-percentage"></div>
+                            <canvas id="adprod_admin"
                                 data-status="<?php
                                                 if (!empty($data['verifikasi'])) {
                                                     $found = false;
                                                     foreach ($data['verifikasi'] as $verifikasi) {
                                                         if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
-                                                            echo $verifikasi['keterangan'];
+                                                            echo $verifikasi['status_verifikasi'];
                                                             $found = true;
                                                             break;
                                                         }
@@ -243,7 +245,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-doughnutlabel"></script>
     <script src="<?= JS; ?>teknisi.js"></script>
     <script src="<?= JS; ?>adprod.js"></script>
 </body>
