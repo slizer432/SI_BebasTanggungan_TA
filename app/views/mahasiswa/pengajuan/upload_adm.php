@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="<?= IMAGE; ?>icon.png">
-    <title>Submission</title>
+    <link rel="icon" href="<?= BASEURL; ?>/image/icon.png">
+    <title>Submission - Submit to Admin</title>
     <link rel="stylesheet" href="<?= CSS; ?>Mahasiswa/upload.css">
 </head>
 
@@ -17,20 +17,20 @@
             </div>
 
             <div class="notif">
-                <img src="<?= IMAGE; ?>notification.png" alt="">
+                <img src="<?= BASEURL; ?>/image/notification.png" alt="Notification Icon">
             </div>
 
             <div class="profile">
                 <a href="<?= BASEURL; ?>/Mahasiswa/profil">
                     <span class="role"><?= $data['nim']; ?></span>
                 </a>
-                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+                <img src="<?= BASEURL; ?>/image/pp.png" alt="Profile Picture" class="pp">
             </div>
         </nav>
 
         <div class="menu-container">
             <div class="logo">
-                <img src="<?= IMAGE; ?>logo.png" alt="SIBETA">
+                <img src="<?= BASEURL; ?>/image/logo.png" alt="SIBETA">
                 <span>SIBETA</span>
             </div>
 
@@ -38,15 +38,11 @@
                 <div class="mi">
                     <a href="<?= BASEURL; ?>/Mahasiswa/pengajuan">File Submission</a>
                 </div>
-
-                <div class="mi">
+                <div class="m">
                     <a href="<?= BASEURL; ?>/Mahasiswa/upload_teknisi">Submit to Technician</a>
                 </div>
-
-                <div class="m">
-                    <div class="pilih">
-                        <a href="<?= BASEURL; ?>/Mahasiswa/upload_admin" class="aktif">Submit to Admin</a>
-                    </div>
+                <div class="pilih">
+                    <a href="<?= BASEURL; ?>/Mahasiswa/upload_admin" class="aktif">Submit to Admin</a>
                 </div>
             </div>
         </div>
@@ -60,58 +56,68 @@
                 <h2><?= $data['terms']['judul']; ?></h2>
                 <div class="tc">
                     <p><?= $data['terms']['isi']; ?></p>
-
                     <div class="alert">
-                        <img src="<?= IMAGE; ?>alert.png" alt="">
+                        <img src="<?= BASEURL; ?>/image/alert.png" alt="Alert Icon">
                         <span>Please ensure that the uploaded files comply with the requirements above!</span>
                     </div>
                 </div>
             </div>
 
-            <form action="">
+            <form action="<?= BASEURL; ?>/Mahasiswa/submitFiles" method="POST" enctype="multipart/form-data">
+                <!-- File 1 -->
                 <div class="sub">
                     <div class="sub-cont">
-                        <span>Thesis/Final Report Book Distribution Proof</span>
+                        <label for="file1">Thesis/Final Report Book Distribution Proof</label>
                         <div class="sub-con">
-                            <img src="<?= IMAGE; ?>file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file">
+                            <input type="file" id="file1" name="thesis_proof" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
 
+                <!-- File 2 -->
                 <div class="sub">
                     <div class="sub-cont">
-                        <span>Internship Report Distribution Proof</span>
+                        <label for="file2">Internship Report Distribution Proof</label>
                         <div class="sub-con">
-                            <img src="<?= IMAGE; ?>file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file">
+                            <input type="file" id="file2" name="internship_proof" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
 
+                <!-- File 3 -->
                 <div class="sub">
                     <div class="sub-cont">
-                        <span>Bebas Kompen Proof</span>
+                        <label for="file3">Bebas Kompen Proof</label>
                         <div class="sub-con">
-                            <img src="<?= IMAGE; ?>file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file">
+                            <input type="file" id="file3" name="kompen_proof" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
 
+                <!-- File 4 -->
                 <div class="sub">
                     <div class="sub-cont">
-                        <span>TOEIC Certificate Scan</span>
+                        <label for="file4">TOEIC Certificate Scan</label>
                         <div class="sub-con">
-                            <img src="<?= IMAGE; ?>file.png" alt="">
+                            <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file">
+                            <input type="file" id="file4" name="toeic_certificate" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
+
+                <!-- Submit Button -->
+             
+                <div class="upload-container">
+                    <button class="upload-button" type="submit">Upload</button>
+                </div>
+    
             </form>
         </div>
     </div>

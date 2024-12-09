@@ -281,3 +281,34 @@ nav {
     width: 29.45px;
     height: 29px;
 }
+
+.upload-container {
+    text-align: center;
+    margin-top: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.upload-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.upload-button {
+    background: linear-gradient(90deg, #2196F3, #1565C0);
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background 0.3s ease;
+}
+.upload-button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, #64B5F6, #1E88E5);
+}
+.upload-button:active {
+    transform: translateY(1px);
+    background: linear-gradient(90deg, #1976D2, #0D47A1);
+}
