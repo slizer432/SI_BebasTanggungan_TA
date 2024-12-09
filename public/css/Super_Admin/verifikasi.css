@@ -33,9 +33,10 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 20px 30px 300px;
+    padding: 30px 20px; /* Sesuaikan padding agar tidak ada penggeseran */
     overflow: hidden;
 }
+
 
 .profile {
     display: flex;
@@ -64,16 +65,21 @@ nav {
 }
 
 .menu-container {
-    position: sticky;
-    align-self: center;
+    position: fixed;
+    top: 66px;   /* Sesuaikan jarak dari atas */
+    left: 0;     /* Agar tetap di kiri halaman */
+    width: 250px;
+    height: 683px;
     background-color: #FFFFFF;
     color: #6D6C6C;
-    height: 683px;
-    width: 250px;
     box-shadow: 2px 2px 5px #929292;
     border-top-right-radius: 57px;
     border-bottom-right-radius: 57px;
+    z-index: 9999; /* Pastikan berada di atas elemen lain */
+    overflow-y: auto;
 }
+
+
 
 .logo {
     display: flex;
@@ -127,7 +133,10 @@ nav {
     justify-items: center;
     font-family: 'inter';
     padding-top: 130px;
+    margin-left: 250px; /* Sesuaikan dengan lebar menu-container */
 }
+
+
 
 .top {
     flex-direction: column;

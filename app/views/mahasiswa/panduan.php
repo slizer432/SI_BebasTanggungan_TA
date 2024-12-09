@@ -17,7 +17,7 @@
             </div>
 
             <div class="profile">
-                <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role"><?= $data['nim']; ?></span></a>
+                <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role"><?= $data['mhs']['nim']; ?></span></a>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
@@ -54,23 +54,11 @@
         <div class="content">
             <div class="box">
                 <div class="title">
-                    <span>Guideline For Bebas Tanggungan System</span>
+                    <h2><?= $data['judul']; ?></h2>
                 </div>
 
                 <div class="kt">
-                    <span>For students who have successfully passed their Final Project (Thesis), here are the<br>
-                        procedures for obtaining the Clearance Letter as a requirement for collecting your Diploma,<br>
-                        Transcript, and SKPI.</span>
-                    <p><br><br><b>1. Thesis Report : </b>The report must include the Cover, Table of Contents, List of
-                        Figures, List of Tables, Preface, Abstract (in both
-                        Indonesian and English), Approval (with full signature), Chapter 1 to Conclusion, References,
-                        and Appendices (if applicable).
-                        Upload in PDF format, signed, with the file name format: [Name]_[NIM]_Thesis Report.pdf.</p>
-                    <p><b>2. Thesis Program/Application : </b>Upload in ZIP or RAR format containing the program or
-                        application developed in the Final Project
-                        Thesis, with the file name format: [Name]_[NIM]_Thesis Application.pdf.</p>
-                    <p><b>3. Publication : </b>Publication Statement Letter, upload in PDF format, with the file name
-                        format: [Name]_[NIM]_Publication.pdf.</p>
+                    <span><?= $data['isi']; ?></span>
                 </div>
             </div>
         </div>

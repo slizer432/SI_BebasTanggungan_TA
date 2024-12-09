@@ -64,16 +64,20 @@ nav {
 }
 
 .menu-container {
-    position: sticky;
+    position: fixed; /* Ubah dari sticky ke fixed */
+    top: 66px;          /* Agar tetap berada di atas */
+    left: 0;         /* Agar tetap di sisi kiri */
     align-self: center;
     background-color: #FFFFFF;
     color: #6D6C6C;
-    height: 683px;
+    height: 683px;    /* Pastikan memenuhi tinggi layar */
     width: 250px;
     box-shadow: 2px 2px 5px #929292;
     border-top-right-radius: 57px;
     border-bottom-right-radius: 57px;
+    z-index: 1000;    /* Supaya berada di atas elemen lain */
 }
+
 
 .logo {
     display: flex;
@@ -127,7 +131,9 @@ nav {
     justify-items: center;
     font-family: 'inter';
     padding-top: 130px;
+    margin-left: 250px; /* Sesuai dengan lebar menu-container */
 }
+
 
 .top {
     flex-direction: column;

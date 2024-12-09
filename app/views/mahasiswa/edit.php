@@ -46,17 +46,17 @@
 
                             <div class="isi e">
                                 <label for="nama">Name :</label>
-                                <input type="text" name="nama">
+                                <input type="text" name="nama" value="<?= $data['nama']; ?>">
                             </div>
 
                             <div class="isi e">
                                 <label for="email">Email :</label>
-                                <input type="text" name="email">
+                                <input type="text" name="email" value="<?= $data['email']; ?>">
                             </div>
 
                             <div class="isi e">
                                 <label for="password">Password :</label>
-                                <input type="text" name="password">
+                                <input type="text" name="password" value="<?= $data['password']; ?>">
                             </div>
                         </div>
 

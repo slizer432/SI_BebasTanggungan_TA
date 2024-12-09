@@ -21,7 +21,9 @@
             </div>
 
             <div class="profile">
-                <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role"><?= $data['nim']; ?></span></a>
+                <a href="<?= BASEURL; ?>/Mahasiswa/profil">
+                    <span class="role"><?= $data['nim']; ?></span>
+                </a>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
@@ -51,21 +53,22 @@
 
         <div class="content">
             <div class="top">
-                <h2>Terms & Condition</h2>
+                <h2>Submit to Admin</h2>
             </div>
 
             <div class="terms">
-                <span>Terms & Condition</span>
+                <h2><?= $data['terms']['judul']; ?></h2>
                 <div class="tc">
-                    <p></p>
+                    <p><?= $data['terms']['isi']; ?></p>
+
                     <div class="alert">
                         <img src="<?= IMAGE; ?>alert.png" alt="">
                         <span>Please ensure that the uploaded files comply with the requirements above!</span>
                     </div>
                 </div>
             </div>
-            <form action="">
 
+            <form action="">
                 <div class="sub">
                     <div class="sub-cont">
                         <span>Thesis/Final Report Book Distribution Proof</span>
@@ -83,7 +86,7 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="">
                             <span>PDF with max 1MB</span>
-                            <button>Browse File</button>
+                            <input type="file">
                         </div>
                     </div>
                 </div>
@@ -94,21 +97,23 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="">
                             <span>PDF with max 1MB</span>
-                            <button>Browse File</button>
+                            <input type="file">
                         </div>
                     </div>
+                </div>
 
+                <div class="sub">
                     <div class="sub-cont">
                         <span>TOEIC Certificate Scan</span>
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="">
                             <span>PDF with max 1MB</span>
-                            <button>Browse File</button>
+                            <input type="file">
                         </div>
                     </div>
+                </div>
             </form>
         </div>
-    </div>
     </div>
 </body>
 

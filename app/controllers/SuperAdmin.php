@@ -44,7 +44,8 @@ class SuperAdmin extends Controller
     public function module()
     {
         $this->model('SuperAdmin_model')->isLoggedIn();
-        $this->view('super_admin/module');
+        $data['module'] = $this->model('SuperAdmin_model')->getModule();
+        $this->view('super_admin/module', $data);
     }
 
     public function profil()

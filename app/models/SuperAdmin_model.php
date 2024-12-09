@@ -26,10 +26,21 @@ class SuperAdmin_model
 
     public function getData()
     {
-        $this->db->query('SELECT * FROM super_admin WHERE nip = :nip;');
+        // Mengambil nama, email, dan password dari tabel super_admin dan users
+        $this->db->query('
+            SELECT super_admin.nip, super_admin.nama, super_admin.email, users.password
+            FROM super_admin
+            JOIN users ON super_admin.nip = users.username
+            WHERE super_admin.nip = :nip;
+        ');
+        
+        // Binding parameter :nip dengan nilai yang ada di session
         $this->db->bind(':nip', $_SESSION['superAdmin']);
+        
+        // Mengembalikan hasil sebagai objek
         return $this->db->single();
     }
+    
 
     public function getAllMahasiswa()
     {
@@ -50,11 +61,20 @@ class SuperAdmin_model
         ');
         return $this->db->resultSet();
     }
-    
+
 
     public function getLog()
     {
-        $this->db->query('SELECT * FROM log_aktivitas_admin;');
+        $this->db->query('
+        SELECT
+        admin.role AS role_admin,
+        admin.nama AS nama_admin,
+        log_aktivitas_admin.aktivitas,
+        log_aktivitas_admin.tanggal_aktivitas
+        FROM
+        log_aktivitas_admin
+        INNER JOIN admin ON log_aktivitas_admin.nip_admin = admin.nip;
+        ');
         return $this->db->resultSet();
     }
 
@@ -75,7 +95,7 @@ class SuperAdmin_model
 
             $this->db->execute();
 
-            $this->db->query('INSERT INTO mahasiswa (nim, nama, program_studi, email, password) VALUES (:nim, :nama, :major, :email);');
+            $this->db->query('INSERT INTO mahasiswa (nim, nama, program_studi, email) VALUES (:nim, :nama, :major, :email);');
             $this->db->bind(':nim', $nim);
             $this->db->bind(':nama', $nama);
             $this->db->bind(':major', $major);
@@ -121,9 +141,20 @@ class SuperAdmin_model
 
     public function getVerif()
     {
-        $this->db->query('SELECT * FROM verifikasi_admin;');
+        $this->db->query('
+        SELECT
+            admin.nama AS nama_admin,
+            mahasiswa.nama AS nama_mahasiswa,
+            verifikasi_admin.status_verifikasi,
+            verifikasi_admin.tanggal_verifikasi
+        FROM
+            verifikasi_admin
+            LEFT JOIN admin ON verifikasi_admin.nip_admin = admin.nip
+            INNER JOIN mahasiswa ON verifikasi_admin.nim = mahasiswa.nim;
+        ');
         return $this->db->resultSet();
     }
+
 
     public function edit()
     {
@@ -143,5 +174,16 @@ class SuperAdmin_model
 
             header('Location: ' . BASEURL . '/SuperAdmin/profil');
         }
+
+        
     }
+
+    public function getModule()
+    {
+        $this->db->query('SELECT tipe, judul, isi FROM pemberitahuan WHERE nip_super_admin = :nip;');
+        $this->db->bind(':nip', $_SESSION['superAdmin']);
+        return $this->db->resultSet();
+    }
+
+   
 }

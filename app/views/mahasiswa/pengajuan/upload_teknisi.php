@@ -51,26 +51,13 @@
 
         <div class="content">
             <div class="top">
-                <h2>Terms & Condition</h2>
+                <h2>Submit to Tecnician</h2>
             </div>
 
             <div class="terms">
-                <span>Terms & Condotion</span>
+                <h2><?= $data['terms']['judul']; ?></h2>
                 <div class="tc">
-                    <p>For students who have successfully passed their Final Project (Thesis), here are the
-                        procedures for obtaining the Clearance Letter as a requirement for collecting your Diploma,
-                        Transcript, and SKPI.</p>
-                    <p><br><b>1. Thesis Report : </b>The report must include the Cover, Table of Contents, List of
-                        Figures, List of Tables, Preface, Abstract (in both
-                        Indonesian and English), Approval (with full signature), Chapter 1 to Conclusion, References,
-                        and Appendices (if applicable).
-                        Upload in PDF format, signed, with the file name format: [Name]_[NIM]_Thesis Report.pdf.</p>
-                    <p><b>2. Thesis Program/Application : </b>Upload in ZIP or RAR format containing the program or
-                        application developed in the Final Project
-                        Thesis, with the file name format: [Name]_[NIM]_Thesis Application.pdf.
-                        <br><b>3. Publication : </b>Publication Statement Letter , upload in PDF format, with the file
-                        name format: [Name]_[NIM]_Publication.pdf.
-                    </p>
+                    <p><?= $data['terms']['isi']; ?></p>
 
                     <div class="alert">
                         <img src="<?= BASEURL; ?>/image/alert.png" alt="">
@@ -85,7 +72,7 @@
                     <div class="sub-con">
                         <img src="<?= BASEURL; ?>/image/file.png" alt="">
                         <span>PDF with max 10MB</span>
-                        <button>Browse File</button>
+                        <input type="file">
                     </div>
                 </div>
             </div>
@@ -96,7 +83,7 @@
                     <div class="sub-con">
                         <img src="<?= BASEURL; ?>/image/file.png" alt="">
                         <span>ZIP/RAR with max 1MB</span>
-                        <button>Browse File</button>
+                        <input type="file">
                     </div>
                 </div>
             </div>
@@ -107,7 +94,7 @@
                     <div class="sub-con">
                         <img src="<?= BASEURL; ?>/image/file.png" alt="">
                         <span>PDF with max 10MB</span>
-                        <button>Browse File</button>
+                        <input type="file">
                     </div>
                 </div>
             </div>

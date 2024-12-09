@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log Activity</title>
     <link rel="stylesheet" href="<?= CSS; ?>Super_Admin/log.css">
@@ -53,8 +53,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>ID log</th>
-                                <th>NIP</th>
+                                <th>Role</th>
+                                <th>Name</th>
                                 <th>Activity</th>
                                 <th>Date & Time</th>
                             </tr>
@@ -63,8 +63,8 @@
                         <tbody>
                             <?php foreach ($data['log'] as $log): ?>
                                 <tr>
-                                    <td class="peran"><?= $log['id_log']; ?></td>
-                                    <td class="nama"><?= $log['nip_admin']; ?></td>
+                                    <td class="peran"><?= $log['role_admin']; ?></td>
+                                    <td class="nama"><?= $log['nama_admin']; ?></td>
                                     <td class="activity"><?= $log['aktivitas']; ?></td>
                                     <td class="date"><?= $log['tanggal_aktivitas']; ?></td>
                                 </tr>

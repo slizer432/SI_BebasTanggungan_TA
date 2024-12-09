@@ -52,7 +52,7 @@
 
         <div class="content">
             <div class="top">
-                <p>Senin, 18 November 2024</p>
+                <p><?= $data['date'] ?></p>
             </div>
 
             <div class="middle">

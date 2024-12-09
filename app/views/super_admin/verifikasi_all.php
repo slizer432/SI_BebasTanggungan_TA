@@ -71,8 +71,8 @@
                         <tbody>
                             <?php foreach ($data['verif'] as $verif): ?>
                                 <tr>
-                                    <td class="admin"><?= $verif['nip_admin']; ?></td>
-                                    <td class="student"><?= $verif['nim']; ?></td>
+                                    <td class="admin"><?= $verif['nama_admin']; ?></td>
+                                    <td class="student"><?= $verif['nama_mahasiswa']; ?></td>
                                     <td class="status"><?= $verif['status_verifikasi']; ?></td>
                                     <td class="date"><?= $verif['tanggal_verifikasi']; ?></td>
                                 </tr>

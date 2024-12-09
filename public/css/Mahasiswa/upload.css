@@ -13,17 +13,19 @@ body {
             #F0F7F9 50%,
             #EAF6FF 72%,
             #d1e3ff 100%);
-    overflow: auto;
+    overflow-y: scroll; /* Pastikan halaman bisa di-scroll */
+    overflow-x: hidden; /* Hilangkan scroll horizontal jika tidak diperlukan */
 }
 
 .container {
     display: flex;
     flex-direction: row;
-    min-height: 100vh;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto; /* Tambahkan ini untuk memungkinkan scroll di container */
+    height: auto; /* Ubah dari min-height ke auto */
     width: 1470px;
 }
+
 
 nav {
     display: flex;
@@ -77,8 +79,9 @@ nav {
 }
 
 .menu-container {
-    position: sticky;
-    align-self: center;
+    position: fixed;
+    top: 68px;
+    left: 0;
     background-color: #FFFFFF;
     color: #6D6C6C;
     height: 683px;
@@ -86,7 +89,10 @@ nav {
     box-shadow: 2px 2px 5px #929292;
     border-top-right-radius: 57px;
     border-bottom-right-radius: 57px;
+    z-index: 1000;
 }
+
+
 
 .logo {
     display: flex;
@@ -161,16 +167,17 @@ nav {
 }
 
 .content {
+    margin-left: 250px; /* Sesuaikan dengan lebar .menu-container */
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-self: center;
     font-family: 'inter';
-    width: 80%;
-    height: 610px;
+    width: calc(100% - 250px); /* Lebar konten di sisa ruang halaman */
+    height: auto; /* Ubah agar tinggi menyesuaikan */
     margin-top: 50px;
-    margin-left: 25px;
 }
+
 
 .top {
     flex-direction: column;

@@ -14,6 +14,7 @@ class Mahasiswa extends Controller
         $this->model('Mahasiswa_model')->isLoggedIn();
         $data = $this->model('Mahasiswa_model')->getData();
         $data['title'] = 'Home';
+        $data['date'] = $this->model('Mahasiswa_model')->getDate();
         $this->view('mahasiswa/home', $data);
     }
 
@@ -36,7 +37,8 @@ class Mahasiswa extends Controller
     public function panduan()
     {
         $this->model('Mahasiswa_model')->isLoggedIn();
-        $data = $this->model('Mahasiswa_model')->getData();
+        $data = $this->model('Mahasiswa_model')->getGuidline('Panduan Mahasiswa');
+        $data['mhs'] = $this->model('Mahasiswa_model')->getData();
         $data['title'] = 'Guideline';
         $this->view('mahasiswa/panduan', $data);
     }
@@ -53,6 +55,7 @@ class Mahasiswa extends Controller
     {
         $this->model('Mahasiswa_model')->isLoggedIn();
         $data = $this->model('Mahasiswa_model')->getData();
+        $data['terms'] = $this->model('Mahasiswa_model')->getGuidline('Ajukan Verifikasi Admin Prodi');
         $data['title'] = 'Admin Submission';
         $data['dokumen'] = $this->model('Mahasiswa_model')->getDokumen();
         $this->view('mahasiswa/pengajuan/upload_adm', $data);
@@ -62,6 +65,7 @@ class Mahasiswa extends Controller
     {
         $this->model('Mahasiswa_model')->isLoggedIn();
         $data = $this->model('Mahasiswa_model')->getData();
+        $data['terms'] = $this->model('Mahasiswa_model')->getGuidline('Ajukan Verifikasi Teknisi');
         $data['title'] = 'Technician Submission';
         $data['dokumen'] = $this->model('Mahasiswa_model')->getDokumen();
         $this->view('mahasiswa/pengajuan/upload_teknisi', $data);
