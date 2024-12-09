@@ -15,6 +15,7 @@ class Mahasiswa extends Controller
         $data = $this->model('Mahasiswa_model')->getData();
         $data['title'] = 'Home';
         $data['date'] = $this->model('Mahasiswa_model')->getDate();
+        $data['verifikasi'] = $this->model('Mahasiswa_model')->getVerifikasi();
         $this->view('mahasiswa/home', $data);
     }
 

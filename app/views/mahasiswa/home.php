@@ -64,26 +64,92 @@
                 <div class="chart">
                     <p>How far your submission is going?</p>
                     <div class="box">
-                        <div class="diagram">
-                            <canvas id="teknisi"></canvas>
-                        </div>
+                    <div class="diagram">
+        <canvas id="adprod" 
+            data-status="<?php
+                if (!empty($data['verifikasi'])) {
+                    $found = false;
+                    foreach ($data['verifikasi'] as $verifikasi) {
+                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
+                            echo $verifikasi['keterangan'];
+                            $found = true;
+                            break;
+                        }
+                    }
+                    if (!$found) {
+                        echo 'empty';
+                    }
+                } else {
+                    echo 'empty';
+                }
+            ?>">
+        </canvas>
+    </div>
 
                         <div class="cb">
                             <span>Technician</span>
-                            <p>Your 3 files have been<br>
-                                verified by technician</p>
+                            <p><?php
+                                if (!empty($data['verifikasi'])) {
+                                    $found = false;
+                                    foreach ($data['verifikasi'] as $verifikasi) {
+                                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
+                                            echo $verifikasi['keterangan'];
+                                            $found = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!$found) {
+                                        echo 'You have not uploaded the file yet';
+                                    }
+                                } else {
+                                    echo 'You have not uploaded the file yet';
+                                }
+                                ?></p>
                         </div>
                     </div>
 
                     <div class="box">
                         <div class="diagram">
-                            <canvas id="adprod"></canvas>
+                            <canvas id="adprod"
+                                data-status="<?php
+                                                if (!empty($data['verifikasi'])) {
+                                                    $found = false;
+                                                    foreach ($data['verifikasi'] as $verifikasi) {
+                                                        if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
+                                                            echo $verifikasi['keterangan'];
+                                                            $found = true;
+                                                            break;
+                                                        }
+                                                    }
+                                                    if (!$found) {
+                                                        echo 'empty';
+                                                    }
+                                                } else {
+                                                    echo 'empty';
+                                                }
+                                                ?>">
+                            </canvas>
                         </div>
 
                         <div class="cb">
                             <span>Admin</span>
-                            <p>Your 4 files have been<br>
-                                verified by technician</p>
+                            <p><?php
+                                if (!empty($data['verifikasi'])) {
+                                    $found = false;
+                                    foreach ($data['verifikasi'] as $verifikasi) {
+                                        if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
+                                            echo $verifikasi['keterangan'];
+                                            $found = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!$found) {
+                                        echo 'You have not uploaded the file yet';
+                                    }
+                                } else {
+                                    echo 'You have not uploaded the file yet';
+                                }
+                                ?></p>
                         </div>
                     </div>
                 </div>
@@ -177,8 +243,10 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-doughnutlabel"></script>
     <script src="<?= JS; ?>teknisi.js"></script>
     <script src="<?= JS; ?>adprod.js"></script>
+</body>
 </body>
 
 </html>

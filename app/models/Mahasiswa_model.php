@@ -58,7 +58,7 @@ class Mahasiswa_model
         $month = date('F'); // Full month name (e.g., January, February)
         $year = date('Y'); // Year in 4 digits (e.g., 2024)
     
-        return "$day, $month $date $year";
+        return "$day, $month $date, $year";
     }
 
     public function getGuidline($tipe)
@@ -66,6 +66,13 @@ class Mahasiswa_model
         $this->db->query('SELECT * FROM pemberitahuan WHERE tipe = :tipe');
         $this->db->bind(':tipe', $tipe);
         return $this->db->single();
+    }
+
+    public function getVerifikasi()
+    {
+        $this->db->query('SELECT * FROM verifikasi_admin WHERE nim = :nim');
+        $this->db->bind(':nim', $_SESSION['mahasiswa']);
+        return $this->db->resultSet();
     }
     
 }
