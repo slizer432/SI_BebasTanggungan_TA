@@ -66,92 +66,90 @@
                     <div class="box">
                         <div class="diagram">
                             <div class="percentage-text" id="teknisi-percentage"></div>
-                            <canvas id="adprod_teknisi"
-                                data-status="<?php
-                                                if (!empty($data['verifikasi'])) {
-                                                    $found = false;
-                                                    foreach ($data['verifikasi'] as $verifikasi) {
-                                                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
-                                                            echo $verifikasi['status_verifikasi'];
-                                                            $found = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (!$found) {
-                                                        echo 'empty';
-                                                    }
-                                                } else {
-                                                    echo 'empty';
-                                                }
-                                                ?>">
+                            <canvas id="adprod_teknisi" data-status="<?php
+                            if (!empty($data['verifikasi'])) {
+                                $found = false;
+                                foreach ($data['verifikasi'] as $verifikasi) {
+                                    if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
+                                        echo $verifikasi['status_verifikasi'];
+                                        $found = true;
+                                        break;
+                                    }
+                                }
+                                if (!$found) {
+                                    echo 'empty';
+                                }
+                            } else {
+                                echo 'empty';
+                            }
+                            ?>">
                             </canvas>
                         </div>
 
                         <div class="cb">
                             <span>Technician</span>
                             <p><?php
-                                if (!empty($data['verifikasi'])) {
-                                    $found = false;
-                                    foreach ($data['verifikasi'] as $verifikasi) {
-                                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
-                                            echo $verifikasi['keterangan'];
-                                            $found = true;
-                                            break;
-                                        }
+                            if (!empty($data['verifikasi'])) {
+                                $found = false;
+                                foreach ($data['verifikasi'] as $verifikasi) {
+                                    if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
+                                        echo $verifikasi['keterangan'];
+                                        $found = true;
+                                        break;
                                     }
-                                    if (!$found) {
-                                        echo 'You have not uploaded the file yet';
-                                    }
-                                } else {
+                                }
+                                if (!$found) {
                                     echo 'You have not uploaded the file yet';
                                 }
-                                ?></p>
+                            } else {
+                                echo 'You have not uploaded the file yet';
+                            }
+                            ?></p>
                         </div>
                     </div>
 
                     <div class="box">
                         <div class="diagram">
                             <div class="percentage-text" id="admin-percentage"></div>
-                            <canvas id="adprod_admin"
-                                data-status="<?php
-                                                if (!empty($data['verifikasi'])) {
-                                                    $found = false;
-                                                    foreach ($data['verifikasi'] as $verifikasi) {
-                                                        if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
-                                                            echo $verifikasi['status_verifikasi'];
-                                                            $found = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (!$found) {
-                                                        echo 'empty';
-                                                    }
-                                                } else {
-                                                    echo 'empty';
-                                                }
-                                                ?>">
+                            <canvas id="adprod_admin" data-status="<?php
+                            if (!empty($data['verifikasi'])) {
+                                $found = false;
+                                foreach ($data['verifikasi'] as $verifikasi) {
+                                    if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
+                                        echo $verifikasi['status_verifikasi'];
+                                        $found = true;
+                                        break;
+                                    }
+                                }
+                                if (!$found) {
+                                    echo 'empty';
+                                }
+                            } else {
+                                echo 'empty';
+                            }
+                            ?>">
                             </canvas>
                         </div>
 
                         <div class="cb">
                             <span>Admin</span>
                             <p><?php
-                                if (!empty($data['verifikasi'])) {
-                                    $found = false;
-                                    foreach ($data['verifikasi'] as $verifikasi) {
-                                        if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
-                                            echo $verifikasi['keterangan'];
-                                            $found = true;
-                                            break;
-                                        }
+                            if (!empty($data['verifikasi'])) {
+                                $found = false;
+                                foreach ($data['verifikasi'] as $verifikasi) {
+                                    if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
+                                        echo $verifikasi['keterangan'];
+                                        $found = true;
+                                        break;
                                     }
-                                    if (!$found) {
-                                        echo 'You have not uploaded the file yet';
-                                    }
-                                } else {
+                                }
+                                if (!$found) {
                                     echo 'You have not uploaded the file yet';
                                 }
-                                ?></p>
+                            } else {
+                                echo 'You have not uploaded the file yet';
+                            }
+                            ?></p>
                         </div>
                     </div>
                 </div>
@@ -161,7 +159,11 @@
                     <div class="tr">
                         <div class="list">
                             <ul id="progress" class="text">
-                                <li class="active">
+                                <li class="<?php
+                                if (!empty($data['verifikasi'])) {
+                                    echo 'active';
+                                }
+                                ?>">
                                     <div class="lists">
                                         <div class="progress">
                                             <img src="<?= IMAGE; ?>track.png" alt="">
@@ -178,8 +180,31 @@
                                                     and Publication requirements.</p>
                                                 <div class="status">
                                                     <p>Status</p>
-                                                    <div class="tns-stt">
-                                                        <span>Verification</span>
+                                                    <div class="tns-stt <?php
+                                                    if (!empty($data['verifikasi'])) {
+                                                        foreach ($data['verifikasi'] as $verifikasi) {
+                                                            if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
+                                                                if ($verifikasi['status_verifikasi'] == 'Unverified') {
+                                                                    echo 'unverified';
+                                                                } else if ($verifikasi['status_verifikasi'] == 'Pending') {
+                                                                    echo 'pending';
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>">
+                                                        <span><?php
+                                                        if (!empty($data['verifikasi'])) {
+                                                            foreach ($data['verifikasi'] as $verifikasi) {
+                                                                if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
+                                                                    echo $verifikasi['status_verifikasi'];
+                                                                    break;
+                                                                }
+                                                            }
+                                                        } else {
+                                                            echo 'Not Started';
+                                                        }
+                                                        ?></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,7 +212,22 @@
                                     </div>
                                 </li>
 
-                                <li class="active">
+                                <li class="<?php
+                                if (!empty($data['verifikasi'])) {
+                                    $teknisiVerified = false;
+
+                                    foreach ($data['verifikasi'] as $verifikasi) {
+                                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi' && $verifikasi['status_verifikasi'] == 'Verified') {
+                                            $teknisiVerified = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if ($teknisiVerified) {
+                                        echo 'active';
+                                    }
+                                }
+                                ?>">
                                     <div class="lists">
                                         <div class="progress">
                                             <img src="<?= IMAGE; ?>track.png" alt="">
@@ -204,8 +244,51 @@
                                                     and Publication requirements.</p>
                                                 <div class="status">
                                                     <p>Status</p>
-                                                    <div class="adm-stt">
-                                                        <span>Pending</span>
+                                                    <div class="adm-stt <?php
+                                                    if (!empty($data['verifikasi'])) {
+                                                        $teknisiVerified = false;
+                                                        foreach ($data['verifikasi'] as $verifikasi) {
+                                                            if ($verifikasi['tahap_verifikasi'] == 'Teknisi' && $verifikasi['status_verifikasi'] == 'Verified') {
+                                                                $teknisiVerified = true;
+                                                            }
+                                                        }
+
+                                                        if ($teknisiVerified) {
+                                                            foreach ($data['verifikasi'] as $verifikasi) {
+                                                                if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
+                                                                    if ($verifikasi['status_verifikasi'] == 'Unverified') {
+                                                                        echo 'unverified';
+                                                                    } else if ($verifikasi['status_verifikasi'] == 'Pending') {
+                                                                        echo 'pending';
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>">
+                                                        <span><?php
+                                                        if (!empty($data['verifikasi'])) {
+                                                            $teknisiVerified = false;
+                                                            foreach ($data['verifikasi'] as $verifikasi) {
+                                                                if ($verifikasi['tahap_verifikasi'] == 'Teknisi' && $verifikasi['status_verifikasi'] == 'Verified') {
+                                                                    $teknisiVerified = true;
+                                                                }
+                                                            }
+
+                                                            if ($teknisiVerified) {
+                                                                foreach ($data['verifikasi'] as $verifikasi) {
+                                                                    if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
+                                                                        echo $verifikasi['status_verifikasi'];
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                echo 'Not Started';
+                                                            }
+                                                        } else {
+                                                            echo 'Not Started';
+                                                        }
+                                                        ?></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,7 +296,25 @@
                                     </div>
                                 </li>
 
-                                <li class="">
+                                <li class="<?php
+                                if (!empty($data['verifikasi'])) {
+                                    $teknisiVerified = false;
+                                    $adminVerified = false;
+
+                                    foreach ($data['verifikasi'] as $verifikasi) {
+                                        if ($verifikasi['tahap_verifikasi'] == 'Teknisi' && $verifikasi['status_verifikasi'] == 'Verified') {
+                                            $teknisiVerified = true;
+                                        }
+                                        if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi' && $verifikasi['status_verifikasi'] == 'Verified') {
+                                            $adminVerified = true;
+                                        }
+                                    }
+
+                                    if ($teknisiVerified && $adminVerified) {
+                                        echo 'active';
+                                    }
+                                }
+                                ?>">
                                     <div class="lists">
                                         <div class="progress">
                                             <img src="<?= IMAGE; ?>track.png" alt="">
@@ -225,11 +326,57 @@
                                             </div>
 
                                             <div class="stt">
-                                                <p>Your files successfully verified!<br>
-                                                    Please apply here to print Bebas Tanggungan document.</p>
+                                                <p><?php 
+                                                if ($adminVerified) {
+                                                    if (!empty($data['pengajuan']['status_pengajuan']) && $data['pengajuan']['status_pengajuan'] == 'Accepted') {
+                                                        echo 'Your submission has been Accepted. Click the Print button to print the "Bebas Tanggungan" document.';
+                                                    } else {
+                                                        echo 'Your files successfully verified!<br>
+                                                        Please Apply here to print Bebas Tanggungan document.';
+                                                    }
+                                                }
+                                                ?></p>
                                                 <div class="app">
                                                     <div class="dc-stt">
-                                                        <button>apply</button>
+                                                        <form action="<?= BASEURL; ?>/Mahasiswa/applyBebas" method="POST">
+                                                            <button type="submit" name="apply" class="dc-stt <?php
+                                                                $adminVerified = false;
+                                                                if (!empty($data['verifikasi'])) {
+                                                                    foreach ($data['verifikasi'] as $verifikasi) {
+                                                                        if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi' && $verifikasi['status_verifikasi'] == 'Verified') {
+                                                                            $adminVerified = true;
+                                                                            break;
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                if ($adminVerified) {
+                                                                    if (!empty($data['pengajuan']['status_pengajuan'])) {
+                                                                        if ($data['pengajuan']['status_pengajuan'] == 'Accepted') {
+                                                                            echo 'btn-print';
+                                                                        } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
+                                                                            echo 'btn-pending';
+                                                                        }
+                                                                    } else {
+                                                                        echo 'btn-apply';
+                                                                    }
+                                                                }
+                                                            ?>">
+                                                                <?php
+                                                                if ($adminVerified) {
+                                                                    if (!empty($data['pengajuan']['status_pengajuan'])) {
+                                                                        if ($data['pengajuan']['status_pengajuan'] == 'Accepted') {
+                                                                            echo 'Print';
+                                                                        } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
+                                                                            echo 'Pending';
+                                                                        }
+                                                                    } else {
+                                                                        echo 'Apply';
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

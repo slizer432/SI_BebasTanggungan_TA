@@ -74,5 +74,11 @@ class Mahasiswa_model
         $this->db->bind(':nim', $_SESSION['mahasiswa']);
         return $this->db->resultSet();
     }
-    
+
+    public function getPengajuan()
+    {
+        $this->db->query('SELECT status_pengajuan FROM pengajuan_bebas_tanggungan WHERE nim = :nim');
+        $this->db->bind(':nim', $_SESSION['mahasiswa']);
+        return $this->db->single();
+    }
 }
