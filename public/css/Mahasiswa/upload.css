@@ -41,8 +41,8 @@ nav {
 
 .notif {
     justify-content: center;
-    padding-top: 12px;
-    padding-left: 20px;
+    padding-top: 5px;
+    padding-left: 10px;
 
 }
 
@@ -64,11 +64,21 @@ nav {
     margin-right: 20px;
 }
 
+.profile:hover {
+    cursor: pointer;
+    background-color: #334EAC;
+}
+
 .role {
     color: #334EAC;
     font-size: 15px;
     font-weight: 600;
     padding: 25px 10px 25px 14px;
+}
+
+.role:hover {
+    cursor: pointer;
+    color: #FFFFFF;
 }
 
 .pp {
@@ -80,7 +90,7 @@ nav {
 
 .menu-container {
     position: fixed;
-    top: 68px;
+    top: 35px;
     left: 0;
     background-color: #FFFFFF;
     color: #6D6C6C;
@@ -91,8 +101,6 @@ nav {
     border-bottom-right-radius: 57px;
     z-index: 1000;
 }
-
-
 
 .logo {
     display: flex;
@@ -116,7 +124,7 @@ nav {
     color: #334EAC;
     text-decoration: none;
     padding-top: 12px;
-    padding-left: 865px;
+    padding-left: 815px;
 }
 
 .menu {
@@ -167,15 +175,15 @@ nav {
 }
 
 .content {
-    margin-left: 250px; /* Sesuaikan dengan lebar .menu-container */
     display: flex;
     flex-direction: column;
     gap: 15px;
     align-self: center;
     font-family: 'inter';
-    width: calc(100% - 250px); /* Lebar konten di sisa ruang halaman */
-    height: auto; /* Ubah agar tinggi menyesuaikan */
-    margin-top: 50px;
+    width: calc(100% - 310px); 
+    height: auto;
+    margin-top: 130px;
+    margin-left: 310px;
 }
 
 
@@ -283,32 +291,20 @@ nav {
 }
 
 .upload-container {
-    text-align: center;
-    margin-top: 30px;
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: end;
+    margin: 20px 58px 20px 0;
 }
-.upload-container:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+
 .upload-button {
-    background: linear-gradient(90deg, #2196F3, #1565C0);
+    background-color: #005ED9;
     color: white;
     padding: 12px 30px;
     font-size: 16px;
-    font-weight: bold;
     border: none;
-    border-radius: 25px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, background 0.3s ease;
 }
+
 .upload-button:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(90deg, #64B5F6, #1E88E5);
-}
-.upload-button:active {
-    transform: translateY(1px);
-    background: linear-gradient(90deg, #1976D2, #0D47A1);
+    background-color: #0148a4;
 }

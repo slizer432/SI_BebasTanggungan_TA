@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?= BASEURL; ?>/image/icon.png">
-    <title>Submission - Submit to Admin</title>
     <link rel="stylesheet" href="<?= CSS; ?>Mahasiswa/upload.css">
+    <title>Submission - Submit to Admin</title>
 </head>
 
 <body>
@@ -20,11 +20,9 @@
                 <img src="<?= BASEURL; ?>/image/notification.png" alt="Notification Icon">
             </div>
 
-            <div class="profile">
-                <a href="<?= BASEURL; ?>/Mahasiswa/profil">
-                    <span class="role"><?= $data['nim']; ?></span>
-                </a>
-                <img src="<?= BASEURL; ?>/image/pp.png" alt="Profile Picture" class="pp">
+            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
+                <span class="role"><?= $data['nim']; ?></span>
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
