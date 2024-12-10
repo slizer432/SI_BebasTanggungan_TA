@@ -59,7 +59,7 @@ class Mahasiswa extends Controller
         $data = $this->model('Mahasiswa_model')->getData();
         $data['terms'] = $this->model('Mahasiswa_model')->getGuidline('Ajukan Verifikasi Admin Prodi');
         $data['title'] = 'Admin Submission';
-        $data['dokumen'] = $this->model('Mahasiswa_model')->getDokumen();
+        $this->model('Mahasiswa_model')->uploadAdmin();
         $this->view('mahasiswa/pengajuan/upload_adm', $data);
     }
 
@@ -69,7 +69,7 @@ class Mahasiswa extends Controller
         $data = $this->model('Mahasiswa_model')->getData();
         $data['terms'] = $this->model('Mahasiswa_model')->getGuidline('Ajukan Verifikasi Teknisi');
         $data['title'] = 'Technician Submission';
-        $data['dokumen'] = $this->model('Mahasiswa_model')->getDokumen();
+        $data['dokumen'] = $this->model('Mahasiswa_model')->uploadTeknisi();
         $this->view('mahasiswa/pengajuan/upload_teknisi', $data);
     }
 

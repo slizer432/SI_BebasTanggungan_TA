@@ -33,14 +33,14 @@ class SuperAdmin_model
             JOIN users ON super_admin.nip = users.username
             WHERE super_admin.nip = :nip;
         ');
-        
+
         // Binding parameter :nip dengan nilai yang ada di session
         $this->db->bind(':nip', $_SESSION['superAdmin']);
-        
+
         // Mengembalikan hasil sebagai objek
         return $this->db->single();
     }
-    
+
 
     public function getAllMahasiswa()
     {
@@ -80,7 +80,7 @@ class SuperAdmin_model
 
     public function addMhs()
     {
-        if (isset($_POST['nim'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $nim = $_POST['nim'];
             $nama = $_POST['nama'];
@@ -109,7 +109,7 @@ class SuperAdmin_model
 
     public function addAdmin()
     {
-        if (isset($_POST['nip'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sa = $this->getData();
 
             $role = $_POST['role'];
@@ -158,7 +158,7 @@ class SuperAdmin_model
 
     public function edit()
     {
-        if (isset($_POST['nip'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nip = $_POST['nip'];
             $nama = $_POST['nama'];
             $email = $_POST['email'];
@@ -175,7 +175,7 @@ class SuperAdmin_model
             header('Location: ' . BASEURL . '/SuperAdmin/profil');
         }
 
-        
+
     }
 
     public function getModule()
@@ -185,5 +185,5 @@ class SuperAdmin_model
         return $this->db->resultSet();
     }
 
-   
+
 }

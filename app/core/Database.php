@@ -66,4 +66,10 @@ class Database
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function column()
+    {
+        $this->execute();
+        return $this->stmt->fetchColumn();
+    }
 }

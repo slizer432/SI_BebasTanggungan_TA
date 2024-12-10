@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <form action="<?= BASEURL; ?>/Mahasiswa/submitFiles" method="POST" enctype="multipart/form-data">
+            <form action="<?= BASEURL; ?>/Mahasiswa/upload_teknisi" method="POST" enctype="multipart/form-data">
                 <!-- File 1 -->
                 <div class="sub">
                     <div class="sub-cont">
@@ -71,7 +71,7 @@
                         <div class="sub-con">
                             <img src="<?= BASEURL; ?>/image/file.png" alt="File Icon">
                             <span>PDF with max 10MB</span>
-                            <input type="file" id="final_project" name="final_project" accept=".pdf" required>
+                            <input type="file" id="final_project" name="laporanTugasAkhir" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                         <div class="sub-con">
                             <img src="<?= BASEURL; ?>/image/file.png" alt="File Icon">
                             <span>ZIP/RAR with max 1MB</span>
-                            <input type="file" id="thesis_program" name="thesis_program" accept=".zip,.rar" required>
+                            <input type="file" id="thesis_program" name="tugasAkhir" accept=".zip,.rar" required>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         <div class="sub-con">
                             <img src="<?= BASEURL; ?>/image/file.png" alt="File Icon">
                             <span>PDF with max 10MB</span>
-                            <input type="file" id="publication_letter" name="publication_letter" accept=".pdf" required>
+                            <input type="file" id="publication_letter" name="publikasi" accept=".pdf" required>
                         </div>
                     </div>
                 </div>

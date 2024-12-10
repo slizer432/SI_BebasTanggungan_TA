@@ -35,7 +35,7 @@
             <div class="top">
                 <span>Profile</span>
             </div>
-            <form action="<?= BASEURL; ?>/Mahasiswa/edit">
+            <form action="<?= BASEURL; ?>/Mahasiswa/edit" method="post">
                 <div class="data-content">
                     <div class="photo">
                         <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil">
@@ -43,6 +43,8 @@
 
                     <div class="cont">
                         <div class="data">
+
+                            <input type="hidden" name="nim" value="<?= $data['nim']; ?>">
 
                             <div class="isi e">
                                 <label for="nama">Name :</label>

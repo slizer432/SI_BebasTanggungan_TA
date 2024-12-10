@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <form action="<?= BASEURL; ?>/Mahasiswa/submitFiles" method="POST" enctype="multipart/form-data">
+            <form action="<?= BASEURL; ?>/Mahasiswa/upload_admin" method="POST" enctype="multipart/form-data">
                 <!-- File 1 -->
                 <div class="sub">
                     <div class="sub-cont">
@@ -71,7 +71,7 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file1" name="thesis_proof" accept=".pdf" required>
+                            <input type="file" id="file1" name="ttTugasAkhir" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file2" name="internship_proof" accept=".pdf" required>
+                            <input type="file" id="file2" name="ttMagang" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file3" name="kompen_proof" accept=".pdf" required>
+                            <input type="file" id="file3" name="kompen" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
@@ -107,17 +107,17 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file4" name="toeic_certificate" accept=".pdf" required>
+                            <input type="file" id="file4" name="toeic" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
 
                 <!-- Submit Button -->
-             
+
                 <div class="upload-container">
                     <button class="upload-button" type="submit">Upload</button>
                 </div>
-    
+
             </form>
         </div>
     </div>
