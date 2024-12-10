@@ -62,7 +62,7 @@ nav {
 .notif {
     justify-content: center;
     padding-top: 5px;
-    padding-left: 20px;
+    padding-left: 10px;
 
 }
 
@@ -84,11 +84,21 @@ nav {
     margin-right: 20px;
 }
 
+.profile:hover {
+    cursor: pointer;
+    background-color: #334EAC;
+}
+
 .role {
     color: #334EAC;
     font-size: 15px;
     font-weight: 600;
     padding: 25px 10px 25px 14px;
+}
+
+.role:hover {
+    cursor: pointer;
+    color: #FFFFFF;
 }
 
 .pp {
@@ -140,6 +150,10 @@ nav {
 .text {
     color: #FF0000;
     font-size: 15px;
+}
+
+.text a:link, .text a:visited {
+    color: #334EAC;
 }
 
 .data {

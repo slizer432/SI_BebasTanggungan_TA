@@ -65,9 +65,8 @@
                     </div>
 
                     <div class="btn">
-                        <button class="b">
-                            <img src="<?= IMAGE; ?>edit.png" alt="">
-                            <a href="<?= BASEURL; ?>/Mahasiswa/edit">Edit Profile</a>
+                        <button class="b" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/edit'">
+                            <img src="<?= IMAGE; ?>edit.png" alt="">Edit Profile
                         </button>
                         <button onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/logout'">Log Out</button>
                     </div>

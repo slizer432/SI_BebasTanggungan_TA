@@ -62,13 +62,13 @@ nav {
     color: #334EAC;
     text-decoration: none;
     padding-top: 12px;
-    padding-left: 955px;
+    padding-left: 965px;
 }
 
 .notif {
     justify-content: center;
     padding-top: 5px;
-    padding-left: 20px;
+    padding-left: 10px;
 
 }
 
@@ -162,7 +162,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
 }
 
 .isi .p {
@@ -270,8 +270,4 @@ input[type="submit"]:hover {
     font-weight: 500;
     text-decoration: none;
     color: #334EAC;
-}
-
-.btn a:hover {
-    color: #FFFFFF;
 }
