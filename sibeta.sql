@@ -396,3 +396,12 @@ WHERE status_verifikasi = 'Pending' and tahap_verifikasi = 'Admin Prodi';
 UPDATE verifikasi_admin 
 SET keterangan = 'Your 4 files have not been checked by Admin.'
 WHERE status_verifikasi = 'Unverified' and tahap_verifikasi = 'Admin Prodi';
+
+-- Update verifikasi_admin records for Teknisi to Verified status
+UPDATE verifikasi_admin
+SET status_verifikasi = 'Verified'
+WHERE tahap_verifikasi = 'Teknisi';
+
+
+
+

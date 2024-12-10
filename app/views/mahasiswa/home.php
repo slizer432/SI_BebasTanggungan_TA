@@ -297,9 +297,9 @@
                                 </li>
 
                                 <li class="<?php
+                                $adminVerified = false;
                                 if (!empty($data['verifikasi'])) {
                                     $teknisiVerified = false;
-                                    $adminVerified = false;
 
                                     foreach ($data['verifikasi'] as $verifikasi) {
                                         if ($verifikasi['tahap_verifikasi'] == 'Teknisi' && $verifikasi['status_verifikasi'] == 'Verified') {
@@ -326,41 +326,41 @@
                                             </div>
 
                                             <div class="stt">
-                                                <p><?php 
+                                                <p><?php
                                                 if ($adminVerified) {
                                                     if (!empty($data['pengajuan']['status_pengajuan']) && $data['pengajuan']['status_pengajuan'] == 'Accepted') {
                                                         echo 'Your submission has been Accepted. Click the Print button to print the "Bebas Tanggungan" document.';
-                                                    } else {
-                                                        echo 'Your files successfully verified!<br>
-                                                        Please Apply here to print Bebas Tanggungan document.';
+                                                    } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
+                                                        echo 'Your submission is being processed.';
                                                     }
                                                 }
                                                 ?></p>
                                                 <div class="app">
                                                     <div class="dc-stt">
-                                                        <form action="<?= BASEURL; ?>/Mahasiswa/applyBebas" method="POST">
+                                                        <form action="<?= BASEURL; ?>/Mahasiswa/applyBebas"
+                                                            method="POST">
                                                             <button type="submit" name="apply" class="dc-stt <?php
-                                                                $adminVerified = false;
-                                                                if (!empty($data['verifikasi'])) {
-                                                                    foreach ($data['verifikasi'] as $verifikasi) {
-                                                                        if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi' && $verifikasi['status_verifikasi'] == 'Verified') {
-                                                                            $adminVerified = true;
-                                                                            break;
-                                                                        }
+                                                            $adminVerified = false;
+                                                            if (!empty($data['verifikasi'])) {
+                                                                foreach ($data['verifikasi'] as $verifikasi) {
+                                                                    if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi' && $verifikasi['status_verifikasi'] == 'Verified') {
+                                                                        $adminVerified = true;
+                                                                        break;
                                                                     }
                                                                 }
+                                                            }
 
-                                                                if ($adminVerified) {
-                                                                    if (!empty($data['pengajuan']['status_pengajuan'])) {
-                                                                        if ($data['pengajuan']['status_pengajuan'] == 'Accepted') {
-                                                                            echo 'btn-print';
-                                                                        } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
-                                                                            echo 'btn-pending';
-                                                                        }
-                                                                    } else {
-                                                                        echo 'btn-apply';
+                                                            if ($adminVerified) {
+                                                                if (!empty($data['pengajuan']['status_pengajuan'])) {
+                                                                    if ($data['pengajuan']['status_pengajuan'] == 'Accepted') {
+                                                                        echo 'btn-print';
+                                                                    } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
+                                                                        echo 'btn-pending';
                                                                     }
+                                                                } else {
+                                                                    echo 'btn-apply';
                                                                 }
+                                                            }
                                                             ?>">
                                                                 <?php
                                                                 if ($adminVerified) {
