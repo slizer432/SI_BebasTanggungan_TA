@@ -1,84 +1,87 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="<?= IMAGE; ?>icon.png">
-        <title>Attachment</title>
-        <link rel="stylesheet" href="<?=  CSS; ?>Admin/lampiran.css">
-    </head>
 
-    <body>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="/../SI_BebasTanggungan_TA/image/logo.png" alt="SIBETA">
-                    <span>SIBETA</span>
+<head>
+    <meta charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
+    <title>Attachment</title>
+    <link rel="stylesheet" href="<?= CSS; ?>Admin/lampiran.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <img src="<?= IMAGE; ?>logo.png" alt="SIBETA">
+                <span>SIBETA</span>
+            </div>
+
+            <div class="attach">
+                <span>STUDENT ATTACHMENT</span>
+            </div>
+
+            <div class="profile">
+                <a href="<?= BASEURL; ?>/Admin/profil"><span class="role">Admin</span></a>
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="top">
+                <div class="search-container">
+                    <form action="#" method="GET">
+                        <button type="submit"><img src="<?= IMAGE; ?>search.png" alt=""></button>
+                        <input type="text" placeholder="search here...">
+                    </form>
                 </div>
-
-                <div class="attach">
-                    <span>STUDENT ATTACHMENT</span>
+                <div class="choose">
+                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_all.html" class="aktif">All</a>
+                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi.html">Verified</a>
+                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_pending.html">Pending</a>
+                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_unverif.html">Unverified</a>
                 </div>
+            </div>
 
-                <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
-                    <span class="role"><?= $data['nim']; ?></span>
-                    <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
-                </div>
-            </nav>
+            <div class="data">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>NIM</th>
+                                <th>NAME</th>
+                                <th>DATE</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                            <span class="role"><?= $data['nim']; ?></span>
+                            <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+                        </div>
+                        </nav>
 
-            <div class="content">
-                <div class="top">
-                    <div class="search-container">
-                        <form action="#" method="GET">
-                            <button type="submit"><img src="/../SI_BebasTanggungan_TA/image/search.png" alt=""></button>
-                            <input type="text" placeholder="search here...">
-                        </form>
-                    </div>
-                    <div class="choose">
-                        <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_all.html" class="aktif">All</a>
-                        <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi.html">Verified</a>
-                        <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_pending.html">Pending</a>
-                        <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_unverif.html">Unverified</a>
-                    </div>
-                </div>
-
-                <div class="data">
-                    <div class="table-container">
-                        <table>
-                            <thead>
+                        <tbody>
+                            <?php foreach ($data as $verif): ?>
                                 <tr>
-                                    <th>NIM</th>
-                                    <th>NAME</th>
-                                    <th>DATE</th>
-                                    <th>STATUS</th>
+                                    <td class="nim"><?= $verif['nim']; ?></td>
+                                    <td class="student"><?= $verif['nama']; ?></td>
+                                    <td class="date"><?= $verif['tanggal_verifikasi']; ?></td>
+                                    <td class="status"><?= $verif['status_verifikasi']; ?></td>
                                 </tr>
-                            </thead>
-        
-                            <tbody>
-                                <tr>
-                                    <td class="nim">2341720155</td>
-                                    <td class="student">Hasbi Arridwan</td>
-                                    <td class="date">2024 - 11 - 19  08:55</td>
-                                    <td class="status">Verified</td>
-                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
 
-                                <tr>
-                                    <td class="nim">2341720146</td>
-                                    <td class="student">Keisya Nisrina Aulia</td>
-                                    <td class="date">2024 - 11 - 19  08:42</td>
-                                    <td class="status">Pending</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-        
-                    <div class="halaman">
-                        <button type="button" class="prev">< Previous</button>
-                        <button type="button" class="page-number">01 02 03 04 ... 11</button>
-                        <button type="button" class="next">Next ></button>
-                    </div>
+                <div class="halaman">
+                    <button type="button" class="prev">
+                        < Previous</button>
+                            <button type="button" class="page-number">01 02 03 04 ... 11</button>
+                            <button type="button" class="next">Next ></button>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

@@ -42,17 +42,17 @@ class login_model
 
                     case 'Admin Jurusan':
                         header('Location: ' . BASEURL . '/admin/home');
-                        $_SESSION['adminJurusan'] = $username;
+                        $_SESSION['admin'] = $username;
                         exit;
 
                     case 'Admin Prodi':
                         header('Location: ' . BASEURL . '/admin/home');
-                        $_SESSION['adminProdi'] = $username;
+                        $_SESSION['admin'] = $username;
                         exit;
 
                     case 'Teknisi':
                         header('Location: ' . BASEURL . '/admin/home');
-                        $_SESSION['teknisi'] = $username;
+                        $_SESSION['admin'] = $username;
                         exit;
                 }
             }
