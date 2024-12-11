@@ -27,7 +27,8 @@
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
                 <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
-                <img src="<?= IMAGE; ?>foto_mahasiswa/<?= $data['foto_profil']; ?>" alt="Foto Profil" class="pp">
+                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/' . $data['foto_profil'] : 'pp.png'; ?>"
+                    alt="Foto Profil" class="pp">
             </div>
         </nav>
 
