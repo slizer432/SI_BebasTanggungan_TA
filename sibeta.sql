@@ -46,7 +46,6 @@ CREATE TABLE admin
     CONSTRAINT ck_admin_role CHECK (role IN ('Teknisi', 'Admin Prodi', 'Admin Jurusan'))
 );
 
-
 -- Tabel dokumen
 CREATE TABLE dokumen
 (
@@ -72,7 +71,6 @@ CREATE TABLE verifikasi_admin
     CONSTRAINT ck_verifikasi_status CHECK (status_verifikasi IN ('Unverified', 'Pending', 'Verified'))
 );
 
-
 -- Tabel log_aktivitas_admin
 CREATE TABLE log_aktivitas_admin
 (
@@ -83,7 +81,6 @@ CREATE TABLE log_aktivitas_admin
     tanggal_aktivitas DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (nip_admin) REFERENCES admin(nip)
 );
-
 
 -- Tabel pengajuan_bebas_tanggungan
 CREATE TABLE pengajuan_bebas_tanggungan
@@ -114,7 +111,6 @@ CREATE TABLE notifikasi
     CONSTRAINT ck_notifikasi_status CHECK (status_notifikasi IN ('Unread', 'Read')),
     CONSTRAINT ck_tipe_pengirim CHECK (tipe_pengirim IN ('Teknisi', 'Admin Prodi', 'Admin Jurusan'))
 );
-
 
 -- Tabel pemberitahuan
 CREATE TABLE pemberitahuan
@@ -402,6 +398,7 @@ UPDATE verifikasi_admin
 SET status_verifikasi = 'Verified'
 WHERE tahap_verifikasi = 'Teknisi';
 
-
-
+UPDATE mahasiswa
+SET foto_profil = '2341720251_Hamdan Azizul Hakim.jpg'
+WHERE nim = '2341720251';
 
