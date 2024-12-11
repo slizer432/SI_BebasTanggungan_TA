@@ -36,20 +36,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function getPercentageByStatus(status) {
-    console.log('Status received:', status); // Debug log
     
     if (!status) return 0;
     
     const cleanStatus = status.toLowerCase().trim();
-    console.log('Cleaned status:', cleanStatus); // Debug log
     
     switch(cleanStatus) {
         case 'unverified': return 50;
         case 'pending': return 75;
         case 'verified': return 100;
         case 'empty': default: 
-            console.log('Defaulting to 0'); // Debug log
-            return 0;
+        return 0;
     }
 }
 
