@@ -25,7 +25,7 @@
                 <img src="<?= IMAGE; ?>/notification.png" alt="">
             </div>
 
-            <<div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+            <<div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/SuperAdmin/profil'">
                 <span class="role aktif"><?= $data['nim']; ?></span>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
