@@ -25,9 +25,9 @@
                 <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
-            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
-                <span class="role aktif"><?= $data['nim']; ?></span>
-                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
+                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+                <img src="<?= IMAGE; ?>foto_mahasiswa/<?= $data['foto_profil']; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -35,11 +35,17 @@
             <div class="top">
                 <span>Profile</span>
             </div>
-            <form action="<?= BASEURL; ?>/Mahasiswa/edit" method="post">
+            <form action="<?= BASEURL; ?>/mahasiswa/profil" method="post" enctype="multipart/form-data">
                 <div class="data-content">
+
                     <div class="photo">
-                        <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil">
+                        <img id="preview-image" src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil">
+                        <div class="edit-overlay">
+                            <input type="file" name="foto" id="foto-input" accept="image/*">
+                            <label for="foto-input" class="edit-button">Change Photo</label>
+                        </div>
                     </div>
+
 
                     <div class="cont">
                         <div class="data">
@@ -63,14 +69,15 @@
                         </div>
 
                         <div class="btn">
-                            <input type="submit">
-                            <button><a href="<?= BASEURL; ?>/Mahasiswa/profil">Cancel</a></button>
+                            <input type="submit" value="Save Changes">
+                            <button type="button" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">Cancel</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    <script src="<?= BASEURL; ?>/js/edit.js"></script>
 </body>
 
 </html>

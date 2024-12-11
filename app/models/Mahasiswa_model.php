@@ -203,4 +203,33 @@ class Mahasiswa_model
         $this->db->bind(':nim', $_SESSION['mahasiswa']);
         return $this->db->single();
     }
+
+    public function update($data)
+    {
+        // Update tabel mahasiswa
+        $query1 = "UPDATE mahasiswa 
+                  SET nama = :nama, 
+                      email = :email, 
+                      foto_profil = :foto_profil 
+                  WHERE nim = :nim";
+
+        $this->db->query($query1);
+        $this->db->bind('nim', $data['nim']);
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('foto_profil', $data['foto_profil']);
+        $result1 = $this->db->execute();
+
+        // Update tabel users
+        $query2 = "UPDATE users 
+                  SET password = :password 
+                  WHERE username = :nim";
+
+        $this->db->query($query2);
+        $this->db->bind('password', $data['password']);
+        $this->db->bind('nim', $data['nim']);
+        $result2 = $this->db->execute();
+
+        return $result1 && $result2;
+    }
 }
