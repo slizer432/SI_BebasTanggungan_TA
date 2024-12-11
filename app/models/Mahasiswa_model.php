@@ -204,6 +204,41 @@ class Mahasiswa_model
         return $this->db->single();
     }
 
+    public function uploadFotoProfil()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'nim' => $_POST['nim'],
+                'nama' => $_POST['nama'],
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
+                'foto_profil' => null
+            ];
+
+            // Get current photo from database
+            $currentData = $this->getData();
+            $data['foto_profil'] = $currentData['foto_profil'];
+
+            // Handle file upload
+            if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
+                $fileTmpName = $_FILES['foto']['tmp_name'];
+                $fileExt = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
+                $fileNameNew = "{$data['nim']}_{$data['nama']}.{$fileExt}";
+                
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/SI_BebasTanggungan_TA/public/image/foto_mahasiswa/';
+                $fileDestination = $uploadDir . $fileNameNew;
+
+                if (!file_exists($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $data['foto_profil'] = $fileNameNew;
+                }
+            }
+        }
+    }
+
     public function update($data)
     {
         // Update tabel mahasiswa
