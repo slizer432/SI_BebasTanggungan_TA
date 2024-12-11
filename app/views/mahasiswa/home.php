@@ -185,9 +185,9 @@
                                                         foreach ($data['verifikasi'] as $verifikasi) {
                                                             if ($verifikasi['tahap_verifikasi'] == 'Teknisi') {
                                                                 if ($verifikasi['status_verifikasi'] == 'Unverified') {
-                                                                    echo 'unverified';
+                                                                    echo 'Unverified';
                                                                 } else if ($verifikasi['status_verifikasi'] == 'Pending') {
-                                                                    echo 'pending';
+                                                                    echo 'Pending';
                                                                 }
                                                             }
                                                         }
@@ -257,9 +257,9 @@
                                                             foreach ($data['verifikasi'] as $verifikasi) {
                                                                 if ($verifikasi['tahap_verifikasi'] == 'Admin Prodi') {
                                                                     if ($verifikasi['status_verifikasi'] == 'Unverified') {
-                                                                        echo 'unverified';
+                                                                        echo 'Unverified';
                                                                     } else if ($verifikasi['status_verifikasi'] == 'Pending') {
-                                                                        echo 'pending';
+                                                                        echo 'Pending';
                                                                     }
                                                                 }
                                                             }
@@ -328,10 +328,14 @@
                                             <div class="stt">
                                                 <p><?php
                                                 if ($adminVerified) {
-                                                    if (!empty($data['pengajuan']['status_pengajuan']) && $data['pengajuan']['status_pengajuan'] == 'Accepted') {
-                                                        echo 'Your submission has been Accepted. Click the Print button to print the "Bebas Tanggungan" document.';
-                                                    } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
-                                                        echo 'Your submission is being processed.';
+                                                    if (!empty($data['pengajuan']['status_pengajuan'])) {
+                                                        if ($data['pengajuan']['status_pengajuan'] == 'Accepted') {
+                                                            echo 'Your submission has been Accepted. Click the Print button to print the "Bebas Tanggungan" document.';
+                                                        } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
+                                                            echo 'Your submission is being processed.';
+                                                        }
+                                                    } else {
+                                                        echo 'Your files successfully verified! Please apply here to print Bebas Tanggungan document.';
                                                     }
                                                 }
                                                 ?></p>
