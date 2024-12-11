@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login SIBETA!</title>
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <link rel="stylesheet" type="text/css" href="<?= BASEURL; ?>/css/login.css">
+    <title>Login SIBETA!</title>
 </head>
 
 <body>
