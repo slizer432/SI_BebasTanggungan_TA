@@ -33,7 +33,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 20px; /* Sesuaikan padding agar tidak ada penggeseran */
+    padding: 30px 20px;
     overflow: hidden;
 }
 
@@ -66,8 +66,8 @@ nav {
 
 .menu-container {
     position: fixed;
-    top: 66px;   /* Sesuaikan jarak dari atas */
-    left: 0;     /* Agar tetap di kiri halaman */
+    top: 30px;
+    left: 0;
     width: 250px;
     height: 683px;
     background-color: #FFFFFF;
@@ -75,7 +75,7 @@ nav {
     box-shadow: 2px 2px 5px #929292;
     border-top-right-radius: 57px;
     border-bottom-right-radius: 57px;
-    z-index: 9999; /* Pastikan berada di atas elemen lain */
+    z-index: 9999;
     overflow-y: auto;
 }
 
@@ -133,7 +133,7 @@ nav {
     justify-items: center;
     font-family: 'inter';
     padding-top: 130px;
-    margin-left: 250px; /* Sesuaikan dengan lebar menu-container */
+    margin-left: 250px;
 }
 
 
