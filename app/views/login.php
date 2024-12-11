@@ -11,6 +11,11 @@
 
 <body>
     <div class="container">
+        <div class="img">
+            <img src="<?= IMAGE; ?>login1.png" alt="" class="lingkaran">
+            <img src="<?= IMAGE; ?>login2.png" alt="" class="comp">
+        </div>
+
         <div class="login-box">
             <h1 class="welcome">Welcome to <span class="blue-text">SIBETA!</span></h1>
             <br><br>
@@ -29,13 +34,6 @@
                     <div class="input-container">
                         <input type="password" id="password" name="password">
                         <span class="eye-icon"></span>
-                    </div>
-                </div>
-
-                <div class="form-options">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember me</label>
                     </div>
                 </div>
 

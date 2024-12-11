@@ -12,9 +12,9 @@
 <body>
     <div class="container">
         <nav>
-            <div class="profile">
-                <a href="<?= BASEURL; ?>/Super_Admin/profil"><span class="role">Super Admin</span></a>
-                <img src="<?= IMAGE; ?>/pp.png" alt="Foto Profil" class="pp">
+        <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                <span class="role"><?= $data['nim']; ?></span>
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 

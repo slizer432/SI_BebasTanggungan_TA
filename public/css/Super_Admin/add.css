@@ -49,11 +49,21 @@ nav {
     margin-right: 20px;
 }
 
+.profile:hover {
+    cursor: pointer;
+    background-color: #334EAC;
+}
+
 .role {
     color: #334EAC;
     font-size: 15px;
     font-weight: 600;
     padding: 25px 10px 25px 14px;
+}
+
+.role:hover {
+    cursor: pointer;
+    color: #FFFFFF;
 }
 
 .pp {
@@ -65,7 +75,7 @@ nav {
 
 .menu-container {
     position: fixed;
-    top: 66px;
+    top: 30px;
     left: 0;
     align-self: center;
     background-color: #FFFFFF;
