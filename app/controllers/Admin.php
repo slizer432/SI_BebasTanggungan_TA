@@ -11,7 +11,7 @@ class Admin extends Controller
     {
         $this->model('Admin_model')->isLoggedIn();
         $data = $this->model('Admin_model')->getData();
-        $this->view('admin/profil', $data);
+        $this->lampiran();
     }
 
     public function profil()
@@ -43,7 +43,7 @@ class Admin extends Controller
     public function edit()
     {
         $this->model('Admin_model')->isLoggedIn();
-        $this->model('Admin_model')->edit();
-        $this->view('admin/edit');
+        $data = $this->model('Admin_model')->getData();
+        $this->view('admin/edit', $data);
     }
 }

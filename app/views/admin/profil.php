@@ -22,7 +22,7 @@
             </div>
 
             <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
-                <span class="role aktif"><?= $data['nim']; ?></span>
+                <span class="role aktif"><?= $data['nama']; ?></span>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
@@ -48,11 +48,6 @@
                             <label for="nama">Name :</label>
                             <p><?= $data['nama']; ?></p>
                         </div>
-                        <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
-                            <span class="role aktif"><?= $data['nim']; ?></span>
-                            <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
-                        </div>
-                        </nav>
 
                         <div class="isi p">
                             <label for="email">Email :</label>
