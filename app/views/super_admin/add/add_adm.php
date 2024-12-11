@@ -4,8 +4,9 @@
 <head>
     <meta charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Admin Account</title>
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <link rel="stylesheet" href="<?= CSS; ?>/Super_Admin/add.css">
+    <title>Add Admin Account</title>
 </head>
 
 <body>

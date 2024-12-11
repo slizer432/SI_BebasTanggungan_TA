@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <link rel="stylesheet" href="<?= CSS; ?>Super_Admin/data.css">
-    <title>Student Data List</title>
+    <title>Admin Data List</title>
 </head>
 
 <body>
@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="choose">
-                        <a href="<?= BASEURL; ?>/SuperAdmin/data_mhs" class="aktif">Mahasiswa</a>
-                        <a href="<?= BASEURL; ?>/SuperAdmin/data_adm">Admin</a>
+                        <a href="<?= BASEURL; ?>/SuperAdmin/data_mhs">Mahasiswa</a>
+                        <a href="<?= BASEURL; ?>/SuperAdmin/data_adm" class="aktif">Admin</a>
                     </div>
                 </div>
             </div>
@@ -59,22 +59,22 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>NIM</th>
+                                <th>NIP</th>
                                 <th>Name</th>
-                                <th>Major</th>
                                 <th>Email</th>
                                 <th>Password</th>
+                                <th>Role</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php foreach ($data['mhs'] as $mhs): ?>
                                 <tr>
-                                    <td class="nim"><?= $mhs['nim']; ?></td>
+                                    <td class="nip"><?= $mhs['nip']; ?></td>
                                     <td class="nama"><?= $mhs['nama']; ?></td>
-                                    <td class="major"><?= $mhs['program_studi']; ?></td>
                                     <td class="email"><u><?= $mhs['email']; ?></u></td>
                                     <td class="password"><?= $mhs['password']; ?></td>
+                                    <td class="role"><?= $mhs['role']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
