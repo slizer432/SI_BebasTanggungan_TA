@@ -21,8 +21,8 @@
                 <a href="<?= BASEURL; ?>/Admin/lampiran">STUDENT ATTACHMENT</a>
             </div>
 
-            <div class="profile aktif">
-                <a href="<?= BASEURL; ?>/Admin/profil"><span class="role aktif">Admin</span></a>
+            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                <span class="role aktif"><?= $data['nim']; ?></span>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
@@ -49,7 +49,7 @@
                             <p><?= $data['nama']; ?></p>
                         </div>
                         <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
-                            <span class="role aktif"><?= $data['nip']; ?></span>
+                            <span class="role aktif"><?= $data['nim']; ?></span>
                             <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
                         </div>
                         </nav>
