@@ -20,9 +20,9 @@
                     <span>STUDENT ATTACHMENT</span>
                 </div>
 
-                <div class="profile">
-                    <a href="../Admin/profil.html"><span class="role">Admin</span></a>
-                    <img src="/../SI_BebasTanggungan_TA/image/pp.png" alt="Foto Profil" class="pp">
+                <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                    <span class="role"><?= $data['nim']; ?></span>
+                    <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
                 </div>
             </nav>
 

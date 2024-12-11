@@ -20,9 +20,9 @@
                     <a href="/../SI_BebasTanggungan_TA/app/view/Admin/lampiran.html">STUDENT ATTACHMENT</a>
                 </div>
 
-                <div class="profile aktif">
-                    <a href="../Admin/profil.html"><span class="role aktif">Admin</span></a>
-                    <img src="/../SI_BebasTanggungan_TA/image/pp.png" alt="Foto Profil" class="pp">
+                <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                    <span class="role aktif"><?= $data['nim']; ?></span>
+                    <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
                 </div>
             </nav>
 
