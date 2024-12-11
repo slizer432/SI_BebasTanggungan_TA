@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/../SI_BebasTanggungan_TA/image/icon.png">
-    <title>Profile</title>
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <link rel="stylesheet" href="<?= CSS; ?>/profil.css">
+    <title>Profile</title>
 </head>
 
 <body>
@@ -25,9 +25,9 @@
                 <img src="<?= IMAGE; ?>/notification.png" alt="">
             </div>
 
-            <div class="profile aktif">
-                <a href="<?= BASEURL; ?>/SuperAdmin/profil"><span class="role aktif">Super Admin</span></a>
-                <img src="<?= IMAGE; ?>/pp.png" alt="Foto Profil" class="pp">
+            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/SuperAdmin/profil'">
+                <span class="role aktif"><?= $data['nim']; ?></span>
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 

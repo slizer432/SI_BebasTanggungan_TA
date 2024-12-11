@@ -6,9 +6,7 @@
 }
 
 body {
-    background-image: url(../img/LOGIN.png);
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: #FFFFFF;
 }
 
 label {
@@ -19,18 +17,45 @@ label {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 34px;
     margin-bottom: 5px;
 }
 
 .container {
     display: flex;
+    flex-direction: row;
     justify-content: right;
     align-items: center;
     min-height: 100vh;
     position: relative;
     overflow: hidden;
     margin-right: 300px;
+}
+
+.img {
+    display: flex;
+    position: relative;
+    align-items: center;
+    left: 0;
+    top: 0;
+    height: 100%; 
+}
+
+.img .lingkaran {
+    height: 950px;
+    width: auto;
+    z-index: 1;
+    position: absolute;
+    left: -270px;
+}
+
+.img .comp {
+    height: 650px;
+    width: auto;
+    z-index: 2;
+    position: relative;
+    top: 50px;
+    left: -50px;
 }
 
 .login-box {
@@ -55,15 +80,6 @@ h1 {
     position: relative;
 }
 
-select#role {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #2842b8;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #929292;
-    font-size: 14px;
-}
-
 input[type="text"],
 input[type="password"] {
     width: 100%;
@@ -72,33 +88,6 @@ input[type="password"] {
     border-radius: 5px;
     box-shadow: 2px 2px 5px #929292;
     font-size: 14px;
-}
-
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 12px;
-}
-
-.remember-me {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.remember-me label {
-    margin: 0;
-}
-
-.remember {
-    padding-top: 10px;
-}
-
-.forgot-password {
-    color: #3454D1;
-    text-decoration: none;
 }
 
 .login-button {
@@ -110,8 +99,8 @@ input[type="password"] {
     border-radius: 5px;
     box-shadow: 2px 2px 5px #929292;
     font-size: 16px;
+    margin-top: 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .login-button:hover {

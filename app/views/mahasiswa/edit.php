@@ -25,8 +25,8 @@
                 <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
-            <div class="profile aktif">
-                <a href="<?= BASEURL; ?>/Mahasiswa/profil"><span class="role aktif">Mahasiswa</span></a>
+            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
+                <span class="role aktif"><?= $data['nim']; ?></span>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>

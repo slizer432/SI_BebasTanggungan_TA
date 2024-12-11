@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module</title>
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <link rel="stylesheet" href="<?= CSS; ?>/Super_Admin/module.css">
+    <title>Module</title>
 </head>
 
 <body>
     <div class="container">
         <nav>
-            <div class="profile">
-                <a href="<?= BASEURL; ?>/Super_Admin/profil"><span class="role">Super Admin</span></a>
-                <img src="<?= IMAGE; ?>/pp.png" alt="Foto Profil" class="pp">
+        <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/SuperAdmin/profil'">
+                <span class="role"><?= $data['nim']; ?></span>
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 

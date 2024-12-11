@@ -21,8 +21,8 @@
                 <a href="<?= BASEURL; ?>/Admin/lampiran.html">STUDENT ATTACHMENT</a>
             </div>
 
-            <div class="profile aktif">
-                <a href="<?= BASEURL; ?>/Admin/profil.html"><span class="role aktif">Admin</span></a>
+            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                <span class="role"><?= $data['nim']; ?></span>
                 <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>

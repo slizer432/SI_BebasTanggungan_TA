@@ -2,18 +2,19 @@
 <html>
 
 <head>
-    <meta charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
+    <link rel="stylesheet" href="<?= CSS; ?>Super_Admin/verifikasi.css">
     <title>Log Activity</title>
-    <link rel="stylesheet" href="<?= CSS; ?>/Super_Admin/verifikasi.css">
 </head>
 
 <body>
     <div class="container">
         <nav>
-            <div class="profile">
-                <a href="<?= BASEURL; ?>/SuperAdmin/profil"><span class="role">Super Admin</span></a>
-                <img src="<?= IMAGE; ?>/pp.png" alt="Foto Profil" class="pp">
+        <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/SuperAdmin/profil'">
+                <span class="role"><?= $data['nim']; ?></span>
+                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -47,11 +48,11 @@
                     </div>
 
                     <div class="choose">
-                        <a href="../Super_Admin/verifikasi_all.html" class="aktif">All</a>
-                        <a href="../Super_Admin/verifikasi.html">Verified</a>
-                        <a href="../Super_Admin/verifikasi_pending.html">Pending</a>
-                        <a href="../Super_Admin/verifikasi_unverif.html">Unverified</a>
-                        <a href="../Super_Admin/verifikasi_apprv.html">Approved</a>
+                        <a href="#" class="aktif">All</a>
+                        <a href="#">Verified</a>
+                        <a href="#">Pending</a>
+                        <a href="#">Unverified</a>
+                        <a href="#">Approved</a>
                     </div>
                 </div>
             </div>

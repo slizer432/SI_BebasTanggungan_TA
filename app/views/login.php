@@ -4,12 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login SIBETA!</title>
+    <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <link rel="stylesheet" type="text/css" href="<?= BASEURL; ?>/css/login.css">
+    <title>Login SIBETA!</title>
 </head>
 
 <body>
     <div class="container">
+        <div class="img">
+            <img src="<?= IMAGE; ?>login1.png" alt="" class="lingkaran">
+            <img src="<?= IMAGE; ?>login2.png" alt="" class="comp">
+        </div>
+
         <div class="login-box">
             <h1 class="welcome">Welcome to <span class="blue-text">SIBETA!</span></h1>
             <br><br>
@@ -28,13 +34,6 @@
                     <div class="input-container">
                         <input type="password" id="password" name="password">
                         <span class="eye-icon"></span>
-                    </div>
-                </div>
-
-                <div class="form-options">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember me</label>
                     </div>
                 </div>
 

@@ -54,6 +54,11 @@
                                 <th>STATUS</th>
                             </tr>
                         </thead>
+                        <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                            <span class="role"><?= $data['nim']; ?></span>
+                            <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+                        </div>
+                        </nav>
 
                         <tbody>
                             <?php foreach ($data as $verif): ?>
