@@ -49,7 +49,7 @@
                             <p><?= $data['nama']; ?></p>
                         </div>
                         <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
-                            <span class="role aktif"><?= $data['nim']; ?></span>
+                            <span class="role aktif"><?= $data['nip']; ?></span>
                             <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
                         </div>
                         </nav>
