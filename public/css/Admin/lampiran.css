@@ -234,6 +234,12 @@ tbody tr {
     
 }
 
+tbody tr:hover {
+    background-color: #334EAC;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+
 tbody td {
     padding: 10px;
     margin-bottom: 10px;

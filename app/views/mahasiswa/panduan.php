@@ -13,7 +13,7 @@
     <div class="container">
         <nav>
             <div class="notif">
-                <img src="<?= IMAGE; ?>notification.png" alt="">
+            <img src="<?= IMAGE; ?>notification.png" alt="" id="notifIcon">
             </div>
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
@@ -21,6 +21,13 @@
                 <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
+
+        <div id="notifPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <iframe src="<?= BASEURL; ?>/mhasiswa/notifikasi.php" frameborder="0"></iframe>
+            </div>
+        </div>
 
         <div class="menu-container">
             <div class="logo">
@@ -63,6 +70,8 @@
             </div>
         </div>
     </div>
+    
+    <script src="<?= JS; ?>notification.js"></script>
 </body>
 
 </html>

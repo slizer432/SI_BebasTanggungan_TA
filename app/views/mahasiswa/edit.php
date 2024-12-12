@@ -25,8 +25,8 @@
                 <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
-            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
-                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
+                <span class="role aktif"><?= explode(' ', $data['nama'])[0]; ?></span>
                 <img src="<?= IMAGE; ?>foto_mahasiswa/<?= $data['foto_profil']; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
@@ -77,7 +77,9 @@
             </form>
         </div>
     </div>
+
     <script src="<?= BASEURL; ?>/js/edit.js"></script>
+    <script src="<?= JS; ?>notification.js"></script>
 </body>
 
 </html>

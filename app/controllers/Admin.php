@@ -39,7 +39,17 @@ class Admin extends Controller
     public function edit()
     {
         $this->model('Admin_model')->isLoggedIn();
-        $this->model('Admin_model')->edit();
-        $this->view('admin/edit');
+        $data = $this->model('Admin_model')->getData();
+        $this->view('admin/edit', $data);
+    }
+
+    public function terimaVerif()
+    {
+        $this->model('Admin_model')->terimaVerif();
+    }
+
+    public function tolakVerif()
+    {
+        $this->model('Admin_model')->tolakVerif();
     }
 }

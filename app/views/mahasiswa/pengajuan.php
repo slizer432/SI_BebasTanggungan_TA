@@ -22,7 +22,7 @@
             </div>
 
             <div class="notif">
-                <img src="<?= IMAGE; ?>notification.png" alt="">
+            <img src="<?= IMAGE; ?>notification.png" alt="" id="notifIcon">
             </div>
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
@@ -31,6 +31,13 @@
                     alt="Foto Profil" class="pp">
             </div>
         </nav>
+
+        <div id="notifPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <iframe src="<?= BASEURL; ?>/mahasiswa/notifikasi" frameborder="0"></iframe>
+            </div>
+        </div>
 
         <div class="content">
             <div class="top">
@@ -65,6 +72,8 @@
             </div>
         </div>
     </div>
+    
+    <script src="<?= JS; ?>notification.js"></script>
 </body>
 
 </html>

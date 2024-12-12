@@ -40,10 +40,11 @@ nav {
 .notif {
     justify-content: center;
     padding-top: 5px;
-    padding-left: 870px;
+    margin-left: 870px;
 }
 
 .notif img {
+    cursor: pointer;
     width: 31px;
     height: 31px;
 }
@@ -83,6 +84,46 @@ nav {
     width: 64px;
     height: 64px;
     padding: 10px 10px 10px 10px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 760px;
+    height: 100%;
+    z-index: 1000;
+}
+
+.popup-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 95px 5px;
+    padding: 10px;
+    border-radius: 15px;
+    width: 95%;
+    height: 80%;
+}
+
+.popup-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    color: #334EAC;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
 }
 
 .menu-container {
@@ -446,19 +487,19 @@ ul li .progress {
 }
 
 .tns-stt.unverified {
-    background-color: #CF7272;  /* Red color for unverified status */
+    background-color: #CF7272;
 }
 
 .adm-stt.unverified {
-    background-color: #CF7272;  /* Red color for unverified status */
+    background-color: #CF7272;
 }
 
 .tns-stt.pending {
-    background-color: #CFBF72;  /* Brown color for pending status */
+    background-color: #CFBF72;
 }
 
 .adm-stt.pending {
-    background-color: #CFBF72;  /* Brown color for pending status */
+    background-color: #CFBF72;
 }
 
 .dc-stt button.btn-print {
@@ -468,7 +509,7 @@ ul li .progress {
 }
 
 .dc-stt button.btn-pending {
-    background-color: #CFBF72; /* Warna coklat sesuai dengan status pending lainnya */
+    background-color: #CFBF72;
     color: white;
     cursor: pointer;
 }
@@ -480,19 +521,16 @@ ul li .progress {
 }
 
 .btn-apply {
-    background-color: blue; /* Example color */
+    background-color: blue;
     color: white;
-    /* Add any other styles you need */
 }
 
 .btn-pending {
-    background-color: brown; /* Example color */
+    background-color: brown;
     color: white;
-    /* Add any other styles you need */
 }
 
 .btn-print {
-    background-color: green; /* Example color */
+    background-color: green;
     color: white;
-    /* Add any other styles you need */
 }
