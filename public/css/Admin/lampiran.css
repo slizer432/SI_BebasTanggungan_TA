@@ -55,11 +55,15 @@ nav {
 .attach {
     width: 200px;
     height: 30px;
-    color: #FFFFFF;
     background-color: #334EAC;
     border-radius: 21.5px;
     padding: 5px;
     margin-left: 800px;
+}
+
+.attach a {
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
 .profile {
@@ -85,6 +89,11 @@ nav {
     font-size: 15px;
     font-weight: 600;
     padding: 25px 10px 25px 14px;
+}
+
+.role:hover {
+    cursor: pointer;
+    color: #FFFFFF;
 }
 
 .pp {
