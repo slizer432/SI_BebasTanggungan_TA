@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #FFFFFF;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 34px;
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin-right: 300px;
+}
+
+.img {
+    display: flex;
+    position: relative;
+    align-items: center;
+    left: 0;
+    top: 0;
+    height: 100%; 
+}
+
+.img .lingkaran {
+    height: 950px;
+    width: auto;
+    z-index: 1;
+    position: absolute;
+    left: -270px;
+}
+
+.img .comp {
+    height: 650px;
+    width: auto;
+    z-index: 2;
+    position: relative;
+    top: 50px;
+    left: -50px;
+}
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.blue-text {
+    color: #3454D1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-container {
+    position: relative;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #2842b8;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #929292;
+    font-size: 14px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3454D1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #929292;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #2842b8;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3454D1;
+}

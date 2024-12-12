@@ -46,7 +46,6 @@ CREATE TABLE admin
     CONSTRAINT ck_admin_role CHECK (role IN ('Teknisi', 'Admin Prodi', 'Admin Jurusan'))
 );
 
-
 -- Tabel dokumen
 CREATE TABLE dokumen
 (
@@ -72,7 +71,6 @@ CREATE TABLE verifikasi_admin
     CONSTRAINT ck_verifikasi_status CHECK (status_verifikasi IN ('Unverified', 'Pending', 'Verified'))
 );
 
-
 -- Tabel log_aktivitas_admin
 CREATE TABLE log_aktivitas_admin
 (
@@ -83,7 +81,6 @@ CREATE TABLE log_aktivitas_admin
     tanggal_aktivitas DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (nip_admin) REFERENCES admin(nip)
 );
-
 
 -- Tabel pengajuan_bebas_tanggungan
 CREATE TABLE pengajuan_bebas_tanggungan
@@ -114,7 +111,6 @@ CREATE TABLE notifikasi
     CONSTRAINT ck_notifikasi_status CHECK (status_notifikasi IN ('Unread', 'Read')),
     CONSTRAINT ck_tipe_pengirim CHECK (tipe_pengirim IN ('Teknisi', 'Admin Prodi', 'Admin Jurusan'))
 );
-
 
 -- Tabel pemberitahuan
 CREATE TABLE pemberitahuan
@@ -341,3 +337,93 @@ DROP COLUMN komentar;
 
 ALTER TABLE dokumen
 ADD komentar TEXT NULL;
+
+--nambah kolom keterangan
+ALTER TABLE verifikasi_admin
+ADD keterangan VARCHAR(255) NULL;
+
+--buat trigger untuk set keterangan otomatis
+CREATE TRIGGER tr_SetVerificationMessage
+ON verifikasi_admin
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    UPDATE va
+    SET keterangan = 
+        CASE 
+            WHEN va.tahap_verifikasi = 'Teknisi' THEN
+                CASE va.status_verifikasi
+                    WHEN 'Verified' THEN 'Your 3 files has been verified by Technician.'
+                    WHEN 'Pending' THEN 'Your 3 files are being checked by the Technician.'
+                    WHEN 'Unverified' THEN 'Your 3 files have not been checked by Technician.'
+                END
+            WHEN va.tahap_verifikasi = 'Admin Prodi' THEN
+                CASE va.status_verifikasi
+                    WHEN 'Verified' THEN 'Your 4 files has been verified by Admin.'
+                    WHEN 'Pending' THEN 'Your 4 files are being checked by the Admin.'
+                    WHEN 'Unverified' THEN 'Your 4 files have not been checked by Admin.'
+                END
+        END
+    FROM verifikasi_admin va
+    INNER JOIN inserted i ON va.id_verifikasi_admin = i.id_verifikasi_admin;
+END;
+
+-- Example UPDATE (keterangan will be updated automatically)
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 3 files have been verified by Technician.'
+WHERE status_verifikasi = 'Verified' and tahap_verifikasi = 'Teknisi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 3 files are being checked by the Technician.'
+WHERE status_verifikasi = 'Pending' and tahap_verifikasi = 'Teknisi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 3 files have not been checked by Technician.'
+WHERE status_verifikasi = 'Unverified' and tahap_verifikasi = 'Teknisi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 4 files have been verified by Admin.'
+WHERE status_verifikasi = 'Verified' and tahap_verifikasi = 'Admin Prodi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 4 files are being checked by the Admin.'
+WHERE status_verifikasi = 'Pending' and tahap_verifikasi = 'Admin Prodi';
+
+UPDATE verifikasi_admin 
+SET keterangan = 'Your 4 files have not been checked by Admin.'
+WHERE status_verifikasi = 'Unverified' and tahap_verifikasi = 'Admin Prodi';
+
+-- Update verifikasi_admin records for Teknisi to Verified status
+UPDATE verifikasi_admin
+SET status_verifikasi = 'Verified'
+WHERE tahap_verifikasi = 'Teknisi';
+
+UPDATE mahasiswa
+SET foto_profil = '2341720251_Hamdan Azizul Hakim.jpg'
+WHERE nim = '2341720251';
+
+UPDATE dokumen
+SET file_dokumen = CASE
+    WHEN jenis_dokumen = 'Laporan Tugas Akhir/Skripsi' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Laporan Tugas Akhir.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Program/Aplikasi Tugas Akhir/Skripsi' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Aplikasi Tugas Akhir.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Surat Pernyataan Publikasi Jurnal' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Surat Pernyataan Publikasi.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Tanda Terima Penyerahan Laporan Tugas Akhir/Skripsi' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Tanda Terima Penyerahan Laporan Tugas Akhir.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Tanda Terima Penyerahan Laporan PKL/Magang' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Tanda Terima Penyerahan Laporan Magang.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Scan Hasil TOEIC' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Scan Hasil TOEIC.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Surat Bebas Kompen' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Surat Bebas Kompen.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    ELSE file_dokumen
+END;
