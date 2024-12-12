@@ -103,16 +103,35 @@ class Admin_model extends Controller
         }
     }
 
-    public function getDokumen()
-    {
-        $nim = $_GET['nim'];
-        $this->db->query('SELECT * FROM dokumen WHERE nim = :nim');
-        $this->db->bind(':nim', $nim);
-        return $this->db->resultSet();
-    }
-
     public function terimaVerif()
     {
 
     }
-}
+
+    public function getStatus()
+    {
+        $this->db->query('SELECT * FROM verifikasi_admin');
+        return $this->db->resultSet();
+    }
+
+    public function searchMahasiswa($keyword)
+    {
+        $this->db->query('SELECT * FROM mahasiswa WHERE nim LIKE :keyword OR nama LIKE :keyword');
+        $this->db->bind(':keyword', '%' . $keyword . '%');
+        return $this->db->resultSet();
+    }   
+
+    public function getMahasiswaByNim($nim)
+    {
+        $this->db->query('SELECT * FROM mahasiswa WHERE nim = :nim');
+        $this->db->bind('nim', $nim);
+        return $this->db->single();
+    }
+
+    public function getDokumenByNim($nim)
+    {
+        $this->db->query('SELECT * FROM dokumen WHERE nim = :nim');
+        $this->db->bind(':nim', $nim);
+        return $this->db->resultSet();
+    }
+}   

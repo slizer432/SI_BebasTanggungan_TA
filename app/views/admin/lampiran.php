@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?= IMAGE; ?>icon.png">
     <title>Attachment</title>
@@ -18,28 +18,28 @@
             </div>
 
             <div class="attach">
-                <span>STUDENT ATTACHMENT</span>
+                <a href="<?= BASEURL; ?>/admin/home">STUDENT ATTACHMENT</a>
             </div>
 
-            <div class="profile">
-                <a href="<?= BASEURL; ?>/Admin/profil"><span class="role">Admin</span></a>
-                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_admin/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
         <div class="content">
             <div class="top">
                 <div class="search-container">
-                    <form action="#" method="GET">
-                        <button type="submit"><img src="<?= IMAGE; ?>search.png" alt=""></button>
-                        <input type="text" placeholder="search here...">
+                    <form action="<?= BASEURL; ?>/admin/lampiran" method="post">
+                        <button type="submit"><img src="<?= IMAGE; ?>search.png" alt="Search"></button>
+                        <input type="text" name="keyword" placeholder="Search by NIM or Name..." value="<?= isset($_POST['keyword']) ? htmlspecialchars($_POST['keyword']) : ''; ?>">
                     </form>
                 </div>
                 <div class="choose">
-                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_all.html" class="aktif">All</a>
-                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi.html">Verified</a>
-                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_pending.html">Pending</a>
-                    <a href="/../SI_BebasTanggungan_TA/app/view/Admin/verifikasi_unverif.html">Unverified</a>
+                    <a href="<?= BASEURL; ?>/admin/lampiran" class="aktif">All</a>
+                    <a href="<?= BASEURL; ?>/admin/lampiran/verified">Verified</a>
+                    <a href="<?= BASEURL; ?>/admin/lampiran/pending">Pending</a>
+                    <a href="<?= BASEURL; ?>/admin/lampiran/unverified">Unverified</a>
                 </div>
             </div>
 
@@ -48,6 +48,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <th>NO</th>
                                 <th>NIM</th>
                                 <th>NAME</th>
                                 <th>DATE</th>
@@ -61,23 +62,18 @@
                         </nav>
 
                         <tbody>
-                            <?php foreach ($data as $verif): ?>
-                                <tr>
-                                    <td class="nim"><?= $verif['nim']; ?></td>
-                                    <td class="student"><?= $verif['nama']; ?></td>
-                                    <td class="date"><?= $verif['tanggal_verifikasi']; ?></td>
-                                    <td class="status"><?= $verif['status_verifikasi']; ?></td>
+                            <?php $index = 1; ?>
+                            <?php foreach ($data['mhs'] as $verif): ?>
+                                <tr onclick="window.location.href='<?= BASEURL; ?>/admin/check_teknisi?<?= htmlspecialchars($verif['nim']); ?>'" style="cursor: pointer;">
+                                    <td class="no"><?= $index++; ?></td>
+                                    <td class="nim"><?= htmlspecialchars($verif['nim']); ?></td>
+                                    <td class="student"><?= htmlspecialchars($verif['nama']); ?></td>
+                                    <td class="date"><?= htmlspecialchars($verif['tanggal_verifikasi']); ?></td>
+                                    <td class="status"><?= htmlspecialchars($verif['status_verifikasi']); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                </div>
-
-                <div class="halaman">
-                    <button type="button" class="prev">
-                        < Previous</button>
-                            <button type="button" class="page-number">01 02 03 04 ... 11</button>
-                            <button type="button" class="next">Next ></button>
                 </div>
             </div>
         </div>

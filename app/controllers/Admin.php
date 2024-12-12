@@ -11,7 +11,8 @@ class Admin extends Controller
     {
         $this->model('Admin_model')->isLoggedIn();
         $data = $this->model('Admin_model')->getData();
-        $this->view('admin/profil', $data);
+        $data['mhs'] = $this->model('Admin_model')->getMhs();
+        $this->view('admin/lampiran', $data);
     }
 
     public function profil()
@@ -26,18 +27,13 @@ class Admin extends Controller
         $this->model('Admin_model')->logout();
     }
 
-    public function lampiran()
+    public function check($nim)
     {
         $this->model('Admin_model')->isLoggedIn();
-        $data = $this->model('Admin_model')->getMhs();
-        $this->view('admin/lampiran', $data);
-    }
-
-    public function check()
-    {
-        $this->model('Admin_model')->isLoggedIn();
-        $data['dokumen'] = $this->model('Admin_model')->getDokumen();
-        $this->view('admin/check');
+        $data = $this->model('Admin_model')->getData();
+        $data['mhs'] = $this->model('Admin_model')->getMahasiswaByNim($nim);
+        $data['dokumen'] = $this->model('Admin_model')->getDokumenByNim($nim);
+        $this->view('admin/check_teknisi', $data);
     }
 
     public function edit()

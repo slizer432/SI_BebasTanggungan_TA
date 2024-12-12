@@ -402,3 +402,28 @@ UPDATE mahasiswa
 SET foto_profil = '2341720251_Hamdan Azizul Hakim.jpg'
 WHERE nim = '2341720251';
 
+UPDATE dokumen
+SET file_dokumen = CASE
+    WHEN jenis_dokumen = 'Laporan Tugas Akhir/Skripsi' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Laporan Tugas Akhir.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Program/Aplikasi Tugas Akhir/Skripsi' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Aplikasi Tugas Akhir.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Surat Pernyataan Publikasi Jurnal' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Surat Pernyataan Publikasi.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Tanda Terima Penyerahan Laporan Tugas Akhir/Skripsi' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Tanda Terima Penyerahan Laporan Tugas Akhir.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Tanda Terima Penyerahan Laporan PKL/Magang' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Tanda Terima Penyerahan Laporan Magang.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Scan Hasil TOEIC' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Scan Hasil TOEIC.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    WHEN jenis_dokumen = 'Surat Bebas Kompen' THEN CONCAT(nim, '_', 
+        SUBSTRING(file_dokumen, CHARINDEX('_', file_dokumen) + 1, CHARINDEX('_', file_dokumen, CHARINDEX('_', file_dokumen) + 1) - CHARINDEX('_', file_dokumen) - 1), 
+        '_Surat Bebas Kompen.', RIGHT(file_dokumen, LEN(file_dokumen) - CHARINDEX('.', file_dokumen)))
+    ELSE file_dokumen
+END;

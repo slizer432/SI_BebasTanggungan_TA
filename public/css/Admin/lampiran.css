@@ -66,12 +66,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'inter';
     border: 1.5px solid #000000;
     border-radius: 42px;
     width: 200px;
     height: 54px;
     margin-left: auto;
     margin-right: 20px;
+}
+
+.profile:hover {
+    cursor: pointer;
+    background-color: #334EAC;
 }
 
 .role {
