@@ -133,7 +133,7 @@ class Admin_model
             switch ($role) {
                 case 'Admin Prodi':
                     $this->db->query('UPDATE verifikasi_admin SET status_verifikasi = :status_verifikasi, tahap_verifikasi = :tahap_verifikasi WHERE nim = :nim;');
-                    $this->db->bind(':status_verifikasi', 'Rejected');
+                    $this->db->bind(':status_verifikasi', 'Unverified');
                     $this->db->bind(':tahap_verifikasi', 'Teknisi');
                     $this->db->bind(':nim', $nim);
                     $this->db->execute();
