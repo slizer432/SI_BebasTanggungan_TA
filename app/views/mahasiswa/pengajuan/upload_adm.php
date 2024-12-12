@@ -22,7 +22,8 @@
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
                 <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
-                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
+                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/' . $data['foto_profil'] : 'pp.png'; ?>"
+                    alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -32,7 +33,7 @@
                 <iframe src="<?= BASEURL; ?>/mhasiswa/notifikasi.php" frameborder="0"></iframe>
             </div>
         </div>
-        
+
         <div class="menu-container">
             <div class="logo">
                 <img src="<?= BASEURL; ?>/image/logo.png" alt="SIBETA">
@@ -76,7 +77,8 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file1" name="ttTugasAkhir" accept=".pdf" required>
+                            <input type="file" id="file1" name="Tanda Terima Penyerahan Laporan Tugas Akhir/Skripsi"
+                                accept=".pdf" required>
                         </div>
                     </div>
                 </div>
@@ -88,7 +90,8 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file2" name="ttMagang" accept=".pdf" required>
+                            <input type="file" id="file2" name="Tanda Terima Penyerahan Laporan PKL/Magang"
+                                accept=".pdf" required>
                         </div>
                     </div>
                 </div>
@@ -100,7 +103,7 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file3" name="kompen" accept=".pdf" required>
+                            <input type="file" id="file3" name="Surat Bebas Kompen" accept=".pdf" required>
                         </div>
                     </div>
                 </div>
@@ -112,7 +115,7 @@
                         <div class="sub-con">
                             <img src="<?= IMAGE; ?>file.png" alt="File Icon">
                             <span>PDF with max 1MB</span>
-                            <input type="file" id="file4" name="toeic" accept=".pdf" required>
+                            <input type="file" id="file4" name="Scan Hasil TOEIC" accept=".pdf" required>
                         </div>
                     </div>
                 </div>

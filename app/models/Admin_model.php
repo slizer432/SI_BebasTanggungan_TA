@@ -113,6 +113,67 @@ class Admin_model
 
     public function terimaVerif()
     {
+        $nim = $_GET['nim'];
+        $data = $this->getData();
+        $role = $data['role'];
+        $this->db->query('UPDATE verifikasi_admin SET status_verifikasi = :status_verifikasi WHERE nim = :nim, tahap_verifikasi = :tahap_verifikasi;');
+        $this->db->bind(':status_verifikasi', 'Verified');
+        $this->db->bind(':nim', $nim);
+        $this->db->bind(':tahap_verifikasi', $role);
+        $this->db->execute();
+        header('Location: ' . BASEURL . '/Admin/lampiran');
+    }
 
+    public function tolakVerif()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nim = $_POST['nim'];
+            $data = $this->getData();
+            $role = $data['role'];
+            switch ($role) {
+                case 'Admin Prodi':
+                    $this->db->query('UPDATE verifikasi_admin SET status_verifikasi = :status_verifikasi, tahap_verifikasi = :tahap_verifikasi WHERE nim = :nim;');
+                    $this->db->bind(':status_verifikasi', 'Rejected');
+                    $this->db->bind(':tahap_verifikasi', 'Teknisi');
+                    $this->db->bind(':nim', $nim);
+                    $this->db->execute();
+
+                    $this->db->query("UPDATE dokumen
+                        SET komentar = CASE 
+                        WHEN nim = :nim AND jenis_dokumen = 'Tanda Terima Penyerahan Laporan Tugas Akhir/Skripsi' THEN :ttTugasAkhir
+                        WHEN nim = :nim AND jenis_dokumen = 'Tanda Terima Penyerahan Laporan PKL/Magang' THEN :ttPKLMagang
+                        WHEN nim = :nim AND jenis_dokumen = 'Surat Bebas Kompen' THEN :kompen             
+                        WHEN nim = :nim AND jenis_dokumen = 'Scan Hasil TOEIC' THEN :toeic
+                            ELSE komentar -- Tetap gunakan nilai lama jika tidak ada kondisi yang sesuai
+                        END
+                        WHERE nim IN ('2340271532', '2341271506');
+                        ");
+
+                    $this->db->bind(':nim', $nim);
+                    $this->db->bind(':laporanTA', $_POST['laporanTA']);
+                    $this->db->bind(':programTA', $_POST['programTA']);
+                    $this->db->bind(':publikasi', $_POST['publikasi']);
+                    $this->db->execute();
+                    break;
+                case 'Teknisi':
+                    $this->db->query('UPDATE verifikasi_admin SET status_verifikasi = :status_verifikasi, tahap_verifikasi = :tahap_verifikasi WHERE nim = :nim;');
+                    $this->db->bind(':status_verifikasi', 'Rejected');
+                    $this->db->bind(':tahap_verifikasi', 'Admin Prodi');
+                    $this->db->bind(':nim', $nim);
+                    $this->db->execute();
+
+                    $this->db->query("UPDATE dokumen
+                        SET komentar = CASE 
+                    WHEN nim = :nim AND jenis_dokumen = 'Laporan Tugas Akhir/Skripsi' THEN :laporanTA
+                    WHEN nim = :nim AND jenis_dokumen = 'Program/Aplikasi Tugas Akhir/Skripsi' THEN :programTA
+                    WHEN nim = :nim AND jenis_dokumen = 'Surat Pernyataan Publikasi Jurnal' THEN :publikasi                            -- Tambahkan kondisi lain sesuai kebutuhan
+                            ELSE komentar -- Tetap gunakan nilai lama jika tidak ada kondisi yang sesuai
+                        END
+                        WHERE nim IN ('2340271532', '2341271506');
+                        ");
+                    break;
+            }
+            header('Location: ' . BASEURL . '/Admin/lampiran');
+        }
     }
 }

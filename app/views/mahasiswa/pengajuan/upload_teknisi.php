@@ -22,7 +22,8 @@
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
                 <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
-                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
+                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/' . $data['foto_profil'] : 'pp.png'; ?>"
+                    alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -76,7 +77,8 @@
                         <div class="sub-con">
                             <img src="<?= BASEURL; ?>/image/file.png" alt="File Icon">
                             <span>PDF with max 10MB</span>
-                            <input type="file" id="final_project" name="laporanTugasAkhir" accept=".pdf" required>
+                            <input type="file" id="final_project" name="Laporan Tugas Akhir/Skripsi" accept=".pdf"
+                                required>
                         </div>
                     </div>
                 </div>
@@ -87,7 +89,8 @@
                         <div class="sub-con">
                             <img src="<?= BASEURL; ?>/image/file.png" alt="File Icon">
                             <span>ZIP/RAR with max 1MB</span>
-                            <input type="file" id="thesis_program" name="tugasAkhir" accept=".zip,.rar" required>
+                            <input type="file" id="thesis_program" name="Program/Aplikasi Tugas Akhir/Skripsi"
+                                accept=".zip,.rar" required>
                         </div>
                     </div>
                 </div>
@@ -98,7 +101,8 @@
                         <div class="sub-con">
                             <img src="<?= BASEURL; ?>/image/file.png" alt="File Icon">
                             <span>PDF with max 10MB</span>
-                            <input type="file" id="publication_letter" name="publikasi" accept=".pdf" required>
+                            <input type="file" id="publication_letter" name="Surat Pernyataan Publikasi Jurnal"
+                                accept=".pdf" required>
                         </div>
                     </div>
                 </div>

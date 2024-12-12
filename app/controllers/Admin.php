@@ -46,4 +46,14 @@ class Admin extends Controller
         $data = $this->model('Admin_model')->getData();
         $this->view('admin/edit', $data);
     }
+
+    public function terimaVerif()
+    {
+        $this->model('Admin_model')->terimaVerif();
+    }
+
+    public function tolakVerif()
+    {
+        $this->model('Admin_model')->tolakVerif();
+    }
 }
