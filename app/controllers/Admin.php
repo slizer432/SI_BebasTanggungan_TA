@@ -27,7 +27,7 @@ class Admin extends Controller
         $this->model('Admin_model')->logout();
     }
 
-    public function check($nim)
+    public function check_teknisi($nim)
     {
         $this->model('Admin_model')->isLoggedIn();
         $data = $this->model('Admin_model')->getData();

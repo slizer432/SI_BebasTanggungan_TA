@@ -59,7 +59,7 @@
                         <tbody>
                             <?php $index = 1; ?>
                             <?php foreach ($data['mhs'] as $verif): ?>
-                                <tr onclick="window.location.href='<?= BASEURL; ?>/admin/check_teknisi?<?= htmlspecialchars($verif['nim']); ?>'" style="cursor: pointer;">
+                                <tr onclick="window.location.href='<?= BASEURL; ?>/admin/check_teknisi/<?= htmlspecialchars($verif['nim']); ?>'" style="cursor: pointer;">
                                     <td class="no"><?= $index++; ?></td>
                                     <td class="nim"><?= htmlspecialchars($verif['nim']); ?></td>
                                     <td class="student"><?= htmlspecialchars($verif['nama']); ?></td>
