@@ -17,7 +17,7 @@
             </div>
 
             <div class="notif">
-                <img src="<?= BASEURL; ?>/image/notification.png" alt="Notification">
+            <img src="<?= IMAGE; ?>notification.png" alt="" id="notifIcon">
             </div>
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">

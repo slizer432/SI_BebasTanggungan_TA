@@ -22,7 +22,7 @@
             </div>
 
             <div class="notif">
-                <img src="<?= IMAGE; ?>notification.png" alt="">
+            <img src="<?= IMAGE; ?>notification.png" alt="" id="notifIcon">
             </div>
 
             <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">

@@ -13,7 +13,7 @@
     <div class="container">
         <nav>
             <div class="notif">
-                <img src="<?= IMAGE; ?>notification.png" alt="">
+            <img src="<?= IMAGE; ?>notification.png" alt="" id="notifIcon">
             </div>
             
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
@@ -25,7 +25,7 @@
         <div id="notifPopup" class="popup">
             <div class="popup-content">
                 <span class="close">&times;</span>
-                <iframe src="<?= BASEURL; ?>/mhasiswa/notifikasi.php" frameborder="0"></iframe>
+                <iframe src="<?= BASEURL; ?>/mahasiswa/notifikasi" frameborder="0"></iframe>
             </div>
         </div>
 
