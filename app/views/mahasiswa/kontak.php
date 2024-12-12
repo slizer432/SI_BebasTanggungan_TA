@@ -22,6 +22,13 @@
             </div>
         </nav>
 
+        <div id="notifPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <iframe src="<?= BASEURL; ?>/mhasiswa/notifikasi.php" frameborder="0"></iframe>
+            </div>
+        </div>
+
         <div class="menu-container">
             <div class="logo">
                 <img src="<?= IMAGE; ?>logo.png" alt="SIBETA">

@@ -25,11 +25,18 @@
                 <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
-            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
-                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
+                <span class="role aktif"><?= explode(' ', $data['nama'])[0]; ?></span>
                 <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
+
+        <div id="notifPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <iframe src="<?= BASEURL; ?>/mhasiswa/notifikasi.php" frameborder="0"></iframe>
+            </div>
+        </div>
 
         <div class="content">
             <div class="top">

@@ -40,10 +40,11 @@ nav {
 .notif {
     justify-content: center;
     padding-top: 5px;
-    padding-left: 870px;
+    margin-left: 870px;
 }
 
 .notif img {
+    cursor: pointer;
     width: 31px;
     height: 31px;
 }

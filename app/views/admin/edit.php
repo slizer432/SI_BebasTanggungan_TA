@@ -21,8 +21,8 @@
                 <a href="<?= BASEURL; ?>/Admin/lampiran.html">STUDENT ATTACHMENT</a>
             </div>
 
-            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
-                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                <span class="role aktif"><?= explode(' ', $data['nama'])[0]; ?></span>
                 <img src="<?= IMAGE; ?>foto_admin/<?= $data['foto_profil']; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
