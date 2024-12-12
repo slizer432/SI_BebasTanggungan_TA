@@ -32,7 +32,7 @@
                 <iframe src="<?= BASEURL; ?>/mhasiswa/notifikasi.php" frameborder="0"></iframe>
             </div>
         </div>
-        
+
         <div class="menu-container">
             <div class="logo">
                 <img src="<?= BASEURL; ?>/image/logo.png" alt="SIBETA">
@@ -126,6 +126,8 @@
             </form>
         </div>
     </div>
+    
+    <script src="<?= JS; ?>notification.js"></script>
 </body>
 
 </html>

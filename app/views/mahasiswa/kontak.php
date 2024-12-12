@@ -86,11 +86,12 @@
                         <span>08300666233</span>
                         <i>(Chat Only)</i>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    
+    <script src="<?= JS; ?>notification.js"></script>
 </body>
 
 </html>
