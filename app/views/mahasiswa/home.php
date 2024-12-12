@@ -25,7 +25,7 @@
         <div id="notifPopup" class="popup">
             <div class="popup-content">
                 <span class="close">&times;</span>
-                <iframe src="<?= BASEURL; ?>/mhasiswa/notifikasi.php" frameborder="0"></iframe>
+                <iframe src="<?= BASEURL; ?>/mahasiswa/notifikasi" frameborder="0"></iframe>
             </div>
         </div>
 
@@ -407,6 +407,4 @@
     <script src="<?= JS; ?>teknisi.js"></script>
     <script src="<?= JS; ?>adprod.js"></script>
 </body>
-</body>
-
 </html>

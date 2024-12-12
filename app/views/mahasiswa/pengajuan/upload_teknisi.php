@@ -113,6 +113,8 @@
             </form>
         </div>
     </div>
+    
+    <script src="<?= JS; ?>notification.js"></script>
 </body>
 
 </html>

@@ -77,7 +77,9 @@
             </form>
         </div>
     </div>
+
     <script src="<?= BASEURL; ?>/js/edit.js"></script>
+    <script src="<?= JS; ?>notification.js"></script>
 </body>
 
 </html>
