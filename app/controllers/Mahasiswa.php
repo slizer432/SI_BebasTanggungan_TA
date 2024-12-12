@@ -34,6 +34,7 @@ class Mahasiswa extends Controller
         $this->model('Mahasiswa_model')->isLoggedIn();
         $data = $this->model('Mahasiswa_model')->getData();
         $data['title'] = 'File Submission';
+        $data['verifikasi'] = $this->model('Mahasiswa_model')->getVerifikasi();
         $this->view('mahasiswa/pengajuan', $data);
     }
 

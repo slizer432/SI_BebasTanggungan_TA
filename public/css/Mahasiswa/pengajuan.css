@@ -249,3 +249,17 @@ nav {
     color: white;
     text-decoration: none;
 }
+
+.sub.disabled {
+    opacity: 0.4;
+    background-color: #FFFFFF;
+}
+
+.sub.disabled button {
+    cursor: not-allowed;
+}
+
+.sub.disabled button a {
+    pointer-events: none;
+    color: #FFFFFF;
+}

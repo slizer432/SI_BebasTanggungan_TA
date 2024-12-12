@@ -57,6 +57,21 @@
                 </div>
             </div>
 
+            <?php 
+            // Cek status verifikasi teknisi
+            $allVerified = true;
+            if (!empty($data['verifikasi'])) {
+                foreach ($data['verifikasi'] as $verif) {
+                    if ($verif['tahap_verifikasi'] == 'Teknisi' && $verif['status_verifikasi'] != 'Verified') {
+                        $allVerified = false;
+                        break;
+                    }
+                }
+            } else {
+                $allVerified = false;
+            }
+            ?>
+
             <div class="data">
                 <div class="sub tech">
                     <img src="<?= IMAGE; ?>teknisi.png" alt="">
@@ -64,10 +79,14 @@
                     <button><a href="<?= BASEURL; ?>/Mahasiswa/upload_teknisi">Submit Verification</a></button>
                 </div>
 
-                <div class="sub adm">
+                <div class="sub adm <?= !$allVerified ? 'disabled' : '' ?>">
                     <img src="<?= IMAGE; ?>admin.png" alt="">
                     <span>Admin</span>
-                    <button><a href="<?= BASEURL; ?>/Mahasiswa/upload_admin">Submit Verification</a></button>
+                    <button <?= !$allVerified ? 'disabled' : '' ?>>
+                        <a href="<?= !$allVerified ? 'javascript:void(0)' : BASEURL.'/Mahasiswa/upload_admin' ?>">
+                            Submit Verification
+                        </a>
+                    </button>
                 </div>
             </div>
         </div>
