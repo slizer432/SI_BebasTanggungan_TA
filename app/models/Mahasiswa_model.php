@@ -224,7 +224,7 @@ class Mahasiswa_model
                 $fileTmpName = $_FILES['foto']['tmp_name'];
                 $fileExt = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
                 $fileNameNew = "{$data['nim']}_{$data['nama']}.{$fileExt}";
-                
+
                 $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/SI_BebasTanggungan_TA/public/image/foto_mahasiswa/';
                 $fileDestination = $uploadDir . $fileNameNew;
 
@@ -234,37 +234,47 @@ class Mahasiswa_model
 
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
                     $data['foto_profil'] = $fileNameNew;
+                    return $fileNameNew;
                 }
             }
         }
     }
 
-    public function update($data)
+    public function update()
     {
-        // Update tabel mahasiswa
-        $query1 = "UPDATE mahasiswa 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $foto = $this->uploadFotoProfil();
+            $data = $this->getData();
+            $nim = $data['nim'];
+            $nama = $_POST['nama'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            // Update tabel mahasiswa
+            $query1 = "UPDATE mahasiswa 
                   SET nama = :nama, 
                       email = :email, 
                       foto_profil = :foto_profil 
                   WHERE nim = :nim";
 
-        $this->db->query($query1);
-        $this->db->bind('nim', $data['nim']);
-        $this->db->bind('nama', $data['nama']);
-        $this->db->bind('email', $data['email']);
-        $this->db->bind('foto_profil', $data['foto_profil']);
-        $result1 = $this->db->execute();
+            $this->db->query($query1);
+            $this->db->bind('nim', $nim);
+            $this->db->bind('nama', $nama);
+            $this->db->bind('email', $email);
+            $this->db->bind('foto_profil', $foto);
+            $this->db->execute();
 
-        // Update tabel users
-        $query2 = "UPDATE users 
+            // Update tabel users
+            $query2 = "UPDATE users 
                   SET password = :password 
                   WHERE username = :nim";
 
-        $this->db->query($query2);
-        $this->db->bind('password', $data['password']);
-        $this->db->bind('nim', $data['nim']);
-        $result2 = $this->db->execute();
+            $this->db->query($query2);
+            $this->db->bind('password', $password);
+            $this->db->bind('nim', $nim);
+            $this->db->execute();
 
-        return $result1 && $result2;
+        }
     }
 }

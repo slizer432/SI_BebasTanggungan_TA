@@ -23,9 +23,8 @@ class Mahasiswa extends Controller
     public function profil()
     {
         $this->model('Mahasiswa_model')->isLoggedIn();
+        $this->model('Mahasiswa_model')->update();
         $data = $this->model('Mahasiswa_model')->getData();
-        $data['profil'] = $this->model('Mahasiswa_model')->uploadFotoProfil();
-        $data['profil'] = $this->model('Mahasiswa_model')->update($data);
         $data['title'] = 'Profile';
         $this->view('mahasiswa/profil', $data);
     }
