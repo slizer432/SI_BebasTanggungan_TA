@@ -87,4 +87,9 @@ class Mahasiswa extends Controller
     {
         $this->model('Mahasiswa_model')->logout();
     }
+
+    public function applyBebas()
+    {
+        $this->model('Mahasiswa_model')->applyBebas();
+    }
 }

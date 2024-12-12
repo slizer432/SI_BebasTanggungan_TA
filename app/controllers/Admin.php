@@ -27,13 +27,20 @@ class Admin extends Controller
         $this->model('Admin_model')->logout();
     }
 
-    public function check_teknisi($nim)
+    public function check($nim)
     {
         $this->model('Admin_model')->isLoggedIn();
         $data = $this->model('Admin_model')->getData();
         $data['mhs'] = $this->model('Admin_model')->getMahasiswaByNim($nim);
         $data['dokumen'] = $this->model('Admin_model')->getDokumenByNim($nim);
-        $this->view('admin/check_teknisi', $data);
+        switch ($data['role']) {
+            case 'Admin Prodi':
+                $this->view('admin/check_admin', $data);
+                break;
+            case 'Teknisi':
+                $this->view('admin/check_teknisi', $data);
+                break;
+        }
     }
 
     public function edit()
@@ -43,9 +50,9 @@ class Admin extends Controller
         $this->view('admin/edit', $data);
     }
 
-    public function terimaVerif()
+    public function terimaVerif($nim)
     {
-        $this->model('Admin_model')->terimaVerif();
+        $this->model('Admin_model')->terimaVerif($nim);
     }
 
     public function tolakVerif()

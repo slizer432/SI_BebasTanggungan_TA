@@ -99,6 +99,7 @@ class Mahasiswa_model
                         $this->db->bind(':jenis_dokumen', $file['key']);
                         $this->db->bind(':nama_dokumen', $fileNameNew);
                         $this->db->execute();
+
                     }
 
                     // Check if verification data already exists
@@ -114,6 +115,12 @@ class Mahasiswa_model
                         $this->db->bind(':status_verifikasi', 'Pending');
                         $this->db->execute();
                     }
+
+                    $this->db->query("UPDATE verifikasi_admin SET status_verifikasi = :status_verifikasi WHERE nim = :nim AND tahap_verifikasi = :tahap_verifikasi;");
+                    $this->db->bind(':status_verifikasi', 'Pending');
+                    $this->db->bind(':nim', $nim);
+                    $this->db->bind(':tahap_verifikasi', $role);
+                    $this->db->execute();
 
                     return "File uploaded successfully!";
                 } else {
@@ -160,6 +167,7 @@ class Mahasiswa_model
             foreach ($uploadResults as $key => $result) {
                 echo "File {$key}: {$result}<br>";
             }
+            header('Location: ' . BASEURL . '/mahasiswa/pengajuan');
         }
     }
 
@@ -193,6 +201,7 @@ class Mahasiswa_model
             foreach ($uploadResults as $key => $result) {
                 echo "File {$key}: {$result}<br>";
             }
+            header('Location: ' . BASEURL . '/mahasiswa/pengajuan');
         }
     }
 
@@ -276,5 +285,16 @@ class Mahasiswa_model
             $this->db->execute();
 
         }
+    }
+
+    public function applyBebas()
+    {
+        $data = $this->getData();
+        $nim = $data['nim'];
+        $this->db->query('INSERT INTO pengajuan_bebas_tanggungan (nim, status_pengajuan, tanggal_pengajuan) VALUES (:nim, :status, GETDATE());');
+        $this->db->bind(':nim', $nim);
+        $this->db->bind(':status', 'Pending');
+        $this->db->execute();
+        header('Location: ' . BASEURL . '/mahasiswa/home');
     }
 }

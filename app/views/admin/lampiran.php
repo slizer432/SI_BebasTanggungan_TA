@@ -23,7 +23,8 @@
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
                 <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
-                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_admin/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
+                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_admin/' . $data['foto_profil'] : 'pp.png'; ?>"
+                    alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -32,7 +33,8 @@
                 <div class="search-container">
                     <form action="<?= BASEURL; ?>/admin/lampiran" method="post">
                         <button type="submit"><img src="<?= IMAGE; ?>search.png" alt="Search"></button>
-                        <input type="text" name="keyword" placeholder="Search by NIM or Name..." value="<?= isset($_POST['keyword']) ? htmlspecialchars($_POST['keyword']) : ''; ?>">
+                        <input type="text" name="keyword" placeholder="Search by NIM or Name..."
+                            value="<?= isset($_POST['keyword']) ? htmlspecialchars($_POST['keyword']) : ''; ?>">
                     </form>
                 </div>
                 <div class="choose">
@@ -59,7 +61,8 @@
                         <tbody>
                             <?php $index = 1; ?>
                             <?php foreach ($data['mhs'] as $verif): ?>
-                                <tr onclick="window.location.href='<?= BASEURL; ?>/admin/check_teknisi/<?= htmlspecialchars($verif['nim']); ?>'" style="cursor: pointer;">
+                                <tr onclick="window.location.href='<?= BASEURL; ?>/admin/check/<?= htmlspecialchars($verif['nim']); ?>'"
+                                    style="cursor: pointer;">
                                     <td class="no"><?= $index++; ?></td>
                                     <td class="nim"><?= htmlspecialchars($verif['nim']); ?></td>
                                     <td class="student"><?= htmlspecialchars($verif['nama']); ?></td>
@@ -74,4 +77,5 @@
         </div>
     </div>
 </body>
+
 </html>

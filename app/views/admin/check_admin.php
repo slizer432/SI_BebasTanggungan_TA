@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <form action="<?= BASEURL; ?>/admin/process_documents" method="POST">
+            <form action="<?= BASEURL; ?>/Admin/tolakVerif" method="POST">
                 <div class="documents">
                     <div class="document-card">
                         <div class="doc-header">
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="comment-box">
-                                <textarea name="comment_laporan" placeholder="Type any comments..."></textarea>
+                                <textarea name="ttTugasAkhir" placeholder="Type any comments..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                             </div>
 
                             <div class="comment-box">
-                                <textarea name="comment_program" placeholder="Type any comments..."></textarea>
+                                <textarea name="ttMagang" placeholder="Type any comments..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                             </div>
 
                             <div class="comment-box">
-                                <textarea name="comment_surat" placeholder="Type any comments..."></textarea>
+                                <textarea name="toeic" placeholder="Type any comments..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -171,16 +171,16 @@
                             </div>
 
                             <div class="comment-box">
-                                <textarea name="comment_surat" placeholder="Type any comments..."></textarea>
+                                <textarea name="kompen" placeholder="Type any comments..."></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="action-buttons">
-                    <input type="hidden" name="student_id" value="<?= $data['mhs']['nim']; ?>">
-                    <button type="submit" class="reject-btn">Send Rejection</button>
-                    <a href="<?= BASEURL; ?>/admin/verify/<?= $data['mhs']['nim']; ?>"
+                    <input type="hidden" name="nim" value="<?= $data['mhs']['nim']; ?>">
+                    <button type="submit" class="reject-btn">Reject</button>
+                    <a href="<?= BASEURL; ?>/admin/terimaVerif?nim=<?= $data['mhs']['nim']; ?>"
                         class="verify-btn">Verification</a>
                 </div>
             </form>
