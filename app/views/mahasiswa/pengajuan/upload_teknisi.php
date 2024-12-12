@@ -62,6 +62,7 @@
             </div>
 
             <form action="<?= BASEURL; ?>/Mahasiswa/upload_teknisi" method="POST" enctype="multipart/form-data">
+                <!-- File 1 -->
                 <div class="sub">
                     <div class="sub-cont">
                         <label for="final_project">Final Project Report/Thesis</label>

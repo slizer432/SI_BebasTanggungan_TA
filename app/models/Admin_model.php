@@ -1,6 +1,6 @@
 <?php
 
-class Admin_model extends Controller
+class Admin_model
 {
     private $db;
     public function __construct()
@@ -41,7 +41,7 @@ class Admin_model extends Controller
 
     public function getMhs()
     {
-        $data = $this->model('Admin_model')->getData();
+        $data = $this->getData();
         $role = $data['role'];
 
         switch ($role) {
