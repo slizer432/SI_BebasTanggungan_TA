@@ -84,3 +84,98 @@ nav {
     border-bottom: 2px solid #6D6C6C;
 }
 
+.content .top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content .top span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #004aad;
+}
+
+.content .top .nama {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.content .top .nim {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.data {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.data .box {
+    margin-bottom: 20px;
+}
+
+.data .isi {
+    margin-bottom: 10px;
+}
+
+.data .isi span {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.data .file {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.data .file img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.data .tgl {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.data .tgl img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.data .comment textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #004aad;
+    color: white;
+    font-weight: bold;
+}
+
+.btn button:hover {
+    background-color: #00337a;
+}

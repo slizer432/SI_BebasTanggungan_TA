@@ -74,9 +74,9 @@
                             <button type="button" class="page-number">01 02 03 04 ... 11</button>
                             <button type="button" class="next">Next ></button>
                 </div>
+
             </div>
         </div>
     </div>
 </body>
-
 </html>
