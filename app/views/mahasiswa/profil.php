@@ -25,9 +25,9 @@
                 <img src="<?= IMAGE; ?>notification.png" alt="">
             </div>
 
-            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
-                <span class="role aktif"><?= $data['nim']; ?></span>
-                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
+                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -38,7 +38,7 @@
 
             <div class="data-content">
                 <div class="photo">
-                    <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil">
+                    <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil">
                 </div>
 
                 <div class="cont">

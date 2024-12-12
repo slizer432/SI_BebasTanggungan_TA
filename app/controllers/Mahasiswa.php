@@ -24,6 +24,8 @@ class Mahasiswa extends Controller
     {
         $this->model('Mahasiswa_model')->isLoggedIn();
         $data = $this->model('Mahasiswa_model')->getData();
+        $data['profil'] = $this->model('Mahasiswa_model')->uploadFotoProfil();
+        $data['profil'] = $this->model('Mahasiswa_model')->update($data);
         $data['title'] = 'Profile';
         $this->view('mahasiswa/profil', $data);
     }
@@ -39,8 +41,8 @@ class Mahasiswa extends Controller
     public function panduan()
     {
         $this->model('Mahasiswa_model')->isLoggedIn();
-        $data = $this->model('Mahasiswa_model')->getGuidline('Panduan Mahasiswa');
-        $data['mhs'] = $this->model('Mahasiswa_model')->getData();
+        $data = $this->model('Mahasiswa_model')->getData();
+        $data['panduan'] = $this->model('Mahasiswa_model')->getGuidline('Panduan Mahasiswa');
         $data['title'] = 'Guideline';
         $this->view('mahasiswa/panduan', $data);
     }

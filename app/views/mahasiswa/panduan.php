@@ -17,8 +17,8 @@
             </div>
 
             <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/profil'">
-                <span class="role"><?= $data['mhs']['nim']; ?></span>
-                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+                <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -54,11 +54,11 @@
         <div class="content">
             <div class="box">
                 <div class="title">
-                    <h2><?= $data['judul']; ?></h2>
+                    <h2><?= $data['panduan']['judul']; ?></h2>
                 </div>
 
                 <div class="kt">
-                    <span><?= $data['isi']; ?></span>
+                    <span><?= $data['panduan']['isi']; ?></span>
                 </div>
             </div>
         </div>

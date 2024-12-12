@@ -26,8 +26,8 @@
             </div>
 
             <<div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/SuperAdmin/profil'">
-                <span class="role aktif"><?= $data['nim']; ?></span>
-                <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil" class="pp">
+                <span class="role aktif"><?= $data['nip']; ?></span>
+                <img src="<?= IMAGE; ?>foto_super_admin/<?= $data['foto_profil']; ?>" alt="Foto Profil" class="pp">
             </div>
         </nav>
 
@@ -38,7 +38,7 @@
 
             <div class="data-content">
                 <div class="photo">
-                    <img src="<?= IMAGE; ?>/pp.png" alt="Foto Profil">
+                    <img src="<?= IMAGE; ?>foto_super_admin/<?= $data['foto_profil']; ?>" alt="Foto Profil">
                 </div>
 
                 <div class="cont">
