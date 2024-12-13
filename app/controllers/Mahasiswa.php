@@ -20,6 +20,14 @@ class Mahasiswa extends Controller
         $this->view('mahasiswa/home', $data);
     }
 
+    public function notifikasi()
+    {
+        $this->model('Mahasiswa_model')->isLoggedIn();
+        $data = $this->model('Mahasiswa_model')->getData();
+        $data['title'] = 'Notification';
+        $this->view('mahasiswa/notifikasi', $data);
+    }
+
     public function profil()
     {
         $this->model('Mahasiswa_model')->isLoggedIn();
