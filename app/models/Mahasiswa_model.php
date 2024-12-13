@@ -85,7 +85,7 @@ class Mahasiswa_model
 
         if ($fileError === 0) {
             if ($fileSize < 1000000) {
-                $fileDestination = "C:\\laragon\\www\\SI_BebasTanggungan_TA\\public\\uploads\\{$fileNameNew}";
+                $fileDestination = __DIR__ . '/../../public/uploads/' . $fileNameNew;
 
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
                     $this->db->query("SELECT COUNT(*) FROM dokumen WHERE nim = :nim AND jenis_dokumen = :jenis_dokumen");
