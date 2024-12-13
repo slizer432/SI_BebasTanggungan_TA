@@ -17,12 +17,12 @@
                 <span>SIBETA</span>
             </div>
 
-            <div class="attach" onclick="window.location.href='<?= BASEURL; ?>/admin/check?$data['mhs']['nim']'" style="cursor: pointer;">
-                <span>STUDENT ATTACHMENT</span>
+            <div class="attach">
+                <a href="<?= BASEURL; ?>/Admin/home">STUDENT ATTACHMENT</a>
             </div>
 
-            <div class="profile" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
-                <span class="role"><?= explode(' ', $data['nama'])[0]; ?></span>
+            <div class="profile aktif" onclick="window.location.href='<?= BASEURL; ?>/admin/profil'">
+                <span class="role aktif"><?= explode(' ', $data['nama'])[0]; ?></span>
                 <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_admin/' . $data['foto_profil'] : 'pp.png'; ?>"
                     alt="Foto Profil" class="pp">
             </div>
@@ -57,9 +57,8 @@
                     </div>
 
                     <div class="btn">
-                        <button class="b">
-                            <img src="<?= IMAGE; ?>edit.png" alt="">
-                            <a href="<?= BASEURL; ?>/Admin/edit">Edit Profile</a>
+                        <button class="b" onclick="window.location.href='<?= BASEURL; ?>/Admin/edit'">
+                            <img src="<?= IMAGE; ?>edit.png" alt="">Edit Profile
                         </button>
                         <button onclick="window.location.href='<?= BASEURL; ?>/mahasiswa/logout'">Log Out</button>
                     </div>
