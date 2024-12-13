@@ -208,4 +208,76 @@ class Admin_model
         $this->db->bind(':nim', $nim);
         return $this->db->resultSet();
     }
+
+    public function uploadFotoProfil()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'nip' => $_POST['nip'],
+                'nama' => $_POST['nama'],
+                'email' => $_POST['email'],
+                'password' => $_POST['password']
+            ];
+
+            // Get current photo from database
+            $currentData = $this->getData();
+            $data['foto_profil'] = $currentData['foto_profil'];
+
+            // Handle file upload
+            if (isset($_FILES['foto_profil']) && $_FILES['foto_profil']['error'] === 0) {
+                $fileTmpName = $_FILES['foto_profil']['tmp_name'];
+                $fileExt = strtolower(pathinfo($_FILES['foto_profil']['name'], PATHINFO_EXTENSION));
+                $fileNameNew = "{$data['nip']}_{$data['nama']}.{$fileExt}";
+
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/SI_BebasTanggungan_TA/public/image/foto_admin/';
+                $fileDestination = $uploadDir . $fileNameNew;
+
+                if (!file_exists($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+
+                if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                    $data['foto_profil'] = $fileNameNew;
+                    return $fileNameNew;
+                }
+            }
+            return $data['foto_profil'];
+        }
+    }
+
+    public function update()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $foto = $this->uploadFotoProfil();
+            $data = $this->getData();
+            $nip = $data['nip'];
+            $nama = $_POST['nama'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            // Update tabel admin
+            $query1 = "UPDATE admin 
+                  SET nama = :nama, 
+                      email = :email, 
+                      foto_profil = :foto_profil 
+                  WHERE nip = :nip";
+
+            $this->db->query($query1);
+            $this->db->bind('nip', $nip);
+            $this->db->bind('nama', $nama);
+            $this->db->bind('email', $email);
+            $this->db->bind('foto_profil', $foto);
+            $this->db->execute();
+
+            // Update tabel users
+            $query2 = "UPDATE users 
+                  SET password = :password 
+                  WHERE username = :nip";
+
+            $this->db->query($query2);
+            $this->db->bind('password', $password);
+            $this->db->bind('nip', $nip);
+            $this->db->execute();
+        }
+    }
 }

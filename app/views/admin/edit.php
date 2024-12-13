@@ -1,3 +1,4 @@
+<!-- app/views/admin/edit.php -->
 <!DOCTYPE html>
 <html>
 
@@ -33,29 +34,21 @@
                 <span>Profile</span>
             </div>
 
-
             <form action="<?= BASEURL; ?>/admin/profil" method="post" enctype="multipart/form-data">
                 <div class="data-content">
-
                     <div class="photo">
                         <img id="preview-image"
                             src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_admin/' . $data['foto_profil'] : 'pp.png'; ?>"
                             alt="Foto Profil">
                         <div class="edit-overlay">
-                            <input type="file" name="foto" id="foto-input" accept="image/*">
+                            <input type="file" name="foto_profil" id="foto-input" accept="image/*">
                             <label for="foto-input" class="edit-button">Change Photo</label>
                         </div>
                     </div>
 
                     <div class="cont">
                         <div class="data">
-
-                            <input type="hidden" name="nim" value="<?= $data['nip']; ?>">
-
-                            <div class="isi e">
-                                <label for="role">Role :</label>
-                                <input type="text" name="role" value="<?= $data['role']; ?>">
-                            </div>
+                            <input type="hidden" name="nip" value="<?= $data['nip']; ?>">
 
                             <div class="isi e">
                                 <label for="nama">Name :</label>

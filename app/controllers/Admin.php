@@ -18,6 +18,11 @@ class Admin extends Controller
     public function profil()
     {
         $this->model('Admin_model')->isLoggedIn();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->model('Admin_model')->update();
+            header('Location: ' . BASEURL . '/admin/profil');
+            exit;
+        }
         $data = $this->model('Admin_model')->getData();
         $this->view('admin/profil', $data);
     }

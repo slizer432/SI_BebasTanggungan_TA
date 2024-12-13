@@ -34,8 +34,8 @@
             </div>
 
             <div class="data-content">
-                <div class="photo">
-                    <img src="<?= IMAGE; ?>pp.png" alt="Foto Profil">
+            <div class="photo">
+                    <img src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_admin/' . $data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil">
                 </div>
 
                 <div class="cont">
