@@ -220,8 +220,7 @@ class Mahasiswa_model
                 'nim' => $_POST['nim'],
                 'nama' => $_POST['nama'],
                 'email' => $_POST['email'],
-                'password' => $_POST['password'],
-                'foto_profil' => null
+                'password' => $_POST['password']
             ];
 
             // Get current photo from database
@@ -229,9 +228,9 @@ class Mahasiswa_model
             $data['foto_profil'] = $currentData['foto_profil'];
 
             // Handle file upload
-            if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
-                $fileTmpName = $_FILES['foto']['tmp_name'];
-                $fileExt = strtolower(pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
+            if (isset($_FILES['foto_profil']) && $_FILES['foto_profil']['error'] === 0) {
+                $fileTmpName = $_FILES['foto_profil']['tmp_name'];
+                $fileExt = strtolower(pathinfo($_FILES['foto_profil']['name'], PATHINFO_EXTENSION));
                 $fileNameNew = "{$data['nim']}_{$data['nama']}.{$fileExt}";
 
                 $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/SI_BebasTanggungan_TA/public/image/foto_mahasiswa/';
@@ -246,6 +245,7 @@ class Mahasiswa_model
                     return $fileNameNew;
                 }
             }
+            return $data['foto_profil'];
         }
     }
 

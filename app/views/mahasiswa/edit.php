@@ -41,7 +41,7 @@
                     <div class="photo">
                         <img id="preview-image" src="<?= IMAGE; ?><?= !empty($data['foto_profil']) ? 'foto_mahasiswa/'.$data['foto_profil'] : 'pp.png'; ?>" alt="Foto Profil">
                         <div class="edit-overlay">
-                            <input type="file" name="foto" id="foto-input" accept="image/*">
+                            <input type="file" name="foto_profil" id="foto-input" accept="image/*">
                             <label for="foto-input" class="edit-button">Change Photo</label>
                         </div>
                     </div>
