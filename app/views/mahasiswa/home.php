@@ -378,12 +378,17 @@
                                                                 if ($adminVerified) {
                                                                     if (!empty($data['pengajuan']['status_pengajuan'])) {
                                                                         if ($data['pengajuan']['status_pengajuan'] == 'Accepted') {
-                                                                            echo 'Apply';
+                                                                            ?>
+                                                                            <a class="btn-print"
+                                                                                href="<?= BASEURL; ?>/uploads/Template Bebas Tanggungan.pdf"
+                                                                                target="_blank"
+                                                                                style="text-decoration: none;">Print</a>
+                                                                            <?php
                                                                         } elseif ($data['pengajuan']['status_pengajuan'] == 'Pending') {
                                                                             echo 'Pending';
                                                                         }
                                                                     } else {
-                                                                        echo 'Print';
+                                                                        echo 'Apply';
                                                                     }
                                                                 }
                                                                 ?>

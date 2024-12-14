@@ -25,6 +25,7 @@ class Mahasiswa extends Controller
         $this->model('Mahasiswa_model')->isLoggedIn();
         $data = $this->model('Mahasiswa_model')->getData();
         $data['title'] = 'Notification';
+        $data['notif'] = $this->model('Mahasiswa_model')->getNotif();
         $this->view('mahasiswa/notifikasi', $data);
     }
 

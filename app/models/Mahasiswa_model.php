@@ -297,4 +297,13 @@ class Mahasiswa_model
         $this->db->execute();
         header('Location: ' . BASEURL . '/mahasiswa/home');
     }
+
+    public function getNotif()
+    {
+        $data = $this->getData();
+        $nim = $data['nim'];
+        $this->db->query('SELECT * FROM notifikasi WHERE nim = :nim;');
+        $this->db->bind(':nim', $nim);
+        return $this->db->resultSet();
+    }
 }

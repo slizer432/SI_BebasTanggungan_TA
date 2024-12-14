@@ -8,12 +8,11 @@
 }
 
 body {
-    background: radial-gradient(circle at center, 
-      #FFF8EC 0%, 
-      #F0F7F9 50%,
-      #EAF6FF 72%, 
-      #d1e3ff 100%
-    );
+    background: radial-gradient(circle at center,
+            #FFF8EC 0%,
+            #F0F7F9 50%,
+            #EAF6FF 72%,
+            #d1e3ff 100%);
 }
 
 .container {
@@ -249,7 +248,7 @@ nav {
     height: 387px;
 }
 
-.chart p{
+.chart p {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -432,7 +431,7 @@ ul li .progress {
     color: #FFFFFF;
 }
 
-.tns-stt span{
+.tns-stt span {
     padding: 10px 5px 10px 5px;
     font-size: 11px;
 }
@@ -457,12 +456,12 @@ ul li .progress {
     background-color: #CFBF72;
 }
 
-.adm-stt span{
+.adm-stt span {
     padding: 10px 5px 10px 5px;
     font-size: 11px;
 }
 
-.dc-stt button{
+.dc-stt button {
     display: flex;
     align-items: center;
     justify-content: center;
