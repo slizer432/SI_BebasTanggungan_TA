@@ -45,6 +45,9 @@ class Admin extends Controller
             case 'Teknisi':
                 $this->view('admin/check_teknisi', $data);
                 break;
+            case 'Admin Jurusan':
+                $this->view('admin/check_admin_jurusan', $data);
+                break;
         }
     }
 
@@ -58,6 +61,11 @@ class Admin extends Controller
     public function terimaVerif($nim)
     {
         $this->model('Admin_model')->terimaVerif($nim);
+    }
+
+    public function terimaPengajuan($nim)
+    {
+        $this->model('Admin_model')->terimaPengajuan($nim);
     }
 
     public function tolakVerif()

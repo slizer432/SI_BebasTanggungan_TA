@@ -81,6 +81,23 @@ class Admin_model
                     ;"
                 );
                 return $this->db->resultSet();
+
+            case 'Admin Jurusan':
+                $this->db->query(
+                    "SELECT 
+                            mahasiswa.nim,
+                            mahasiswa.nama,
+                            pbt.tanggal_pengajuan as tanggal_verifikasi,
+                            pbt.status_pengajuan as status_verifikasi
+                        FROM 
+                            mahasiswa
+                        INNER JOIN 
+                            pengajuan_bebas_tanggungan pbt
+                        ON 
+                            mahasiswa.nim = pbt.nim
+                        ;"
+                );
+                return $this->db->resultSet();
         }
     }
 
@@ -113,6 +130,18 @@ class Admin_model
         $this->db->bind(':status_verifikasi', 'Verified');
         $this->db->bind(':nim', $nim);
         $this->db->bind(':tahap_verifikasi', $role);
+        $this->db->execute();
+        header('Location: ' . BASEURL . '/Admin/home');
+    }
+
+    public function terimaPengajuan($nim)
+    {
+        $data = $this->getData();
+        $nip = $data['nip'];
+        $this->db->query('UPDATE pengajuan_bebas_tanggungan SET nip_admin = :nip, status_pengajuan = :status_pengajuan WHERE nim = :nim;');
+        $this->db->bind(':nip', $nip);
+        $this->db->bind(':status_pengajuan', 'Accepted');
+        $this->db->bind(':nim', $nim);
         $this->db->execute();
         header('Location: ' . BASEURL . '/Admin/home');
     }

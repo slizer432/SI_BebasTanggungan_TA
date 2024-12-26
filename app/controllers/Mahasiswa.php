@@ -99,6 +99,8 @@ class Mahasiswa extends Controller
 
     public function applyBebas()
     {
+        $this->model('Mahasiswa_model')->isLoggedIn();
+        $data = $this->model('Mahasiswa_model')->getData();
         $this->model('Mahasiswa_model')->applyBebas();
     }
 }

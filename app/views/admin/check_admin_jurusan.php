@@ -43,6 +43,95 @@
         <div class="content">
             <form action="<?= BASEURL; ?>/Admin/tolakVerif" method="POST">
                 <div class="documents">
+                <div class="document-card">
+                            <div class="doc-content">
+                                <div class="doc-header">
+                                    <h4>Laporan Tugas Akhir/Skripsi</h4>
+
+                                    <div class="doc-info">
+                                        <div class="file-info">
+                                            <img src="<?= IMAGE; ?>pdf.png" alt="PDF">
+                                            <a href="<?= BASEURL; ?>/uploads/<?= $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Laporan Tugas Akhir.pdf'; ?>"
+                                                target="_blank">
+                                                <?= $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Laporan Tugas Akhir.pdf'; ?>
+                                            </a>
+                                        </div>
+
+                                        <div class="date-info">
+                                            <img src="<?= IMAGE; ?>calendar.png" alt="Calendar">
+                                            <span>
+                                                <?php
+                                                foreach ($data['dokumen'] as $dokumen) {
+                                                    if ($dokumen['file_dokumen'] == $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Laporan Tugas Akhir.pdf') {
+                                                        echo $dokumen['tanggal_upload'];
+                                                        break;
+                                                    }
+                                                }
+                                                ?>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document-card">
+                            <div class="doc-content">
+                                <div class="doc-header">
+                                    <h4>Program/Aplikasi Tugas Akhir/Skripsi</h4>
+                                    
+                                    <div class="doc-info">
+                                        <div class="file-info">
+                                            <img src="<?= IMAGE; ?>pdf.png" alt="PDF">
+                                            <a href="<?= BASEURL; ?>/uploads/<?= $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Program Tugas Akhir.pdf'; ?>"
+                                                target="_blank">
+                                                <?= $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Program Tugas Akhir.pdf'; ?>
+                                            </a>
+                                        </div>
+                                                
+                                        <span>
+                                            <?php
+                                            foreach ($data['dokumen'] as $dokumen) {
+                                                if ($dokumen['file_dokumen'] == $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Program Tugas Akhir.pdf') {
+                                                    echo $dokumen['tanggal_upload'];
+                                                    break;
+                                                }
+                                            }
+                                            ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="document-card">
+                            <div class="doc-content">
+                                <div class="doc-header">
+                                    <h4>Surat Pernyataan Publikasi Jurnal</h4>
+
+                                    <div class="doc-info">
+                                        <div class="file-info">
+                                            <img src="<?= IMAGE; ?>pdf.png" alt="PDF">
+                                            <a href="<?= BASEURL; ?>/uploads/<?= $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Surat Pernyataan Publikasi.pdf'; ?>"
+                                                target="_blank">
+                                                <?= $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Surat Pernyataan Publikasi.pdf'; ?>
+                                            </a>
+                                        </div>
+
+                                        <span>
+                                            <?php
+                                            foreach ($data['dokumen'] as $dokumen) {
+                                                if ($dokumen['file_dokumen'] == $data['mhs']['nim'] . '_' . $data['mhs']['nama'] . '_Surat Pernyataan Publikasi.pdf') {
+                                                    echo $dokumen['tanggal_upload'];
+                                                    break;
+                                                }
+                                            }
+                                            ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <div class="document-card">
                         <div class="doc-content">
                             <div class="doc-header">
@@ -70,10 +159,6 @@
                                         </span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="comment-box">
-                                <textarea name="ttTugasAkhir" placeholder="Type any comments..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -103,10 +188,6 @@
                                     </span>
                                 </div>
                             </div>
-
-                            <div class="comment-box">
-                                <textarea name="ttMagang" placeholder="Type any comments..."></textarea>
-                            </div>
                         </div>
                     </div>
 
@@ -134,10 +215,6 @@
                                         ?>
                                     </span>
                                 </div>
-                            </div>
-
-                            <div class="comment-box">
-                                <textarea name="toeic" placeholder="Type any comments..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -167,16 +244,13 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="comment-box">
-                                <textarea name="kompen" placeholder="Type any comments..."></textarea>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="action-buttons">
                     <input type="hidden" name="nim" value="<?= $data['mhs']['nim']; ?>">
                     <button type="submit" class="reject-btn">Reject</button>
-                <a href="<?= BASEURL; ?>/Admin/terimaVerif/<?= $data['mhs']['nim']; ?>"
+                <a href="<?= BASEURL; ?>/admin/terimaPengajuan/<?= $data['mhs']['nim']; ?>"
                     class="verify-btn">Verification</a>
                 </div>
             </form>
